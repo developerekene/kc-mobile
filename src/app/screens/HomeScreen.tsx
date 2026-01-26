@@ -10,12 +10,15 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { courses } from "../utils/Constants/data";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const HomeScreen: React.FC = ({ navigation, route }: any) => {
     const pulseAnim = useRef(new Animated.Value(1)).current;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuAnim = useRef(new Animated.Value(-260)).current; // menu width
+    const user = useSelector((state: RootState) => state.user);
+
     const activeChallenge = {
         title: "Water Supply Crisis",
         description:
@@ -118,34 +121,28 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 {/* TOP CONTENT */}
                 <View style={styles.menuTop}>
                     {/* PROFILE SECTION */}
-                    <TouchableOpacity style={styles.profileSection}>
+                    <TouchableOpacity style={styles.profileSection} onPress={() => { navigation.navigate("ProfileScreen") }}>
                         <View style={styles.profileAvatar}>
-                            <Text style={styles.profileInitial}>E</Text>
+                            <Text style={styles.profileInitial}>{user.initials ? user.initials : `U`}</Text>
                         </View>
 
-                        <Text style={styles.profileName}>Ekene</Text>
+                        <Text style={styles.profileName}>{user.initials ? user.initials : `User`}</Text>
                     </TouchableOpacity>
 
-                    {/* MENU ITEMS */}
-                    {/* <TouchableOpacity style={styles.menuItem}>
-                        <Ionicons name="home-outline" size={20} />
-                        <Text style={styles.menuText}>Home</Text>
-                    </TouchableOpacity> */}
-
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity onPress={() => { navigation.navigate("CoursesCentralPage") }} style={styles.menuItem}>
                         <Ionicons name="book-outline" size={20} />
                         <Text style={styles.menuText}>Courses</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate("ChallengeCentralPage") }}>
                         <Ionicons name="flash-outline" size={20} />
                         <Text style={styles.menuText}>Challenges</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
                         <Ionicons name="create-outline" size={20} />
                         <Text style={styles.menuText}>Reflections</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate("CityMapPage") }}>
                         <Ionicons name="bulb-outline" size={20} />
                         <Text style={styles.menuText}>City Map</Text>
                     </TouchableOpacity>
@@ -182,9 +179,9 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 {/* HERO CARD */}
                 <View style={styles.heroCard}>
                     <Text style={styles.heroLabel}>Hello there</Text>
-                    <Text style={styles.crisisTitle}>Ekene Okoli</Text>
+                    <Text style={styles.crisisTitle}>{user.firstName ? user.firstName + " " + user.lastName : `New User`}</Text>
                     <Text style={styles.crisisMessage}>
-                        Are you ready to strengthen your critical thinking today?
+                        Are you ready to strengthen your skills today?
                     </Text>
                 </View>
 
@@ -198,7 +195,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
 
                 {/* COURSES */}
                 <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Start Learning as a Beginner</Text>
+                    <Text style={styles.sectionTitle}>Top Courses</Text>
                     <FlatList
                         data={courses}
                         keyExtractor={(item) => item.id}
@@ -211,22 +208,22 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
 
                 {/* QUICK ACTIONS */}
                 <View style={styles.quickActions}>
-                    <TouchableOpacity style={styles.quickCard}>
+                    <TouchableOpacity onPress={() => { navigation.navigate("CoursesCentralPage") }} style={styles.quickCard}>
                         <Ionicons name="book-outline" size={20} color="#0F172A" />
                         <Text style={styles.quickText}>Courses</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.quickCard}>
+                    <TouchableOpacity onPress={() => { navigation.navigate("ChallengeCentralPage") }} style={styles.quickCard} >
                         <Ionicons name="flash-outline" size={20} color="#0F172A" />
                         <Text style={styles.quickText}>Challenge</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.quickCard}>
+                    <TouchableOpacity style={styles.quickCard} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
                         <Ionicons name="journal-outline" size={20} color="#0F172A" />
                         <Text style={styles.quickText}>Reflections</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.quickCard}>
+                    <TouchableOpacity style={styles.quickCard} onPress={() => { navigation.navigate("CityMapPage") }}>
                         <Ionicons name="map-outline" size={20} color="#0F172A" />
                         <Text style={styles.quickText}>City Map</Text>
                     </TouchableOpacity>
@@ -248,7 +245,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 {/* RECOMMENDED NEXT COURSE */}
                 {/* RECOMMENDED NEXT COURSE */}
                 <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Recommended Next Course</Text>
+                    <Text style={styles.sectionTitle}>Recommended Course</Text>
 
                     <Animated.View style={[styles.recommendedCard, { transform: [{ scale: pulseAnim }] }]}>
                         <Text style={styles.recommendedTitle}>Critical Thinking</Text>
@@ -261,7 +258,14 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                     </Animated.View>
                 </View>
 
-
+                {/* REFLECTION */}
+                <View style={styles.reflectionCard}>
+                    <Text style={styles.reflectionTitle}>Reflection</Text>
+                    <Text style={styles.reflectionText}>{reflectionPrompt}</Text>
+                    <TouchableOpacity style={styles.primaryBtn} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
+                        <Text style={styles.primaryBtnText}>Reflect Now →</Text>
+                    </TouchableOpacity>
+                </View>
 
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Achievements & Streaks</Text>
@@ -279,15 +283,6 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                             <Text style={styles.badgeText}>Total Hours: 24</Text>
                         </View>
                     </ScrollView>
-                </View>
-
-                {/* REFLECTION */}
-                <View style={styles.reflectionCard}>
-                    <Text style={styles.reflectionTitle}>Reflection</Text>
-                    <Text style={styles.reflectionText}>{reflectionPrompt}</Text>
-                    <TouchableOpacity style={styles.primaryBtn}>
-                        <Text style={styles.primaryBtnText}>Reflect Now →</Text>
-                    </TouchableOpacity>
                 </View>
 
                 {/* PROGRESS OVERVIEW */}
@@ -482,6 +477,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#0F172A",
         padding: 16,
         borderRadius: 14,
+        marginBottom: 20
     },
     reflectionTitle: {
         color: "#E0E7FF",

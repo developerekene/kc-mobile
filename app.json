@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "KC",
-    "slug": "Knowledge City",
+    "slug": "KnowledgeCity",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.devekene.KnowledgeCity"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b15616a5-7a01-4bca-84ee-0d6b4da4c35c"
+      }
     }
   }
 }
