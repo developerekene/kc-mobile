@@ -20,10 +20,253 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
     const user = useSelector((state: RootState) => state.user);
 
     const activeChallenge = {
+        id: "1",
         title: "Water Supply Crisis",
-        description:
-            "A section of the city’s water system has contamination. Fast fixes risk long-term shortages; careful approaches may endanger health temporarily.",
         urgency: "High",
+        category: "Infrastructure",
+        duration: "30–45 mins",
+        difficulty: "Hard",
+
+        shortDescription:
+            "A growing city is facing severe water shortages due to climate change and aging infrastructure.",
+
+        context:
+            "Reservoir levels are critically low, pipe leakages are frequent, and population growth is putting pressure on limited resources.",
+
+        objective:
+            "Design a sustainable water distribution strategy that balances demand, cost, and long-term resilience.",
+
+        skills: [
+            "Critical Thinking",
+            "Systems Design",
+            "Resource Management",
+            "Basic Programming Logic",
+        ],
+
+        learningOutcomes: {
+            gameMode: [
+                "Understand trade-offs in public policy decisions",
+                "Learn how short-term actions affect long-term sustainability",
+                "Practice decision-making under constraints",
+            ],
+            codingMode: [
+                "Learn JavaScript variables and objects",
+                "Understand conditional logic (if/else)",
+                "Simulate real-world systems using code",
+            ],
+        },
+
+        modes: ["GAME", "CODE"],
+
+        // =========================
+        // 🎮 GAME MODE
+        // =========================
+        gameplay: {
+            initialState: {
+                budget: 100,
+                publicTrust: 70,
+                sustainability: 50,
+                waterReserve: 40, // %
+                populationSatisfaction: 65,
+            },
+
+            metricsExplanation: {
+                budget: "Funds available for city projects",
+                publicTrust: "How much citizens trust leadership",
+                sustainability: "Long-term water system health",
+                waterReserve: "Remaining usable water supply",
+                populationSatisfaction: "Daily quality of life",
+            },
+
+            winConditions: {
+                sustainability: 75,
+                publicTrust: 60,
+                waterReserve: 50,
+            },
+
+            failConditions: {
+                budget: 0,
+                publicTrust: 20,
+                waterReserve: 10,
+            },
+
+            decisions: [
+                {
+                    id: "decision-1",
+                    phase: "Early Crisis",
+                    prompt:
+                        "Water levels have dropped to critical levels. What is your first move?",
+                    options: [
+                        {
+                            id: "option-1",
+                            label: "Introduce immediate water rationing",
+                            impact: {
+                                budget: +10,
+                                publicTrust: -15,
+                                sustainability: +10,
+                                waterReserve: +5,
+                                populationSatisfaction: -10,
+                            },
+                            feedback:
+                                "Rationing slows water loss but frustrates citizens.",
+                        },
+                        {
+                            id: "option-2",
+                            label: "Repair leaking pipelines",
+                            impact: {
+                                budget: -30,
+                                publicTrust: +10,
+                                sustainability: +20,
+                                waterReserve: +10,
+                            },
+                            feedback:
+                                "Infrastructure repair improves efficiency but is costly.",
+                        },
+                    ],
+                },
+
+                {
+                    id: "decision-2",
+                    phase: "Public Response",
+                    prompt:
+                        "Public protests arise due to restrictions. How do you respond?",
+                    options: [
+                        {
+                            id: "option-3",
+                            label: "Launch a public education campaign",
+                            impact: {
+                                budget: -10,
+                                publicTrust: +20,
+                                populationSatisfaction: +10,
+                            },
+                            feedback:
+                                "Transparency builds trust and calms the population.",
+                        },
+                        {
+                            id: "option-4",
+                            label: "Increase enforcement and penalties",
+                            impact: {
+                                publicTrust: -25,
+                                sustainability: +5,
+                                populationSatisfaction: -20,
+                            },
+                            feedback:
+                                "Strict enforcement protects resources but damages morale.",
+                        },
+                    ],
+                },
+            ],
+        },
+
+        // =========================
+        // 💻 CODING MODE (JavaScript)
+        // =========================
+        codingMode: {
+            targetAudience: "Beginner",
+            language: "JavaScript",
+
+            narrative:
+                "Instead of making decisions directly, you will write simple JavaScript code to control the city’s water system.",
+
+            conceptsTaught: [
+                "Variables",
+                "Objects",
+                "Functions",
+                "Conditional Logic",
+            ],
+
+            initialCodeState: `
+      let city = {
+        budget: 100,
+        publicTrust: 70,
+        sustainability: 50,
+        waterReserve: 40
+      };
+      `,
+
+            tasks: [
+                {
+                    id: "code-task-1",
+                    title: "Control Water Rationing",
+                    lesson:
+                        "Variables store data that can change over time.",
+
+                    instruction:
+                        "Write a function that applies water rationing and updates the city's stats.",
+
+                    starterCode: `
+      function applyRationing(city) {
+        // Your code here
+      }
+      `,
+
+                    expectedLogic:
+                        "If rationing is applied, increase sustainability and waterReserve, but decrease publicTrust.",
+
+                    solutionHint:
+                        "Use city.propertyName += value",
+
+                    sampleSolution: `
+      function applyRationing(city) {
+        city.sustainability += 10;
+        city.waterReserve += 5;
+        city.publicTrust -= 15;
+      }
+      `,
+                },
+
+                {
+                    id: "code-task-2",
+                    title: "Check Win or Fail Conditions",
+                    lesson:
+                        "Conditional statements allow programs to make decisions.",
+
+                    instruction:
+                        "Write a function that checks if the city has won or failed.",
+
+                    starterCode: `
+      function checkCityStatus(city) {
+        // return "WIN", "FAIL", or "CONTINUE"
+      }
+      `,
+
+                    expectedLogic:
+                        "Use if/else conditions to compare values.",
+
+                    sampleSolution: `
+      function checkCityStatus(city) {
+        if (city.waterReserve <= 10 || city.publicTrust <= 20) {
+          return "FAIL";
+        }
+      
+        if (city.sustainability >= 75 && city.publicTrust >= 60) {
+          return "WIN";
+        }
+      
+        return "CONTINUE";
+      }
+      `,
+                },
+            ],
+
+            completionReward: {
+                unlockedSkill: "JavaScript Basics",
+                badge: "First Code Simulation",
+            },
+        },
+
+        // =========================
+        // 🏁 COMPLETION
+        // =========================
+        completion: {
+            reflectionPrompt:
+                "Which decision or line of code had the biggest impact on the city’s future?",
+
+            rewards: {
+                xp: 500,
+                badges: ["Crisis Thinker", "Logic Builder"],
+            },
+        },
     };
 
     const openMenu = () => {
@@ -156,25 +399,25 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 </TouchableOpacity>
             </Animated.View>
 
+            {/* HEADER */}
+            <View style={styles.header}>
+                <TouchableOpacity onPress={openMenu}>
+                    <Ionicons name="menu" size={26} color="#0F172A" />
+                </TouchableOpacity>
 
+                <Text style={styles.appTitle}>Knowledge City</Text>
+
+                <TouchableOpacity style={styles.avatar}>
+                    <Ionicons name="notifications-outline" size={26} color="#0F172A" />
+                </TouchableOpacity>
+            </View>
 
             <ScrollView
                 style={styles.container}
                 contentContainerStyle={{ paddingBottom: 90 }}
                 showsVerticalScrollIndicator={false}
             >
-                {/* HEADER */}
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={openMenu}>
-                        <Ionicons name="menu" size={26} color="#0F172A" />
-                    </TouchableOpacity>
 
-                    <Text style={styles.appTitle}>Knowledge City</Text>
-
-                    <TouchableOpacity style={styles.avatar}>
-                        <Ionicons name="notifications-outline" size={26} color="#0F172A" />
-                    </TouchableOpacity>
-                </View>
 
                 {/* HERO CARD */}
                 <View style={styles.heroCard}>
@@ -233,11 +476,17 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 <View style={styles.challengeCard}>
                     <Text style={styles.sectionTitle}>Active Challenge</Text>
                     <Text style={styles.courseTitle}>{activeChallenge.title}</Text>
-                    <Text style={styles.crisisMessage}>{activeChallenge.description}</Text>
+                    <Text style={styles.crisisMessage}>{activeChallenge.shortDescription}</Text>
                     <Text style={[styles.courseMeta, { marginTop: 6 }]}>
                         Urgency: {activeChallenge.urgency}
                     </Text>
-                    <TouchableOpacity style={styles.primaryBtn}>
+                    <TouchableOpacity style={styles.primaryBtn}
+                        onPress={() =>
+                            navigation.navigate("ChallengeDetailScreen", {
+                                challenge: activeChallenge,
+                            })
+                        }
+                    >
                         <Text style={styles.primaryBtnText}>Enter Situation Room →</Text>
                     </TouchableOpacity>
                 </View>
@@ -315,7 +564,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFFFFF",
         paddingHorizontal: 16,
-        paddingTop: 40,
     },
 
     /* Header */
@@ -323,7 +571,11 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        marginBottom: 24,
+        paddingHorizontal: 16,
+        // marginBottom: 24,
+        paddingTop: 60,
+        paddingBottom: 20,
+        backgroundColor: "#FFFFFF",
     },
     appTitle: {
         color: "#0F172A",

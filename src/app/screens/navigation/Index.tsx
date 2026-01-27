@@ -12,6 +12,9 @@ import ChallengeCentralPage from '../ChallengeCentralPage';
 import ReflectionsCentralPage from '../ReflectionsCentralPage';
 import CityMapPage from '../CityMapPage';
 import ProfileScreen from '../ProfileScreen';
+import ChallengeDetailScreen from '../ChallengeDetailScreen';
+import ChallengeGameMode from '../ChallengeGameMode';
+import ChallengeCodingMode from '../ChallengeCodingMode';
 
 const Stack = createNativeStackNavigator()
 
@@ -61,6 +64,18 @@ const Index: React.FC = () => {
                 <Stack.Screen
                     name="ProfileScreen"
                     component={ProfileScreen}
+                />
+                <Stack.Screen
+                    name="ChallengeDetailScreen"
+                    component={ChallengeDetailScreen}
+                />
+                <Stack.Screen
+                    name="ChallengeGameMode"
+                    component={ChallengeGameMode}
+                />
+                <Stack.Screen
+                    name="ChallengeCodingMode"
+                    component={ChallengeCodingMode}
                 />
             </Stack.Navigator>
         </NavigationContainer>
