@@ -29,7 +29,7 @@ const ProfileScreen: React.FC<any> = ({ navigation }) => {
             {/* HEADER */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Text style={styles.back}>← Back</Text>
+                    <Text style={styles.back}>← Back</Text>
                     {/* <Ionicons name="arrow-back" size={24} color="#0F172A" /> */}
                 </TouchableOpacity>
 
@@ -285,6 +285,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         marginBottom: 24,
+    },
+    back: {
+        fontSize: 16,
+        fontWeight: "700",
+        color: "#0F172A",
+        marginBottom: 12,
     },
     headerTitle: {
         fontSize: 18,
