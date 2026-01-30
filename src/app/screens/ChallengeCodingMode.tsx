@@ -1,13 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const ChallengeCodingMode: React.FC = ({ route }: any) => {
+const ChallengeCodingMode: React.FC = ({ navigation, route }: any) => {
     const { challenge } = route.params;
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>💻 Coding Mode</Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text style={styles.back}>← Back</Text>
+            </TouchableOpacity>
+            <Text style={styles.title}>Coding Mode</Text>
             <Text style={styles.subtitle}>{challenge.title}</Text>
 
             <View style={styles.card}>
@@ -29,6 +32,7 @@ export default ChallengeCodingMode;
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, backgroundColor: "#0F172A" },
     title: { fontSize: 24, fontWeight: "900", color: "#E5E7EB" },
+    back: { fontSize: 16, fontWeight: "700", color: "#ffffff", marginBottom: 12 },
     subtitle: {
         fontSize: 14,
         fontWeight: "700",

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
     StyleSheet,
     ScrollView,
     TouchableOpacity,
+    TextInput,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,19 +18,32 @@ const ProfileScreen: React.FC<any> = ({ navigation }) => {
     const fullName =
         `${user.firstName} ${user.middleName || ""} ${user.lastName}`.trim();
 
+    const [isEditing, setIsEditing] = useState(false);
+
+    const toggleEdit = () => {
+        if (user?.isLoggedIn) setIsEditing((prev) => !prev);
+    };
+
     return (
-        <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 120 }}>
+        <View style={styles.container}>
             {/* HEADER */}
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Ionicons name="arrow-back" size={24} color="#0F172A" />
+                <Text style={styles.back}>← Back</Text>
+                    {/* <Ionicons name="arrow-back" size={24} color="#0F172A" /> */}
                 </TouchableOpacity>
 
-                <Text style={styles.headerTitle}>Profile</Text>
+                {/* <Text style={styles.headerTitle}>Profile</Text> */}
 
-                <TouchableOpacity>
-                    <Ionicons name="create-outline" size={22} color="#0F172A" />
-                </TouchableOpacity>
+                {user?.isLoggedIn && (
+                    <TouchableOpacity onPress={toggleEdit}>
+                        <Ionicons
+                            name={isEditing ? "checkmark-outline" : "create-outline"}
+                            size={22}
+                            color="#0F172A"
+                        />
+                    </TouchableOpacity>
+                )}
             </View>
 
             {/* PROFILE CARD */}
@@ -37,9 +51,7 @@ const ProfileScreen: React.FC<any> = ({ navigation }) => {
                 {user?.isLoggedIn ? (
                     <>
                         <View style={styles.avatar}>
-                            <Text style={styles.avatarText}>
-                                {user.initials || "U"}
-                            </Text>
+                            <Text style={styles.avatarText}>{user.initials || "U"}</Text>
                         </View>
 
                         <Text style={styles.name}>{fullName || "Unnamed User"}</Text>
@@ -75,75 +87,176 @@ const ProfileScreen: React.FC<any> = ({ navigation }) => {
                 )}
             </View>
 
-
-            {/* PERSONAL INFO */}
-            <Section title="Personal Information">
-                <InfoRow label="Gender" value={user.gender} />
-                <InfoRow label="Date of Birth" value={user.dateOfBirth} />
-                <InfoRow label="Nationality" value={user.country} />
-            </Section>
-
-            {/* CONTACT INFO */}
-            <Section title="Contact Information">
-                <InfoRow label="Primary Email" value={user.email} />
-                <InfoRow label="Secondary Email" value={user.secondaryEmail} />
-                <InfoRow label="Phone" value={user.phone} />
-                <InfoRow label="City" value={user.city} />
-                <InfoRow label="State" value={user.state} />
-            </Section>
-
-            {/* WORK INFO */}
-            <Section title="Work Information">
-                <InfoRow label="Position" value={user.position} />
-                <InfoRow label="Department" value={user.department} />
-                <InfoRow label="Employee ID" value={user.employeeId} />
-                <InfoRow label="Work Location" value={user.workLocation} />
-                <InfoRow label="Employment Status" value={user.employmentStatus} />
-            </Section>
-
-            {/* PERFORMANCE */}
-            <Section title="Performance Snapshot">
-                <MetricRow label="Performance Score" value={`${user.performanceScore}%`} />
-                <MetricRow label="Attendance Rate" value={`${user.attendanceRate}%`} />
-                <MetricRow label="Training Progress" value={`${user.trainingProgress}%`} />
-                <MetricRow label="Active Tasks" value={user.activeTasks} />
-            </Section>
-
-            {/* SKILLS */}
-            <Section title="Skills">
-                {user.skills.length === 0 ? (
-                    <Text style={styles.emptyText}>No skills added yet</Text>
-                ) : (
-                    <View style={styles.chips}>
-                        {user.skills.map((skill: string, index: number) => (
-                            <View key={index} style={styles.chip}>
-                                <Text style={styles.chipText}>{skill}</Text>
-                            </View>
-                        ))}
-                    </View>
-                )}
-            </Section>
-
-            {/* CERTIFICATIONS */}
-            <Section title="Certifications">
-                {user.certifications.length === 0 ? (
-                    <Text style={styles.emptyText}>No certifications added</Text>
-                ) : (
-                    user.certifications.map((cert: string, index: number) => (
-                        <Text key={index} style={styles.listItem}>• {cert}</Text>
-                    ))
-                )}
-            </Section>
-
-            {/* LOGOUT */}
-            <TouchableOpacity
-                style={styles.logoutBtn}
-                onPress={() => dispatch(logoutUser())}
+            {/* SCROLLABLE INFORMATION */}
+            <ScrollView
+                style={styles.scrollContainer}
+                contentContainerStyle={{ paddingBottom: 120 }}
             >
-                <Ionicons name="log-out-outline" size={20} color="#EF4444" />
-                <Text style={styles.logoutText}>Logout</Text>
-            </TouchableOpacity>
-        </ScrollView>
+                {user?.isLoggedIn && (
+                    <>
+                        {/* PERSONAL INFO */}
+                        <Section title="Personal Information">
+                            <InfoRow
+                                label="Gender"
+                                value={user.gender}
+                                editable={isEditing}
+                                keyName="gender"
+                            />
+                            <InfoRow
+                                label="Date of Birth"
+                                value={user.dateOfBirth}
+                                editable={isEditing}
+                                keyName="dateOfBirth"
+                            />
+                            <InfoRow
+                                label="Nationality"
+                                value={user.country}
+                                editable={isEditing}
+                                keyName="country"
+                            />
+                        </Section>
+
+                        {/* CONTACT INFO */}
+                        <Section title="Contact Information">
+                            <InfoRow
+                                label="Primary Email"
+                                value={user.email}
+                                editable={isEditing}
+                                keyName="email"
+                            />
+                            <InfoRow
+                                label="Secondary Email"
+                                value={user.secondaryEmail}
+                                editable={isEditing}
+                                keyName="secondaryEmail"
+                            />
+                            <InfoRow
+                                label="Phone"
+                                value={user.phone}
+                                editable={isEditing}
+                                keyName="phone"
+                            />
+                            <InfoRow
+                                label="City"
+                                value={user.city}
+                                editable={isEditing}
+                                keyName="city"
+                            />
+                            <InfoRow
+                                label="State"
+                                value={user.state}
+                                editable={isEditing}
+                                keyName="state"
+                            />
+                        </Section>
+
+                        {/* WORK INFO */}
+                        <Section title="Work Information">
+                            <InfoRow
+                                label="Position"
+                                value={user.position}
+                                editable={isEditing}
+                                keyName="position"
+                            />
+                            <InfoRow
+                                label="Department"
+                                value={user.department}
+                                editable={isEditing}
+                                keyName="department"
+                            />
+                            <InfoRow
+                                label="Employee ID"
+                                value={user.employeeId}
+                                editable={isEditing}
+                                keyName="employeeId"
+                            />
+                            <InfoRow
+                                label="Work Location"
+                                value={user.workLocation}
+                                editable={isEditing}
+                                keyName="workLocation"
+                            />
+                            <InfoRow
+                                label="Employment Status"
+                                value={user.employmentStatus}
+                                editable={isEditing}
+                                keyName="employmentStatus"
+                            />
+                        </Section>
+
+                        {/* PERFORMANCE */}
+                        <Section title="Performance Snapshot">
+                            <MetricRow
+                                label="Performance Score"
+                                value={`${user.performanceScore}%`}
+                            />
+                            <MetricRow label="Attendance Rate" value={`${user.attendanceRate}%`} />
+                            <MetricRow
+                                label="Training Progress"
+                                value={`${user.trainingProgress}%`}
+                            />
+                            <MetricRow label="Active Tasks" value={user.activeTasks} />
+                        </Section>
+
+                        {/* SKILLS */}
+                        <Section title="Skills">
+                            {user.skills.length === 0 ? (
+                                <Text style={styles.emptyText}>No skills added yet</Text>
+                            ) : (
+                                <View style={styles.chips}>
+                                    {user.skills.map((skill: string, index: number) => (
+                                        <View key={index} style={styles.chip}>
+                                            <Text style={styles.chipText}>{skill}</Text>
+                                        </View>
+                                    ))}
+                                </View>
+                            )}
+                        </Section>
+
+                        {/* CERTIFICATIONS */}
+                        <Section title="Certifications">
+                            {user.certifications.length === 0 ? (
+                                <Text style={styles.emptyText}>No certifications added</Text>
+                            ) : (
+                                user.certifications.map((cert: string, index: number) => (
+                                    <Text key={index} style={styles.listItem}>
+                                        • {cert}
+                                    </Text>
+                                ))
+                            )}
+                        </Section>
+
+                        {/* LOGOUT */}
+                        <TouchableOpacity
+                            style={styles.logoutBtn}
+                            onPress={() => dispatch(logoutUser())}
+                        >
+                            <Ionicons name="log-out-outline" size={20} color="#EF4444" />
+                            <Text style={styles.logoutText}>Logout</Text>
+                        </TouchableOpacity>
+                    </>
+                )}
+            </ScrollView>
+        </View>
+    );
+};
+
+// Editable InfoRow
+const InfoRow = ({ label, value, editable, keyName }: any) => {
+    const [text, setText] = useState(value);
+    return (
+        <View style={styles.row}>
+            <Text style={styles.label}>{label}</Text>
+            {editable ? (
+                <TextInput
+                    style={[styles.value, { borderBottomWidth: 1, borderColor: "#CBD5E1" }]}
+                    value={text}
+                    onChangeText={setText}
+                />
+            ) : (
+                <Text style={styles.value}>{value || "-"}</Text>
+            )}
+        </View>
     );
 };
 
@@ -154,13 +267,6 @@ const Section = ({ title, children }: any) => (
     </View>
 );
 
-const InfoRow = ({ label, value }: any) => (
-    <View style={styles.row}>
-        <Text style={styles.label}>{label}</Text>
-        <Text style={styles.value}>{value || "-"}</Text>
-    </View>
-);
-
 const MetricRow = ({ label, value }: any) => (
     <View style={styles.metricRow}>
         <Text style={styles.metricLabel}>{label}</Text>
@@ -168,8 +274,8 @@ const MetricRow = ({ label, value }: any) => (
     </View>
 );
 
-
 export default ProfileScreen;
+
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#FFFFFF", padding: 16, paddingTop: 50 },
@@ -344,6 +450,11 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         fontSize: 14,
     },
-
+    scrollContainer: {
+        flex: 1,
+        paddingHorizontal: 16,
+        paddingTop: 16,
+        backgroundColor: "#FFFFFF",
+    },
 });
 

@@ -85,6 +85,7 @@ const ChallengeDetailScreen = ({ route, navigation }: any) => {
 
                     <TouchableOpacity
                         style={styles.modeBtn}
+                        disabled={true}
                         onPress={() => startMode("GAME")}
                     >
                         <Text style={styles.modeBtnTitle}>🎮 Game Mode</Text>
@@ -95,6 +96,7 @@ const ChallengeDetailScreen = ({ route, navigation }: any) => {
 
                     <TouchableOpacity
                         style={styles.modeBtn}
+                        disabled={true}
                         onPress={() => startMode("CODE")}
                     >
                         <Text style={styles.modeBtnTitle}>💻 Coding Mode</Text>

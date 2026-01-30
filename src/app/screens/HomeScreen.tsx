@@ -305,7 +305,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
     }, []);
 
     const reflectionPrompt =
-        "Which assumption influenced your last decision the most?";
+        "Boost your knowledge to new stage by using a 10min test quize.";
 
     const CourseCard = ({ item }: { item: any }) => {
         return (
@@ -497,11 +497,15 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                     <Text style={styles.sectionTitle}>Recommended Course</Text>
 
                     <Animated.View style={[styles.recommendedCard, { transform: [{ scale: pulseAnim }] }]}>
-                        <Text style={styles.recommendedTitle}>Critical Thinking</Text>
-                        <Text style={styles.recommendedLevel}>Beginner</Text>
-                        <Text style={styles.recommendedTime}>Estimated Time: 7–9 hours</Text>
+                        <Text style={styles.recommendedTitle}>{courses[3].title}</Text>
+                        <Text style={styles.recommendedLevel}>{courses[3].level}</Text>
+                        <Text style={styles.recommendedTime}>Estimated Time: {courses[3].estimatedTime}</Text>
 
-                        <TouchableOpacity style={styles.recommendedBtn}>
+                        <TouchableOpacity style={styles.recommendedBtn}
+                            onPress={() =>
+                                navigation.navigate("CourseDescription", { course: courses[3] })
+                            }
+                        >
                             <Text style={styles.recommendedBtnText}>Start Course →</Text>
                         </TouchableOpacity>
                     </Animated.View>
@@ -509,10 +513,10 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
 
                 {/* REFLECTION */}
                 <View style={styles.reflectionCard}>
-                    <Text style={styles.reflectionTitle}>Reflection</Text>
+                    <Text style={styles.reflectionTitle}>Reflections</Text>
                     <Text style={styles.reflectionText}>{reflectionPrompt}</Text>
                     <TouchableOpacity style={styles.primaryBtn} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
-                        <Text style={styles.primaryBtnText}>Reflect Now →</Text>
+                        <Text style={styles.primaryBtnText}>Test your skills</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -533,25 +537,6 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                         </View>
                     </ScrollView>
                 </View>
-
-                {/* PROGRESS OVERVIEW */}
-                {/* <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Learning Progress</Text>
-        {courses.map((course) => (
-          <View key={course.id} style={styles.progressCard}>
-            <Text style={styles.courseTitle}>{course.title}</Text>
-            <View style={styles.progressBarBackground}>
-              <View
-                style={[
-                  styles.progressBarFill,
-                  { width: `${Math.floor(Math.random() * 100)}%` },
-                ]}
-              />
-            </View>
-            <Text style={styles.courseMeta}>{course.modules.length} Modules</Text>
-          </View>
-        ))}
-      </View> */}
             </ScrollView>
         </>
     );

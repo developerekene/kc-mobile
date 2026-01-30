@@ -1,12 +1,21 @@
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { courseQuestions } from "../utils/Constants/data";
 
 const reflectionPrompts = [
     "What assumption influenced your last decision the most?",
     "Which solution felt the most counter-intuitive and why?",
     "How did your perspective change after reviewing the data?",
 ];
+
+const availableTests = Object.entries(courseQuestions).map(
+    ([key, questions]) => ({
+        id: key,
+        title: key.replace(/([A-Z])/g, " $1").toUpperCase(),
+        totalQuestions: questions.length,
+    })
+);
 
 const ReflectionsCentralPage: React.FC<any> = ({ navigation }) => {
     return (
@@ -20,18 +29,39 @@ const ReflectionsCentralPage: React.FC<any> = ({ navigation }) => {
             <Text style={styles.header}>Your Reflections</Text>
 
             <FlatList
-                data={reflectionPrompts}
-                keyExtractor={(item, index) => index.toString()}
+                data={availableTests}
+                keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                     <View style={styles.reflectionCard}>
-                        <Text style={styles.reflectionText}>• {item}</Text>
-                        <TouchableOpacity style={styles.recordBtn}>
-                            <Text style={styles.recordBtnText}>Record Reflection →</Text>
+                        <Text style={styles.reflectionText}>
+                            {item.title}
+                        </Text>
+
+                        <Text style={styles.metaText}>
+                            {item.totalQuestions} Questions
+                        </Text>
+
+                        <TouchableOpacity
+                            style={styles.recordBtn}
+                            onPress={() =>
+                                navigation.navigate("TestScreen", {
+                                    testId: item.id,
+                                })
+                            }
+                            disabled={true}
+                        >
+                            {/* <Text style={styles.recordBtnText}>
+                                Start Test →
+                            </Text> */}
+                            <Text style={styles.recordBtnText}>
+                                Test Coming Soon
+                            </Text>
                         </TouchableOpacity>
                     </View>
                 )}
                 contentContainerStyle={{ paddingBottom: 100 }}
             />
+
         </SafeAreaView>
     );
 };
@@ -52,5 +82,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "700",
         color: "#0F172A",
+    },
+    metaText: {
+        color: "#6b7280",
+        fontSize: 14,
+        marginBottom: 12,
     },
 });

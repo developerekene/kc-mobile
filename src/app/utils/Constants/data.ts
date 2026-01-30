@@ -473,7 +473,498 @@ const courses = [
             },
         ],
     },
+    {
+        id: "criticalThinking",
+        title: "Critical Thinking",
+        level: "Beginner",
+        description:
+            "Learn how to analyze information, make better decisions, and solve problems logically.",
+        intro:
+            "Critical thinking is the foundation of good decision-making. In this course, you’ll learn how to evaluate information objectively, recognize biases, ask better questions, and reason clearly in everyday and professional situations.",
+        estimatedTime: "8–10 hours",
+        color: "#ECFEFF",
+
+        outcomes: [
+            "Analyze problems logically and systematically",
+            "Identify assumptions, biases, and fallacies",
+            "Make informed and defensible decisions",
+            "Think clearly under uncertainty and pressure",
+        ],
+
+        modules: [
+            {
+                id: "ct-module-1",
+                title: "Foundations of Critical Thinking",
+                summary:
+                    "Understand what critical thinking is and why it matters.",
+                challengePrompt:
+                    "Two people reach different conclusions from the same information. How can both be wrong?",
+                topics: [
+                    {
+                        title: "What Is Critical Thinking?",
+                        description:
+                            "Critical thinking is the ability to analyze information objectively, evaluate arguments, and form reasoned judgments. It involves questioning assumptions rather than accepting ideas at face value.",
+                    },
+                    {
+                        title: "Thinking vs. Reacting",
+                        description:
+                            "Reacting is automatic and emotional, while thinking is deliberate and logical. Learning to pause and reflect helps you make better decisions.",
+                    },
+                    {
+                        title: "Questions That Drive Thinking",
+                        description:
+                            "Strong questions uncover clarity. Asking ‘why’, ‘how’, and ‘what evidence supports this?’ helps deepen understanding and reduce errors.",
+                    },
+                    {
+                        title: "Clarity, Accuracy, and Relevance",
+                        description:
+                            "Good thinking relies on clear definitions, accurate information, and relevance to the problem at hand. These standards prevent confusion and misinformation.",
+                    },
+                    {
+                        title: "Intellectual Curiosity",
+                        description:
+                            "Curiosity fuels critical thinking. Being open to learning, feedback, and alternative viewpoints strengthens reasoning skills.",
+                    },
+                ],
+            },
+
+            {
+                id: "ct-module-2",
+                title: "Logic & Reasoning",
+                summary:
+                    "Learn how conclusions are formed and how to evaluate them.",
+                challengePrompt:
+                    "A conclusion sounds convincing—but is it logically valid?",
+                topics: [
+                    {
+                        title: "Arguments & Conclusions",
+                        description:
+                            "An argument consists of premises that support a conclusion. Understanding this structure helps you evaluate whether conclusions truly follow from the evidence.",
+                    },
+                    {
+                        title: "Deductive vs. Inductive Reasoning",
+                        description:
+                            "Deductive reasoning guarantees conclusions if premises are true, while inductive reasoning draws probable conclusions based on patterns and evidence.",
+                    },
+                    {
+                        title: "Cause vs. Correlation",
+                        description:
+                            "Just because two things occur together doesn’t mean one caused the other. Learning this distinction prevents faulty reasoning.",
+                    },
+                    {
+                        title: "Recognizing Weak Arguments",
+                        description:
+                            "Weak arguments rely on vague evidence, emotional appeal, or false assumptions. Spotting these helps avoid poor decisions.",
+                    },
+                ],
+            },
+
+            {
+                id: "ct-module-3",
+                title: "Biases & Logical Fallacies",
+                summary:
+                    "Identify common thinking errors that distort judgment.",
+                challengePrompt:
+                    "Why do smart people make irrational decisions?",
+                topics: [
+                    {
+                        title: "Cognitive Biases",
+                        description:
+                            "Cognitive biases are mental shortcuts that influence thinking. Examples include confirmation bias, anchoring, and availability bias.",
+                    },
+                    {
+                        title: "Emotional Reasoning",
+                        description:
+                            "Emotions can cloud judgment. Learning to separate feelings from facts leads to clearer thinking.",
+                    },
+                    {
+                        title: "Common Logical Fallacies",
+                        description:
+                            "Fallacies such as strawman arguments, false dilemmas, and ad hominem attacks weaken reasoning and mislead conclusions.",
+                    },
+                    {
+                        title: "Social Influence & Groupthink",
+                        description:
+                            "Group pressure can suppress independent thinking. Critical thinkers learn to evaluate ideas even when they go against the majority.",
+                    },
+                ],
+            },
+
+            {
+                id: "ct-module-4",
+                title: "Problem Solving & Decision Making",
+                summary:
+                    "Apply critical thinking skills to real-world situations.",
+                challengePrompt:
+                    "You must choose between two imperfect options. How do you decide?",
+                topics: [
+                    {
+                        title: "Defining the Real Problem",
+                        description:
+                            "Many problems are misidentified. Clarifying the true problem prevents wasted effort and poor solutions.",
+                    },
+                    {
+                        title: "Evaluating Evidence",
+                        description:
+                            "Not all information is equal. Assess credibility, sources, and relevance before drawing conclusions.",
+                    },
+                    {
+                        title: "Weighing Options & Trade-offs",
+                        description:
+                            "Every decision involves trade-offs. Critical thinking helps compare options based on impact, risk, and values.",
+                    },
+                    {
+                        title: "Decision-Making Frameworks",
+                        description:
+                            "Structured approaches such as pros/cons analysis, decision matrices, and scenario planning improve outcomes.",
+                    },
+                    {
+                        title: "Reflecting & Learning from Outcomes",
+                        description:
+                            "Post-decision reflection strengthens future judgment by identifying what worked and what didn’t.",
+                    },
+                ],
+            },
+        ],
+    }
 ];
 
+const courseQuestions = {
+    html: [
+        {
+            question: "What is the primary purpose of HTML?",
+            options: [
+                "Style web pages",
+                "Add interactivity to web pages",
+                "Structure content on the web",
+                "Store data on servers",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which tag represents the main content of an HTML document?",
+            options: ["<head>", "<meta>", "<body>", "<footer>"],
+            correctAnswer: 2,
+        },
+        {
+            question: "Why is semantic HTML important?",
+            options: [
+                "It makes pages load faster",
+                "It improves accessibility and readability",
+                "It replaces the need for CSS",
+                "It prevents browser bugs",
+            ],
+            correctAnswer: 1,
+        },
+        {
+            question: "Which element should be used for the most important heading?",
+            options: ["<h6>", "<header>", "<h1>", "<title>"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What does the alt attribute on an <img> tag provide?",
+            options: [
+                "Image size",
+                "Backup image format",
+                "Text description for accessibility",
+                "Image alignment",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which tag is best for grouping navigation links?",
+            options: ["<div>", "<section>", "<nav>", "<aside>"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What is the purpose of the <label> element in forms?",
+            options: [
+                "To style inputs",
+                "To validate input values",
+                "To associate text with form controls",
+                "To group multiple inputs",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which list type is used when order matters?",
+            options: ["<ul>", "<ol>", "<dl>", "<li>"],
+            correctAnswer: 1,
+        },
+        {
+            question: "Which tag is used to create a hyperlink?",
+            options: ["<link>", "<href>", "<a>", "<url>"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What does the <!DOCTYPE html> declaration do?",
+            options: [
+                "Links CSS files",
+                "Defines JavaScript behavior",
+                "Tells the browser to use HTML5",
+                "Adds metadata to the page",
+            ],
+            correctAnswer: 2,
+        },
+    ],
+    css: [
+        {
+            question: "What is the main role of CSS?",
+            options: [
+                "Structure content",
+                "Style and layout web pages",
+                "Handle user input",
+                "Store data",
+            ],
+            correctAnswer: 1,
+        },
+        {
+            question: "Which selector targets an element by its ID?",
+            options: [".box", "#box", "box", "*box"],
+            correctAnswer: 1,
+        },
+        {
+            question: "What does CSS specificity determine?",
+            options: [
+                "Which browser renders the style",
+                "Which rule wins when multiple styles apply",
+                "How fast styles load",
+                "Whether a style is valid",
+            ],
+            correctAnswer: 1,
+        },
+        {
+            question: "Which property controls space inside an element?",
+            options: ["margin", "padding", "border", "gap"],
+            correctAnswer: 1,
+        },
+        {
+            question: "Which layout system is best for one-dimensional layouts?",
+            options: ["Grid", "Float", "Flexbox", "Positioning"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What unit scales relative to the root font size?",
+            options: ["px", "%", "em", "rem"],
+            correctAnswer: 3,
+        },
+        {
+            question: "Which display value removes an element from layout entirely?",
+            options: ["hidden", "opacity: 0", "display: none", "visibility: none"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What is mobile-first design?",
+            options: [
+                "Designing only for phones",
+                "Designing desktop layouts first",
+                "Designing for small screens first",
+                "Avoiding media queries",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which property changes text size?",
+            options: ["font-style", "font-weight", "font-size", "text-align"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What do media queries allow you to do?",
+            options: [
+                "Load images faster",
+                "Apply styles based on device conditions",
+                "Animate elements",
+                "Validate user input",
+            ],
+            correctAnswer: 1,
+        },
+    ],
+    javascript: [
+        {
+            question: "What is JavaScript primarily used for?",
+            options: [
+                "Structuring content",
+                "Styling layouts",
+                "Adding interactivity and logic",
+                "Hosting websites",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which keyword declares a constant?",
+            options: ["var", "let", "const", "static"],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which data type represents true or false values?",
+            options: ["String", "Number", "Boolean", "Object"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What does an if statement do?",
+            options: [
+                "Repeats code",
+                "Stores data",
+                "Makes decisions",
+                "Handles errors",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which loop runs a known number of times?",
+            options: ["while", "for", "do...while", "foreach"],
+            correctAnswer: 1,
+        },
+        {
+            question: "What is a function?",
+            options: [
+                "A data type",
+                "A reusable block of code",
+                "A loop",
+                "An event",
+            ],
+            correctAnswer: 1,
+        },
+        {
+            question: "Which structure stores key–value pairs?",
+            options: ["Array", "String", "Object", "Number"],
+            correctAnswer: 2,
+        },
+        {
+            question: "What does the DOM represent?",
+            options: [
+                "JavaScript syntax",
+                "Browser styling rules",
+                "The HTML structure as objects",
+                "Server-side logic",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Which method selects the first matching element?",
+            options: [
+                "getElementsByClassName",
+                "querySelector",
+                "getElementById",
+                "selectNode",
+            ],
+            correctAnswer: 1,
+        },
+        {
+            question: "What is the purpose of try/catch?",
+            options: [
+                "Loop control",
+                "DOM manipulation",
+                "Error handling",
+                "Variable declaration",
+            ],
+            correctAnswer: 2,
+        },
+    ],
+    criticalThinking: [
+        {
+            question: "What is critical thinking?",
+            options: [
+                "Reacting emotionally",
+                "Accepting ideas without question",
+                "Analyzing information objectively",
+                "Memorizing facts",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "What separates thinking from reacting?",
+            options: [
+                "Speed",
+                "Emotion",
+                "Deliberate reflection",
+                "Confidence",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "What is an argument composed of?",
+            options: [
+                "Opinions only",
+                "Facts without conclusions",
+                "Premises and a conclusion",
+                "Emotions and beliefs",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "What is confirmation bias?",
+            options: [
+                "Rejecting all evidence",
+                "Favoring information that supports existing beliefs",
+                "Changing opinions constantly",
+                "Relying on expert opinions",
+            ],
+            correctAnswer: 1,
+        },
+        {
+            question: "What is the difference between correlation and causation?",
+            options: [
+                "They are the same",
+                "Correlation proves causation",
+                "Causation implies correlation",
+                "Correlation does not imply causation",
+            ],
+            correctAnswer: 3,
+        },
+        {
+            question: "What is a logical fallacy?",
+            options: [
+                "A valid argument",
+                "A scientific method",
+                "A flaw in reasoning",
+                "A personal belief",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "What is groupthink?",
+            options: [
+                "Independent reasoning",
+                "Critical debate",
+                "Pressure to conform",
+                "Logical deduction",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "Why is defining the real problem important?",
+            options: [
+                "It saves time",
+                "It avoids unnecessary solutions",
+                "It improves accuracy",
+                "All of the above",
+            ],
+            correctAnswer: 3,
+        },
+        {
+            question: "What helps improve future decisions?",
+            options: [
+                "Ignoring outcomes",
+                "Emotional reasoning",
+                "Post-decision reflection",
+                "Speed",
+            ],
+            correctAnswer: 2,
+        },
+        {
+            question: "What is intellectual curiosity?",
+            options: [
+                "Avoiding new ideas",
+                "Seeking clarity and learning",
+                "Accepting authority blindly",
+                "Focusing only on facts",
+            ],
+            correctAnswer: 1,
+        },
+    ],
+};
 
-export { courses }
+
+
+export { courses, courseQuestions }

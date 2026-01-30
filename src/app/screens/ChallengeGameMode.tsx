@@ -111,7 +111,7 @@ const ChallengeGameMode: React.FC = ({ route, navigation }: any) => {
 
             <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
                 {/* HEADER */}
-                <Text style={styles.title}>🎮 Game Mode</Text>
+                <Text style={styles.title}>Game Mode</Text>
                 <Text style={styles.subtitle}>{challenge.title}</Text>
 
                 {/* CITY STATS */}
