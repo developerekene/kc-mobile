@@ -22,9 +22,9 @@ const LoginScreen: React.FC<any> = ({ navigation }) => {
             return;
         }
 
+        setText("Fetching your information...");
         try {
             await authService.handleUserLogin(email, password).then(() => {
-                setText("Fetching your information...");
                 navigation.navigate("Home");
             })
         } catch {
@@ -94,8 +94,16 @@ const LoginScreen: React.FC<any> = ({ navigation }) => {
 
                     {/* FOOTER */}
                     <View style={styles.footer}>
+                        {/* <Text style={styles.footerText}></Text> */}
+                        <TouchableOpacity onPress={() => navigation.navigate("SignupScreen")}>
+                            <Text style={styles.signupLink}>Forgot Password?</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* FOOTER */}
+                    <View style={styles.footer}>
                         <Text style={styles.footerText}>Don’t have an account?</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+                        <TouchableOpacity onPress={() => navigation.navigate("SignupScreen")}>
                             <Text style={styles.signupLink}> Sign up</Text>
                         </TouchableOpacity>
                     </View>

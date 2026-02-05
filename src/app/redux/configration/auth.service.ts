@@ -5,6 +5,7 @@ import { logoutUser, setUser } from "../slice/user";
 import { store } from "../store";
 import Toast from 'react-native-toast-message';
 import { NotificationItem, UserType } from "../../utils/TypesAndInterface/TypesAndInterface";
+import { addCourse } from "../slice/coursesSlice";
 
 
 
@@ -439,6 +440,57 @@ export class AuthService {
             });
 
             return { success: false, error: error.message };
+        }
+    }
+    async pullCoursesFromFirebase() {
+        try {
+            // Reference the public courses document
+            const publicDocRef = doc(db, "courses", "public");
+            const docSnap = await getDoc(publicDocRef);
+
+            if (!docSnap.exists()) {
+                console.warn("No courses found in the database");
+                return [];
+            }
+
+            const data = docSnap.data();
+
+            // Access the public courses array safely
+            const allCourses = data?.all?.courses ?? [];
+            store.dispatch(addCourse(allCourses))
+
+            // console.log("All courses array:", allCourses);
+            return allCourses;
+        } catch (error) {
+            console.error("Error pulling courses:", error);
+            return [];
+        }
+    }
+    async pushCourseToFirebase(newCourse: any) {
+        try {
+            if (!newCourse || typeof newCourse !== "object") {
+                throw new Error("Valid course object is required");
+            }
+
+            // Single public document
+            const publicDocRef = doc(db, "courses", "public");
+
+            // Merge with existing document, append to all.courses
+            await setDoc(
+                publicDocRef,
+                {
+                    all: {
+                        courses: arrayUnion(newCourse)
+                    }
+                },
+                { merge: true } // preserves existing data
+            );
+
+            console.log("Course successfully added to public all.courses!");
+            return true;
+        } catch (error) {
+            console.error("Error pushing course to Firebase:", error);
+            return false;
         }
     }
 }

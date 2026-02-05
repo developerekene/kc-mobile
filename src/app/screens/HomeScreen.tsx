@@ -12,12 +12,16 @@ import { Ionicons } from "@expo/vector-icons";
 import { courses } from "../utils/Constants/data";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { authService } from "../redux/configration/auth.service";
 
 const HomeScreen: React.FC = ({ navigation, route }: any) => {
     const pulseAnim = useRef(new Animated.Value(1)).current;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuAnim = useRef(new Animated.Value(-260)).current; // menu width
     const user = useSelector((state: RootState) => state.user);
+    const allCourses = useSelector((state: RootState) => state.courses);
+
+    const positionThree = allCourses[3]
 
     const activeChallenge = {
         id: "1",
@@ -269,6 +273,15 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
         },
     };
 
+    useEffect(() => {
+        if (allCourses.length === 0) {
+            const fetchCourses = async () => {
+                await authService.pullCoursesFromFirebase();
+            };
+            fetchCourses();
+        }
+    }, [])
+
     const openMenu = () => {
         setIsMenuOpen(true);
         Animated.timing(menuAnim, {
@@ -278,12 +291,14 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
         }).start();
     };
 
-    const closeMenu = () => {
+    const closeMenu = async () => {
         Animated.timing(menuAnim, {
             toValue: -260,
             duration: 250,
             useNativeDriver: true,
         }).start(() => setIsMenuOpen(false));
+
+        await authService.handleUserSignout()
     };
 
 
@@ -422,9 +437,9 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 {/* HERO CARD */}
                 <View style={styles.heroCard}>
                     <Text style={styles.heroLabel}>Hello there</Text>
-                    <Text style={styles.crisisTitle}>{user.firstName ? user.firstName + " " + user.lastName : `New User`}</Text>
+                    <Text style={styles.crisisTitle}>{user.firstName ? user.firstName + " " + user.lastName : `User`}</Text>
                     <Text style={styles.crisisMessage}>
-                        Are you ready to strengthen your skills today?
+                        {user.isLoggedIn === true ? "Are you ready to strengthen your skills today?" : "Login to access more with Knowledge City"}
                     </Text>
                 </View>
 
@@ -440,7 +455,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Top Courses</Text>
                     <FlatList
-                        data={courses}
+                        data={allCourses}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => <CourseCard item={item} />}
                         horizontal
@@ -492,24 +507,23 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                 </View>
 
                 {/* RECOMMENDED NEXT COURSE */}
-                {/* RECOMMENDED NEXT COURSE */}
-                <View style={styles.section}>
+                {/* <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Recommended Course</Text>
 
                     <Animated.View style={[styles.recommendedCard, { transform: [{ scale: pulseAnim }] }]}>
-                        <Text style={styles.recommendedTitle}>{courses[3].title}</Text>
-                        <Text style={styles.recommendedLevel}>{courses[3].level}</Text>
-                        <Text style={styles.recommendedTime}>Estimated Time: {courses[3].estimatedTime}</Text>
+                        <Text style={styles.recommendedTitle}>{positionThree.title}</Text>
+                        <Text style={styles.recommendedLevel}>{positionThree.level}</Text>
+                        <Text style={styles.recommendedTime}>Estimated Time: {positionThree.estimatedTime}</Text>
 
                         <TouchableOpacity style={styles.recommendedBtn}
                             onPress={() =>
-                                navigation.navigate("CourseDescription", { course: courses[3] })
+                                navigation.navigate("CourseDescription", { course: positionThree })
                             }
                         >
                             <Text style={styles.recommendedBtnText}>Start Course →</Text>
                         </TouchableOpacity>
                     </Animated.View>
-                </View>
+                </View> */}
 
                 {/* REFLECTION */}
                 <View style={styles.reflectionCard}>

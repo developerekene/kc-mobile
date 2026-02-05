@@ -66,3 +66,29 @@ export interface NotificationItem {
     type?: "success" | "error" | "info";
     isRead: boolean;
 }
+
+export interface Topic {
+    title: string;
+    description: string;
+  }
+  
+  export interface Module {
+    id: string;
+    title: string;
+    summary: string;
+    challengePrompt: string;
+    topics: Topic[];
+  }
+  
+  export interface Course {
+    id: string;
+    title: string;
+    level: string;
+    description: string;
+    intro: string;
+    estimatedTime: string;
+    color: string;
+    outcomes: string[];
+    modules: Module[];
+  }
+  

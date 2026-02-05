@@ -18,32 +18,32 @@ const CourseDescriptionScreen: React.FC<Props> = ({ route, navigation }) => {
   return (
     <View style={styles.wrapper}>
 
+      {/* HEADER */}
+      <View style={[styles.header, { backgroundColor: course.color }]}>
+
+        {/* BACK ARROW */}
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={styles.backArrow}>← Back</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.title}>{course.title}</Text>
+
+        <View style={styles.levelBadge}>
+          <Text style={styles.levelText}>{course.level}</Text>
+        </View>
+
+        <Text style={styles.description}>{course.description}</Text>
+      </View>
+
       {/* SCROLLABLE CONTENT */}
       <ScrollView
         style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 120 }} // space for CTA
       >
-
-        {/* HEADER */}
-        <View style={[styles.header, { backgroundColor: course.color }]}>
-
-          {/* BACK ARROW */}
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}
-          >
-            <Text style={styles.backArrow}>← Back</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.title}>{course.title}</Text>
-
-          <View style={styles.levelBadge}>
-            <Text style={styles.levelText}>{course.level}</Text>
-          </View>
-
-          <Text style={styles.description}>{course.description}</Text>
-        </View>
 
         {/* INTRO */}
         <View style={styles.section}>

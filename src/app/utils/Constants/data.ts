@@ -167,466 +167,466 @@ const courses = [
             },
         ],
     },
-    {
-        id: "css",
-        title: "CSS",
-        level: "Beginner",
-        description: "Design beautiful, consistent, and responsive layouts.",
-        intro:
-            "CSS controls how websites look and feel. In this course, you’ll learn how styles are applied, how layouts are built, and how to design responsive interfaces that work across all screen sizes.",
-        estimatedTime: "7–9 hours",
-        color: "#DBEAFE",
+    // {
+    //     id: "css",
+    //     title: "CSS",
+    //     level: "Beginner",
+    //     description: "Design beautiful, consistent, and responsive layouts.",
+    //     intro:
+    //         "CSS controls how websites look and feel. In this course, you’ll learn how styles are applied, how layouts are built, and how to design responsive interfaces that work across all screen sizes.",
+    //     estimatedTime: "7–9 hours",
+    //     color: "#DBEAFE",
 
-        outcomes: [
-            "Style web pages with confidence",
-            "Understand spacing, typography, and color systems",
-            "Build flexible layouts using modern CSS tools",
-            "Create responsive designs that adapt to any device",
-        ],
+    //     outcomes: [
+    //         "Style web pages with confidence",
+    //         "Understand spacing, typography, and color systems",
+    //         "Build flexible layouts using modern CSS tools",
+    //         "Create responsive designs that adapt to any device",
+    //     ],
 
-        modules: [
-            {
-                id: "css-module-1",
-                title: "CSS Fundamentals",
-                summary:
-                    "Learn how CSS works, how styles are applied, and how to control them effectively.",
-                challengePrompt:
-                    "A style isn’t applying as expected. How do you determine whether it’s a selector, specificity, or cascade issue?",
-                topics: [
-                    {
-                        title: "What is CSS?",
-                        description:
-                            "CSS (Cascading Style Sheets) defines how HTML elements are displayed on the page. It controls layout, colors, fonts, spacing, and visual styling, separating content from design.",
-                    },
-                    {
-                        title: "CSS Syntax & Rules",
-                        description:
-                            "CSS rules consist of selectors and declarations. A selector targets HTML elements, while declarations inside curly braces define styles using property: value; pairs. Understanding syntax helps you write accurate styles.",
-                    },
-                    {
-                        title: "Selectors & Targeting Elements",
-                        description:
-                            "Selectors let you apply styles to specific HTML elements, classes, IDs, or attributes. Examples: div, .className, #idName, [attribute='value']. Choosing the right selector ensures correct styling.",
-                    },
-                    {
-                        title: "Specificity & Cascade",
-                        description:
-                            "When multiple CSS rules apply to the same element, the browser decides which one wins based on specificity and cascade rules. Inline styles override IDs, which override classes, which override elements.",
-                    },
-                    {
-                        title: "CSS Comments & Organization",
-                        description:
-                            "Use /* comment */ to annotate your CSS. Organize styles logically using sections, grouping related rules, and keeping external CSS files structured for readability and maintenance.",
-                    },
-                ],
-            },
+    //     modules: [
+    //         {
+    //             id: "css-module-1",
+    //             title: "CSS Fundamentals",
+    //             summary:
+    //                 "Learn how CSS works, how styles are applied, and how to control them effectively.",
+    //             challengePrompt:
+    //                 "A style isn’t applying as expected. How do you determine whether it’s a selector, specificity, or cascade issue?",
+    //             topics: [
+    //                 {
+    //                     title: "What is CSS?",
+    //                     description:
+    //                         "CSS (Cascading Style Sheets) defines how HTML elements are displayed on the page. It controls layout, colors, fonts, spacing, and visual styling, separating content from design.",
+    //                 },
+    //                 {
+    //                     title: "CSS Syntax & Rules",
+    //                     description:
+    //                         "CSS rules consist of selectors and declarations. A selector targets HTML elements, while declarations inside curly braces define styles using property: value; pairs. Understanding syntax helps you write accurate styles.",
+    //                 },
+    //                 {
+    //                     title: "Selectors & Targeting Elements",
+    //                     description:
+    //                         "Selectors let you apply styles to specific HTML elements, classes, IDs, or attributes. Examples: div, .className, #idName, [attribute='value']. Choosing the right selector ensures correct styling.",
+    //                 },
+    //                 {
+    //                     title: "Specificity & Cascade",
+    //                     description:
+    //                         "When multiple CSS rules apply to the same element, the browser decides which one wins based on specificity and cascade rules. Inline styles override IDs, which override classes, which override elements.",
+    //                 },
+    //                 {
+    //                     title: "CSS Comments & Organization",
+    //                     description:
+    //                         "Use /* comment */ to annotate your CSS. Organize styles logically using sections, grouping related rules, and keeping external CSS files structured for readability and maintenance.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "css-module-2",
-                title: "Visual Styling",
-                summary:
-                    "Control color, spacing, borders, and typography to create visually appealing designs.",
-                challengePrompt:
-                    "A page feels inconsistent and messy. Which visual properties would you adjust first to improve balance?",
-                topics: [
-                    {
-                        title: "Color Theory & Usage",
-                        description:
-                            "Colors impact the feel and usability of your site. Use complementary, analogous, and contrasting colors carefully. CSS supports named colors, hex codes, RGB, and HSL formats.",
-                    },
-                    {
-                        title: "Backgrounds & Gradients",
-                        description:
-                            "CSS backgrounds can be solid colors, images, or gradients. Gradients can create smooth color transitions using linear-gradient() or radial-gradient().",
-                    },
-                    {
-                        title: "Borders & Shadows",
-                        description:
-                            "Borders define element edges using width, style, and color. Box-shadow adds depth by casting shadows around elements, enhancing visual hierarchy.",
-                    },
-                    {
-                        title: "Margins & Padding",
-                        description:
-                            "Margins create space outside elements, padding creates space inside. Proper spacing ensures content is readable and prevents overlapping elements.",
-                    },
-                    {
-                        title: "Text Styling",
-                        description:
-                            "Control text using font-family, font-size, font-weight, line-height, letter-spacing, text-align, and text-decoration. Consistent typography improves readability.",
-                    },
-                    {
-                        title: "Fonts & Readability",
-                        description:
-                            "Choose web-safe or custom fonts carefully. Ensure sufficient contrast, size, and spacing for accessibility and comfortable reading.",
-                    },
-                ],
-            },
+    //         {
+    //             id: "css-module-2",
+    //             title: "Visual Styling",
+    //             summary:
+    //                 "Control color, spacing, borders, and typography to create visually appealing designs.",
+    //             challengePrompt:
+    //                 "A page feels inconsistent and messy. Which visual properties would you adjust first to improve balance?",
+    //             topics: [
+    //                 {
+    //                     title: "Color Theory & Usage",
+    //                     description:
+    //                         "Colors impact the feel and usability of your site. Use complementary, analogous, and contrasting colors carefully. CSS supports named colors, hex codes, RGB, and HSL formats.",
+    //                 },
+    //                 {
+    //                     title: "Backgrounds & Gradients",
+    //                     description:
+    //                         "CSS backgrounds can be solid colors, images, or gradients. Gradients can create smooth color transitions using linear-gradient() or radial-gradient().",
+    //                 },
+    //                 {
+    //                     title: "Borders & Shadows",
+    //                     description:
+    //                         "Borders define element edges using width, style, and color. Box-shadow adds depth by casting shadows around elements, enhancing visual hierarchy.",
+    //                 },
+    //                 {
+    //                     title: "Margins & Padding",
+    //                     description:
+    //                         "Margins create space outside elements, padding creates space inside. Proper spacing ensures content is readable and prevents overlapping elements.",
+    //                 },
+    //                 {
+    //                     title: "Text Styling",
+    //                     description:
+    //                         "Control text using font-family, font-size, font-weight, line-height, letter-spacing, text-align, and text-decoration. Consistent typography improves readability.",
+    //                 },
+    //                 {
+    //                     title: "Fonts & Readability",
+    //                     description:
+    //                         "Choose web-safe or custom fonts carefully. Ensure sufficient contrast, size, and spacing for accessibility and comfortable reading.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "css-module-3",
-                title: "Layout Systems",
-                summary:
-                    "Learn how elements are positioned and aligned on the page using modern layout techniques.",
-                challengePrompt:
-                    "A layout works on desktop but breaks on mobile. Which layout system would provide better flexibility?",
-                topics: [
-                    {
-                        title: "CSS Box Model",
-                        description:
-                            "Every element is a rectangular box: content, padding, border, and margin. Understanding the box model is essential to control element size and spacing accurately.",
-                    },
-                    {
-                        title: "Display Property",
-                        description:
-                            "The display property defines how elements behave in the layout. Common values: block, inline, inline-block, flex, grid, none. Use display to control flow and layout.",
-                    },
-                    {
-                        title: "Positioning Elements",
-                        description:
-                            "CSS offers position values: static, relative, absolute, fixed, sticky. Positioning determines how elements are placed in relation to the page or other elements.",
-                    },
-                    {
-                        title: "Flexbox Layout System",
-                        description:
-                            "Flexbox is a one-dimensional layout system for arranging items in rows or columns. It handles alignment, spacing, and distribution of elements efficiently.",
-                    },
-                    {
-                        title: "CSS Grid Layout",
-                        description:
-                            "Grid is a two-dimensional layout system. It lets you define rows and columns, place items precisely, and build complex responsive layouts with minimal code.",
-                    },
-                ],
-            },
+    //         {
+    //             id: "css-module-3",
+    //             title: "Layout Systems",
+    //             summary:
+    //                 "Learn how elements are positioned and aligned on the page using modern layout techniques.",
+    //             challengePrompt:
+    //                 "A layout works on desktop but breaks on mobile. Which layout system would provide better flexibility?",
+    //             topics: [
+    //                 {
+    //                     title: "CSS Box Model",
+    //                     description:
+    //                         "Every element is a rectangular box: content, padding, border, and margin. Understanding the box model is essential to control element size and spacing accurately.",
+    //                 },
+    //                 {
+    //                     title: "Display Property",
+    //                     description:
+    //                         "The display property defines how elements behave in the layout. Common values: block, inline, inline-block, flex, grid, none. Use display to control flow and layout.",
+    //                 },
+    //                 {
+    //                     title: "Positioning Elements",
+    //                     description:
+    //                         "CSS offers position values: static, relative, absolute, fixed, sticky. Positioning determines how elements are placed in relation to the page or other elements.",
+    //                 },
+    //                 {
+    //                     title: "Flexbox Layout System",
+    //                     description:
+    //                         "Flexbox is a one-dimensional layout system for arranging items in rows or columns. It handles alignment, spacing, and distribution of elements efficiently.",
+    //                 },
+    //                 {
+    //                     title: "CSS Grid Layout",
+    //                     description:
+    //                         "Grid is a two-dimensional layout system. It lets you define rows and columns, place items precisely, and build complex responsive layouts with minimal code.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "css-module-4",
-                title: "Responsive Design",
-                summary:
-                    "Make layouts adapt seamlessly across different screen sizes and devices.",
-                challengePrompt:
-                    "Mobile users report poor usability. Which responsive strategies would you apply first?",
-                topics: [
-                    {
-                        title: "Media Queries",
-                        description:
-                            "Media queries apply different styles based on device characteristics like width, height, orientation, or resolution. Use them to adapt layouts to various screens.",
-                    },
-                    {
-                        title: "Responsive Units (%, rem, vw, vh)",
-                        description:
-                            "CSS supports relative units like %, rem, vw, vh to make elements scale according to screen size. Avoid fixed units for flexible, responsive designs.",
-                    },
-                    {
-                        title: "Mobile-First Design Principles",
-                        description:
-                            "Design for small screens first, then enhance for larger screens. Mobile-first ensures your content is accessible and functional on all devices.",
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        id: "javascript",
-        title: "JavaScript",
-        level: "Beginner",
-        description: "Add logic, behavior, and interactivity to the web.",
-        intro:
-            "JavaScript brings websites to life. In this course, you’ll learn programming fundamentals, logical thinking, and how to make web pages respond to user actions dynamically.",
-        estimatedTime: "10–12 hours",
-        color: "#FEF3C7",
+    //         {
+    //             id: "css-module-4",
+    //             title: "Responsive Design",
+    //             summary:
+    //                 "Make layouts adapt seamlessly across different screen sizes and devices.",
+    //             challengePrompt:
+    //                 "Mobile users report poor usability. Which responsive strategies would you apply first?",
+    //             topics: [
+    //                 {
+    //                     title: "Media Queries",
+    //                     description:
+    //                         "Media queries apply different styles based on device characteristics like width, height, orientation, or resolution. Use them to adapt layouts to various screens.",
+    //                 },
+    //                 {
+    //                     title: "Responsive Units (%, rem, vw, vh)",
+    //                     description:
+    //                         "CSS supports relative units like %, rem, vw, vh to make elements scale according to screen size. Avoid fixed units for flexible, responsive designs.",
+    //                 },
+    //                 {
+    //                     title: "Mobile-First Design Principles",
+    //                     description:
+    //                         "Design for small screens first, then enhance for larger screens. Mobile-first ensures your content is accessible and functional on all devices.",
+    //                 },
+    //             ],
+    //         },
+    //     ],
+    // },
+    // {
+    //     id: "javascript",
+    //     title: "JavaScript",
+    //     level: "Beginner",
+    //     description: "Add logic, behavior, and interactivity to the web.",
+    //     intro:
+    //         "JavaScript brings websites to life. In this course, you’ll learn programming fundamentals, logical thinking, and how to make web pages respond to user actions dynamically.",
+    //     estimatedTime: "10–12 hours",
+    //     color: "#FEF3C7",
 
-        outcomes: [
-            "Write basic programs with confidence",
-            "Understand core programming concepts",
-            "Handle user interactions and events",
-            "Manipulate web content dynamically",
-        ],
+    //     outcomes: [
+    //         "Write basic programs with confidence",
+    //         "Understand core programming concepts",
+    //         "Handle user interactions and events",
+    //         "Manipulate web content dynamically",
+    //     ],
 
-        modules: [
-            {
-                id: "js-module-1",
-                title: "Programming Basics",
-                summary:
-                    "Understand how programming works and how JavaScript executes code.",
-                challengePrompt:
-                    "A script fails without errors. What debugging steps would you take to find the problem?",
-                topics: [
-                    {
-                        title: "What is JavaScript?",
-                        description:
-                            "JavaScript is a programming language that runs in the browser and on servers. It allows you to add behavior, interactivity, and dynamic content to web pages.",
-                    },
-                    {
-                        title: "Variables & Constants",
-                        description:
-                            "Variables store data values, while constants store values that should not change. Use `let` for mutable variables and `const` for constants to manage data effectively.",
-                    },
-                    {
-                        title: "JavaScript Data Types",
-                        description:
-                            "JavaScript has several data types including numbers, strings, booleans, null, undefined, objects, and arrays. Understanding data types helps prevent errors and ensures proper operations.",
-                    },
-                    {
-                        title: "Operators & Expressions",
-                        description:
-                            "Operators perform actions on values (e.g., +, -, *, /, %, ===). Expressions combine values and operators to compute results. Use them to manipulate data in your code.",
-                    },
-                    {
-                        title: "Comments & Code Readability",
-                        description:
-                            "Use `//` for single-line and `/* ... */` for multi-line comments. Writing readable code with comments improves collaboration and maintainability.",
-                    },
-                ],
-            },
+    //     modules: [
+    //         {
+    //             id: "js-module-1",
+    //             title: "Programming Basics",
+    //             summary:
+    //                 "Understand how programming works and how JavaScript executes code.",
+    //             challengePrompt:
+    //                 "A script fails without errors. What debugging steps would you take to find the problem?",
+    //             topics: [
+    //                 {
+    //                     title: "What is JavaScript?",
+    //                     description:
+    //                         "JavaScript is a programming language that runs in the browser and on servers. It allows you to add behavior, interactivity, and dynamic content to web pages.",
+    //                 },
+    //                 {
+    //                     title: "Variables & Constants",
+    //                     description:
+    //                         "Variables store data values, while constants store values that should not change. Use `let` for mutable variables and `const` for constants to manage data effectively.",
+    //                 },
+    //                 {
+    //                     title: "JavaScript Data Types",
+    //                     description:
+    //                         "JavaScript has several data types including numbers, strings, booleans, null, undefined, objects, and arrays. Understanding data types helps prevent errors and ensures proper operations.",
+    //                 },
+    //                 {
+    //                     title: "Operators & Expressions",
+    //                     description:
+    //                         "Operators perform actions on values (e.g., +, -, *, /, %, ===). Expressions combine values and operators to compute results. Use them to manipulate data in your code.",
+    //                 },
+    //                 {
+    //                     title: "Comments & Code Readability",
+    //                     description:
+    //                         "Use `//` for single-line and `/* ... */` for multi-line comments. Writing readable code with comments improves collaboration and maintainability.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "js-module-2",
-                title: "Control Flow",
-                summary:
-                    "Control how and when code runs using logical conditions.",
-                challengePrompt:
-                    "Different users see different outcomes. How do you control program flow effectively?",
-                topics: [
-                    {
-                        title: "Conditional Statements (if/else)",
-                        description:
-                            "Conditional statements let your code make decisions. Use `if`, `else if`, and `else` to execute different blocks depending on conditions.",
-                    },
-                    {
-                        title: "Loops (for, while)",
-                        description:
-                            "Loops execute code repeatedly. `for` loops iterate a known number of times, `while` loops iterate as long as a condition is true. Loops help automate repetitive tasks.",
-                    },
-                    {
-                        title: "Logical Operators",
-                        description:
-                            "Logical operators (`&&`, `||`, `!`) combine or invert conditions. They allow complex decision-making in conditional statements and loops.",
-                    },
-                ],
-            },
+    //         {
+    //             id: "js-module-2",
+    //             title: "Control Flow",
+    //             summary:
+    //                 "Control how and when code runs using logical conditions.",
+    //             challengePrompt:
+    //                 "Different users see different outcomes. How do you control program flow effectively?",
+    //             topics: [
+    //                 {
+    //                     title: "Conditional Statements (if/else)",
+    //                     description:
+    //                         "Conditional statements let your code make decisions. Use `if`, `else if`, and `else` to execute different blocks depending on conditions.",
+    //                 },
+    //                 {
+    //                     title: "Loops (for, while)",
+    //                     description:
+    //                         "Loops execute code repeatedly. `for` loops iterate a known number of times, `while` loops iterate as long as a condition is true. Loops help automate repetitive tasks.",
+    //                 },
+    //                 {
+    //                     title: "Logical Operators",
+    //                     description:
+    //                         "Logical operators (`&&`, `||`, `!`) combine or invert conditions. They allow complex decision-making in conditional statements and loops.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "js-module-3",
-                title: "Functions & Data",
-                summary:
-                    "Organize your code into reusable blocks and manage data efficiently.",
-                challengePrompt:
-                    "Your codebase is growing quickly. What abstraction can reduce duplication?",
-                topics: [
-                    {
-                        title: "Functions & Reusability",
-                        description:
-                            "Functions are reusable blocks of code that perform a specific task. They help organize logic, reduce repetition, and make your code more modular.",
-                    },
-                    {
-                        title: "Parameters & Return Values",
-                        description:
-                            "Functions can accept inputs called parameters and can return outputs using the `return` keyword. This allows flexible and dynamic functionality.",
-                    },
-                    {
-                        title: "Arrays & Collections",
-                        description:
-                            "Arrays store multiple values in an ordered list. They allow iteration, manipulation, and storage of related data efficiently.",
-                    },
-                    {
-                        title: "Objects & Data Modeling",
-                        description:
-                            "Objects store related data in key-value pairs. Use objects to represent real-world entities and model structured data in your applications.",
-                    },
-                ],
-            },
+    //         {
+    //             id: "js-module-3",
+    //             title: "Functions & Data",
+    //             summary:
+    //                 "Organize your code into reusable blocks and manage data efficiently.",
+    //             challengePrompt:
+    //                 "Your codebase is growing quickly. What abstraction can reduce duplication?",
+    //             topics: [
+    //                 {
+    //                     title: "Functions & Reusability",
+    //                     description:
+    //                         "Functions are reusable blocks of code that perform a specific task. They help organize logic, reduce repetition, and make your code more modular.",
+    //                 },
+    //                 {
+    //                     title: "Parameters & Return Values",
+    //                     description:
+    //                         "Functions can accept inputs called parameters and can return outputs using the `return` keyword. This allows flexible and dynamic functionality.",
+    //                 },
+    //                 {
+    //                     title: "Arrays & Collections",
+    //                     description:
+    //                         "Arrays store multiple values in an ordered list. They allow iteration, manipulation, and storage of related data efficiently.",
+    //                 },
+    //                 {
+    //                     title: "Objects & Data Modeling",
+    //                     description:
+    //                         "Objects store related data in key-value pairs. Use objects to represent real-world entities and model structured data in your applications.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "js-module-4",
-                title: "Interactivity & DOM",
-                summary:
-                    "Respond to user actions and dynamically update the webpage.",
-                challengePrompt:
-                    "A button click should update the page instantly. How do you design the interaction?",
-                topics: [
-                    {
-                        title: "Events & Event Listeners",
-                        description:
-                            "Events are actions like clicks, typing, or page loads. Event listeners let you run code in response to events, making pages interactive.",
-                    },
-                    {
-                        title: "DOM Selection Methods",
-                        description:
-                            "The DOM (Document Object Model) represents your HTML as objects. Use methods like `getElementById`, `querySelector`, and `getElementsByClassName` to select elements.",
-                    },
-                    {
-                        title: "DOM Manipulation",
-                        description:
-                            "Manipulate DOM elements by changing text, styles, attributes, or adding/removing nodes. This makes your webpage dynamic and responsive to user actions.",
-                    },
-                    {
-                        title: "Basic Error Handling",
-                        description:
-                            "Use `try`, `catch`, and `finally` to handle errors gracefully. Error handling prevents crashes and provides feedback to users.",
-                    },
-                    {
-                        title: "Introduction to ES6 Features",
-                        description:
-                            "ES6 introduced modern JavaScript features: arrow functions, template literals, let/const, destructuring, classes, and modules. These features make coding cleaner and more efficient.",
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        id: "criticalThinking",
-        title: "Critical Thinking",
-        level: "Beginner",
-        description:
-            "Learn how to analyze information, make better decisions, and solve problems logically.",
-        intro:
-            "Critical thinking is the foundation of good decision-making. In this course, you’ll learn how to evaluate information objectively, recognize biases, ask better questions, and reason clearly in everyday and professional situations.",
-        estimatedTime: "8–10 hours",
-        color: "#ECFEFF",
+    //         {
+    //             id: "js-module-4",
+    //             title: "Interactivity & DOM",
+    //             summary:
+    //                 "Respond to user actions and dynamically update the webpage.",
+    //             challengePrompt:
+    //                 "A button click should update the page instantly. How do you design the interaction?",
+    //             topics: [
+    //                 {
+    //                     title: "Events & Event Listeners",
+    //                     description:
+    //                         "Events are actions like clicks, typing, or page loads. Event listeners let you run code in response to events, making pages interactive.",
+    //                 },
+    //                 {
+    //                     title: "DOM Selection Methods",
+    //                     description:
+    //                         "The DOM (Document Object Model) represents your HTML as objects. Use methods like `getElementById`, `querySelector`, and `getElementsByClassName` to select elements.",
+    //                 },
+    //                 {
+    //                     title: "DOM Manipulation",
+    //                     description:
+    //                         "Manipulate DOM elements by changing text, styles, attributes, or adding/removing nodes. This makes your webpage dynamic and responsive to user actions.",
+    //                 },
+    //                 {
+    //                     title: "Basic Error Handling",
+    //                     description:
+    //                         "Use `try`, `catch`, and `finally` to handle errors gracefully. Error handling prevents crashes and provides feedback to users.",
+    //                 },
+    //                 {
+    //                     title: "Introduction to ES6 Features",
+    //                     description:
+    //                         "ES6 introduced modern JavaScript features: arrow functions, template literals, let/const, destructuring, classes, and modules. These features make coding cleaner and more efficient.",
+    //                 },
+    //             ],
+    //         },
+    //     ],
+    // },
+    // {
+    //     id: "criticalThinking",
+    //     title: "Critical Thinking",
+    //     level: "Beginner",
+    //     description:
+    //         "Learn how to analyze information, make better decisions, and solve problems logically.",
+    //     intro:
+    //         "Critical thinking is the foundation of good decision-making. In this course, you’ll learn how to evaluate information objectively, recognize biases, ask better questions, and reason clearly in everyday and professional situations.",
+    //     estimatedTime: "8–10 hours",
+    //     color: "#ECFEFF",
 
-        outcomes: [
-            "Analyze problems logically and systematically",
-            "Identify assumptions, biases, and fallacies",
-            "Make informed and defensible decisions",
-            "Think clearly under uncertainty and pressure",
-        ],
+    //     outcomes: [
+    //         "Analyze problems logically and systematically",
+    //         "Identify assumptions, biases, and fallacies",
+    //         "Make informed and defensible decisions",
+    //         "Think clearly under uncertainty and pressure",
+    //     ],
 
-        modules: [
-            {
-                id: "ct-module-1",
-                title: "Foundations of Critical Thinking",
-                summary:
-                    "Understand what critical thinking is and why it matters.",
-                challengePrompt:
-                    "Two people reach different conclusions from the same information. How can both be wrong?",
-                topics: [
-                    {
-                        title: "What Is Critical Thinking?",
-                        description:
-                            "Critical thinking is the ability to analyze information objectively, evaluate arguments, and form reasoned judgments. It involves questioning assumptions rather than accepting ideas at face value.",
-                    },
-                    {
-                        title: "Thinking vs. Reacting",
-                        description:
-                            "Reacting is automatic and emotional, while thinking is deliberate and logical. Learning to pause and reflect helps you make better decisions.",
-                    },
-                    {
-                        title: "Questions That Drive Thinking",
-                        description:
-                            "Strong questions uncover clarity. Asking ‘why’, ‘how’, and ‘what evidence supports this?’ helps deepen understanding and reduce errors.",
-                    },
-                    {
-                        title: "Clarity, Accuracy, and Relevance",
-                        description:
-                            "Good thinking relies on clear definitions, accurate information, and relevance to the problem at hand. These standards prevent confusion and misinformation.",
-                    },
-                    {
-                        title: "Intellectual Curiosity",
-                        description:
-                            "Curiosity fuels critical thinking. Being open to learning, feedback, and alternative viewpoints strengthens reasoning skills.",
-                    },
-                ],
-            },
+    //     modules: [
+    //         {
+    //             id: "ct-module-1",
+    //             title: "Foundations of Critical Thinking",
+    //             summary:
+    //                 "Understand what critical thinking is and why it matters.",
+    //             challengePrompt:
+    //                 "Two people reach different conclusions from the same information. How can both be wrong?",
+    //             topics: [
+    //                 {
+    //                     title: "What Is Critical Thinking?",
+    //                     description:
+    //                         "Critical thinking is the ability to analyze information objectively, evaluate arguments, and form reasoned judgments. It involves questioning assumptions rather than accepting ideas at face value.",
+    //                 },
+    //                 {
+    //                     title: "Thinking vs. Reacting",
+    //                     description:
+    //                         "Reacting is automatic and emotional, while thinking is deliberate and logical. Learning to pause and reflect helps you make better decisions.",
+    //                 },
+    //                 {
+    //                     title: "Questions That Drive Thinking",
+    //                     description:
+    //                         "Strong questions uncover clarity. Asking ‘why’, ‘how’, and ‘what evidence supports this?’ helps deepen understanding and reduce errors.",
+    //                 },
+    //                 {
+    //                     title: "Clarity, Accuracy, and Relevance",
+    //                     description:
+    //                         "Good thinking relies on clear definitions, accurate information, and relevance to the problem at hand. These standards prevent confusion and misinformation.",
+    //                 },
+    //                 {
+    //                     title: "Intellectual Curiosity",
+    //                     description:
+    //                         "Curiosity fuels critical thinking. Being open to learning, feedback, and alternative viewpoints strengthens reasoning skills.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "ct-module-2",
-                title: "Logic & Reasoning",
-                summary:
-                    "Learn how conclusions are formed and how to evaluate them.",
-                challengePrompt:
-                    "A conclusion sounds convincing—but is it logically valid?",
-                topics: [
-                    {
-                        title: "Arguments & Conclusions",
-                        description:
-                            "An argument consists of premises that support a conclusion. Understanding this structure helps you evaluate whether conclusions truly follow from the evidence.",
-                    },
-                    {
-                        title: "Deductive vs. Inductive Reasoning",
-                        description:
-                            "Deductive reasoning guarantees conclusions if premises are true, while inductive reasoning draws probable conclusions based on patterns and evidence.",
-                    },
-                    {
-                        title: "Cause vs. Correlation",
-                        description:
-                            "Just because two things occur together doesn’t mean one caused the other. Learning this distinction prevents faulty reasoning.",
-                    },
-                    {
-                        title: "Recognizing Weak Arguments",
-                        description:
-                            "Weak arguments rely on vague evidence, emotional appeal, or false assumptions. Spotting these helps avoid poor decisions.",
-                    },
-                ],
-            },
+    //         {
+    //             id: "ct-module-2",
+    //             title: "Logic & Reasoning",
+    //             summary:
+    //                 "Learn how conclusions are formed and how to evaluate them.",
+    //             challengePrompt:
+    //                 "A conclusion sounds convincing—but is it logically valid?",
+    //             topics: [
+    //                 {
+    //                     title: "Arguments & Conclusions",
+    //                     description:
+    //                         "An argument consists of premises that support a conclusion. Understanding this structure helps you evaluate whether conclusions truly follow from the evidence.",
+    //                 },
+    //                 {
+    //                     title: "Deductive vs. Inductive Reasoning",
+    //                     description:
+    //                         "Deductive reasoning guarantees conclusions if premises are true, while inductive reasoning draws probable conclusions based on patterns and evidence.",
+    //                 },
+    //                 {
+    //                     title: "Cause vs. Correlation",
+    //                     description:
+    //                         "Just because two things occur together doesn’t mean one caused the other. Learning this distinction prevents faulty reasoning.",
+    //                 },
+    //                 {
+    //                     title: "Recognizing Weak Arguments",
+    //                     description:
+    //                         "Weak arguments rely on vague evidence, emotional appeal, or false assumptions. Spotting these helps avoid poor decisions.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "ct-module-3",
-                title: "Biases & Logical Fallacies",
-                summary:
-                    "Identify common thinking errors that distort judgment.",
-                challengePrompt:
-                    "Why do smart people make irrational decisions?",
-                topics: [
-                    {
-                        title: "Cognitive Biases",
-                        description:
-                            "Cognitive biases are mental shortcuts that influence thinking. Examples include confirmation bias, anchoring, and availability bias.",
-                    },
-                    {
-                        title: "Emotional Reasoning",
-                        description:
-                            "Emotions can cloud judgment. Learning to separate feelings from facts leads to clearer thinking.",
-                    },
-                    {
-                        title: "Common Logical Fallacies",
-                        description:
-                            "Fallacies such as strawman arguments, false dilemmas, and ad hominem attacks weaken reasoning and mislead conclusions.",
-                    },
-                    {
-                        title: "Social Influence & Groupthink",
-                        description:
-                            "Group pressure can suppress independent thinking. Critical thinkers learn to evaluate ideas even when they go against the majority.",
-                    },
-                ],
-            },
+    //         {
+    //             id: "ct-module-3",
+    //             title: "Biases & Logical Fallacies",
+    //             summary:
+    //                 "Identify common thinking errors that distort judgment.",
+    //             challengePrompt:
+    //                 "Why do smart people make irrational decisions?",
+    //             topics: [
+    //                 {
+    //                     title: "Cognitive Biases",
+    //                     description:
+    //                         "Cognitive biases are mental shortcuts that influence thinking. Examples include confirmation bias, anchoring, and availability bias.",
+    //                 },
+    //                 {
+    //                     title: "Emotional Reasoning",
+    //                     description:
+    //                         "Emotions can cloud judgment. Learning to separate feelings from facts leads to clearer thinking.",
+    //                 },
+    //                 {
+    //                     title: "Common Logical Fallacies",
+    //                     description:
+    //                         "Fallacies such as strawman arguments, false dilemmas, and ad hominem attacks weaken reasoning and mislead conclusions.",
+    //                 },
+    //                 {
+    //                     title: "Social Influence & Groupthink",
+    //                     description:
+    //                         "Group pressure can suppress independent thinking. Critical thinkers learn to evaluate ideas even when they go against the majority.",
+    //                 },
+    //             ],
+    //         },
 
-            {
-                id: "ct-module-4",
-                title: "Problem Solving & Decision Making",
-                summary:
-                    "Apply critical thinking skills to real-world situations.",
-                challengePrompt:
-                    "You must choose between two imperfect options. How do you decide?",
-                topics: [
-                    {
-                        title: "Defining the Real Problem",
-                        description:
-                            "Many problems are misidentified. Clarifying the true problem prevents wasted effort and poor solutions.",
-                    },
-                    {
-                        title: "Evaluating Evidence",
-                        description:
-                            "Not all information is equal. Assess credibility, sources, and relevance before drawing conclusions.",
-                    },
-                    {
-                        title: "Weighing Options & Trade-offs",
-                        description:
-                            "Every decision involves trade-offs. Critical thinking helps compare options based on impact, risk, and values.",
-                    },
-                    {
-                        title: "Decision-Making Frameworks",
-                        description:
-                            "Structured approaches such as pros/cons analysis, decision matrices, and scenario planning improve outcomes.",
-                    },
-                    {
-                        title: "Reflecting & Learning from Outcomes",
-                        description:
-                            "Post-decision reflection strengthens future judgment by identifying what worked and what didn’t.",
-                    },
-                ],
-            },
-        ],
-    }
+    //         {
+    //             id: "ct-module-4",
+    //             title: "Problem Solving & Decision Making",
+    //             summary:
+    //                 "Apply critical thinking skills to real-world situations.",
+    //             challengePrompt:
+    //                 "You must choose between two imperfect options. How do you decide?",
+    //             topics: [
+    //                 {
+    //                     title: "Defining the Real Problem",
+    //                     description:
+    //                         "Many problems are misidentified. Clarifying the true problem prevents wasted effort and poor solutions.",
+    //                 },
+    //                 {
+    //                     title: "Evaluating Evidence",
+    //                     description:
+    //                         "Not all information is equal. Assess credibility, sources, and relevance before drawing conclusions.",
+    //                 },
+    //                 {
+    //                     title: "Weighing Options & Trade-offs",
+    //                     description:
+    //                         "Every decision involves trade-offs. Critical thinking helps compare options based on impact, risk, and values.",
+    //                 },
+    //                 {
+    //                     title: "Decision-Making Frameworks",
+    //                     description:
+    //                         "Structured approaches such as pros/cons analysis, decision matrices, and scenario planning improve outcomes.",
+    //                 },
+    //                 {
+    //                     title: "Reflecting & Learning from Outcomes",
+    //                     description:
+    //                         "Post-decision reflection strengthens future judgment by identifying what worked and what didn’t.",
+    //                 },
+    //             ],
+    //         },
+    //     ],
+    // }
 ];
 
 const courseQuestions = {
@@ -964,6 +964,163 @@ const courseQuestions = {
         },
     ],
 };
+
+// authService.pushCourseToFirebase(
+        //     {
+        //         id: "criticalThinking",
+        //         title: "Critical Thinking",
+        //         level: "Beginner",
+        //         description:
+        //             "Learn how to analyze information, make better decisions, and solve problems logically.",
+        //         intro:
+        //             "Critical thinking is the foundation of good decision-making. In this course, you’ll learn how to evaluate information objectively, recognize biases, ask better questions, and reason clearly in everyday and professional situations.",
+        //         estimatedTime: "8–10 hours",
+        //         color: "#ECFEFF",
+
+        //         outcomes: [
+        //             "Analyze problems logically and systematically",
+        //             "Identify assumptions, biases, and fallacies",
+        //             "Make informed and defensible decisions",
+        //             "Think clearly under uncertainty and pressure",
+        //         ],
+
+        //         modules: [
+        //             {
+        //                 id: "ct-module-1",
+        //                 title: "Foundations of Critical Thinking",
+        //                 summary:
+        //                     "Understand what critical thinking is and why it matters.",
+        //                 challengePrompt:
+        //                     "Two people reach different conclusions from the same information. How can both be wrong?",
+        //                 topics: [
+        //                     {
+        //                         title: "What Is Critical Thinking?",
+        //                         description:
+        //                             "Critical thinking is the ability to analyze information objectively, evaluate arguments, and form reasoned judgments. It involves questioning assumptions rather than accepting ideas at face value.",
+        //                     },
+        //                     {
+        //                         title: "Thinking vs. Reacting",
+        //                         description:
+        //                             "Reacting is automatic and emotional, while thinking is deliberate and logical. Learning to pause and reflect helps you make better decisions.",
+        //                     },
+        //                     {
+        //                         title: "Questions That Drive Thinking",
+        //                         description:
+        //                             "Strong questions uncover clarity. Asking ‘why’, ‘how’, and ‘what evidence supports this?’ helps deepen understanding and reduce errors.",
+        //                     },
+        //                     {
+        //                         title: "Clarity, Accuracy, and Relevance",
+        //                         description:
+        //                             "Good thinking relies on clear definitions, accurate information, and relevance to the problem at hand. These standards prevent confusion and misinformation.",
+        //                     },
+        //                     {
+        //                         title: "Intellectual Curiosity",
+        //                         description:
+        //                             "Curiosity fuels critical thinking. Being open to learning, feedback, and alternative viewpoints strengthens reasoning skills.",
+        //                     },
+        //                 ],
+        //             },
+
+        //             {
+        //                 id: "ct-module-2",
+        //                 title: "Logic & Reasoning",
+        //                 summary:
+        //                     "Learn how conclusions are formed and how to evaluate them.",
+        //                 challengePrompt:
+        //                     "A conclusion sounds convincing—but is it logically valid?",
+        //                 topics: [
+        //                     {
+        //                         title: "Arguments & Conclusions",
+        //                         description:
+        //                             "An argument consists of premises that support a conclusion. Understanding this structure helps you evaluate whether conclusions truly follow from the evidence.",
+        //                     },
+        //                     {
+        //                         title: "Deductive vs. Inductive Reasoning",
+        //                         description:
+        //                             "Deductive reasoning guarantees conclusions if premises are true, while inductive reasoning draws probable conclusions based on patterns and evidence.",
+        //                     },
+        //                     {
+        //                         title: "Cause vs. Correlation",
+        //                         description:
+        //                             "Just because two things occur together doesn’t mean one caused the other. Learning this distinction prevents faulty reasoning.",
+        //                     },
+        //                     {
+        //                         title: "Recognizing Weak Arguments",
+        //                         description:
+        //                             "Weak arguments rely on vague evidence, emotional appeal, or false assumptions. Spotting these helps avoid poor decisions.",
+        //                     },
+        //                 ],
+        //             },
+
+        //             {
+        //                 id: "ct-module-3",
+        //                 title: "Biases & Logical Fallacies",
+        //                 summary:
+        //                     "Identify common thinking errors that distort judgment.",
+        //                 challengePrompt:
+        //                     "Why do smart people make irrational decisions?",
+        //                 topics: [
+        //                     {
+        //                         title: "Cognitive Biases",
+        //                         description:
+        //                             "Cognitive biases are mental shortcuts that influence thinking. Examples include confirmation bias, anchoring, and availability bias.",
+        //                     },
+        //                     {
+        //                         title: "Emotional Reasoning",
+        //                         description:
+        //                             "Emotions can cloud judgment. Learning to separate feelings from facts leads to clearer thinking.",
+        //                     },
+        //                     {
+        //                         title: "Common Logical Fallacies",
+        //                         description:
+        //                             "Fallacies such as strawman arguments, false dilemmas, and ad hominem attacks weaken reasoning and mislead conclusions.",
+        //                     },
+        //                     {
+        //                         title: "Social Influence & Groupthink",
+        //                         description:
+        //                             "Group pressure can suppress independent thinking. Critical thinkers learn to evaluate ideas even when they go against the majority.",
+        //                     },
+        //                 ],
+        //             },
+
+        //             {
+        //                 id: "ct-module-4",
+        //                 title: "Problem Solving & Decision Making",
+        //                 summary:
+        //                     "Apply critical thinking skills to real-world situations.",
+        //                 challengePrompt:
+        //                     "You must choose between two imperfect options. How do you decide?",
+        //                 topics: [
+        //                     {
+        //                         title: "Defining the Real Problem",
+        //                         description:
+        //                             "Many problems are misidentified. Clarifying the true problem prevents wasted effort and poor solutions.",
+        //                     },
+        //                     {
+        //                         title: "Evaluating Evidence",
+        //                         description:
+        //                             "Not all information is equal. Assess credibility, sources, and relevance before drawing conclusions.",
+        //                     },
+        //                     {
+        //                         title: "Weighing Options & Trade-offs",
+        //                         description:
+        //                             "Every decision involves trade-offs. Critical thinking helps compare options based on impact, risk, and values.",
+        //                     },
+        //                     {
+        //                         title: "Decision-Making Frameworks",
+        //                         description:
+        //                             "Structured approaches such as pros/cons analysis, decision matrices, and scenario planning improve outcomes.",
+        //                     },
+        //                     {
+        //                         title: "Reflecting & Learning from Outcomes",
+        //                         description:
+        //                             "Post-decision reflection strengthens future judgment by identifying what worked and what didn’t.",
+        //                     },
+        //                 ],
+        //             },
+        //         ],
+        //     }
+        // );
 
 
 
