@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from 'firebase/firestore';
 
+// --- AUTHENTICATION IMPORTS FOR REACT NATIVE ---
 import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -20,12 +21,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// CRITICAL FIX: Initialize Auth using getReactNativePersistence
-// This ensures user sessions are correctly saved and loaded across app restarts.
 const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
-
-// Removed getAnalytics(app) as it often requires a separate module in RN.
 
 export { storage, auth, db, app };

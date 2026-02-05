@@ -56,3 +56,13 @@ export type UserType = {
     employmentStatus?: string;
     workLocation?: string;
 };
+
+export interface NotificationItem {
+    id: string;
+    title?: string;
+    message: string;
+    date?: string;
+    time?: string;
+    type?: "success" | "error" | "info";
+    isRead: boolean;
+}

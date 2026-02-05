@@ -71,14 +71,14 @@ const ProfileScreen: React.FC<any> = ({ navigation }) => {
                         <View style={styles.authActions}>
                             <TouchableOpacity
                                 style={styles.loginBtn}
-                                onPress={() => navigation.navigate("Login")}
+                                onPress={() => navigation.navigate("LoginScreen")}
                             >
                                 <Text style={styles.loginText}>Login</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity
                                 style={styles.signupBtn}
-                                onPress={() => navigation.navigate("Signup")}
+                                onPress={() => navigation.navigate("SignupScreen")}
                             >
                                 <Text style={styles.signupText}>Sign Up</Text>
                             </TouchableOpacity>

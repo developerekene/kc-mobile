@@ -15,6 +15,8 @@ import ProfileScreen from '../ProfileScreen';
 import ChallengeDetailScreen from '../ChallengeDetailScreen';
 import ChallengeGameMode from '../ChallengeGameMode';
 import ChallengeCodingMode from '../ChallengeCodingMode';
+import LoginScreen from '../LoginScreen';
+import SignupScreen from '../SignupScreen';
 
 const Stack = createNativeStackNavigator()
 
@@ -76,6 +78,14 @@ const Index: React.FC = () => {
                 <Stack.Screen
                     name="ChallengeCodingMode"
                     component={ChallengeCodingMode}
+                />
+                <Stack.Screen
+                    name="LoginScreen"
+                    component={LoginScreen}
+                />
+                <Stack.Screen
+                    name="SignupScreen"
+                    component={SignupScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>
