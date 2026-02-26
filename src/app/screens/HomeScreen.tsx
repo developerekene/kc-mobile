@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import {
-    View,
-    Text,
-    ScrollView,
-    StyleSheet,
-    TouchableOpacity,
-    FlatList,
-    Animated
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Animated,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { courses } from "../utils/Constants/data";
@@ -15,171 +15,169 @@ import { RootState } from "../redux/store";
 import { authService } from "../redux/configration/auth.service";
 
 const HomeScreen: React.FC = ({ navigation, route }: any) => {
-    const pulseAnim = useRef(new Animated.Value(1)).current;
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const menuAnim = useRef(new Animated.Value(-260)).current; // menu width
-    const user = useSelector((state: RootState) => state.user);
-    const allCourses = useSelector((state: RootState) => state.courses);
+  const pulseAnim = useRef(new Animated.Value(1)).current;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuAnim = useRef(new Animated.Value(-260)).current; // menu width
+  const user = useSelector((state: RootState) => state.user);
+  const allCourses = useSelector((state: RootState) => state.courses);
 
-    const positionThree = allCourses[3]
+  const positionThree = allCourses[3];
 
-    const activeChallenge = {
-        id: "1",
-        title: "Water Supply Crisis",
-        urgency: "High",
-        category: "Infrastructure",
-        duration: "30–45 mins",
-        difficulty: "Hard",
+  const activeChallenge = {
+    id: "1",
+    title: "Water Supply Crisis",
+    urgency: "High",
+    category: "Infrastructure",
+    duration: "30–45 mins",
+    difficulty: "Hard",
 
-        shortDescription:
-            "A growing city is facing severe water shortages due to climate change and aging infrastructure.",
+    shortDescription:
+      "A growing city is facing severe water shortages due to climate change and aging infrastructure.",
 
-        context:
-            "Reservoir levels are critically low, pipe leakages are frequent, and population growth is putting pressure on limited resources.",
+    context:
+      "Reservoir levels are critically low, pipe leakages are frequent, and population growth is putting pressure on limited resources.",
 
-        objective:
-            "Design a sustainable water distribution strategy that balances demand, cost, and long-term resilience.",
+    objective:
+      "Design a sustainable water distribution strategy that balances demand, cost, and long-term resilience.",
 
-        skills: [
-            "Critical Thinking",
-            "Systems Design",
-            "Resource Management",
-            "Basic Programming Logic",
-        ],
+    skills: [
+      "Critical Thinking",
+      "Systems Design",
+      "Resource Management",
+      "Basic Programming Logic",
+    ],
 
-        learningOutcomes: {
-            gameMode: [
-                "Understand trade-offs in public policy decisions",
-                "Learn how short-term actions affect long-term sustainability",
-                "Practice decision-making under constraints",
-            ],
-            codingMode: [
-                "Learn JavaScript variables and objects",
-                "Understand conditional logic (if/else)",
-                "Simulate real-world systems using code",
-            ],
+    learningOutcomes: {
+      gameMode: [
+        "Understand trade-offs in public policy decisions",
+        "Learn how short-term actions affect long-term sustainability",
+        "Practice decision-making under constraints",
+      ],
+      codingMode: [
+        "Learn JavaScript variables and objects",
+        "Understand conditional logic (if/else)",
+        "Simulate real-world systems using code",
+      ],
+    },
+
+    modes: ["GAME", "CODE"],
+
+    // =========================
+    // 🎮 GAME MODE
+    // =========================
+    gameplay: {
+      initialState: {
+        budget: 100,
+        publicTrust: 70,
+        sustainability: 50,
+        waterReserve: 40, // %
+        populationSatisfaction: 65,
+      },
+
+      metricsExplanation: {
+        budget: "Funds available for city projects",
+        publicTrust: "How much citizens trust leadership",
+        sustainability: "Long-term water system health",
+        waterReserve: "Remaining usable water supply",
+        populationSatisfaction: "Daily quality of life",
+      },
+
+      winConditions: {
+        sustainability: 75,
+        publicTrust: 60,
+        waterReserve: 50,
+      },
+
+      failConditions: {
+        budget: 0,
+        publicTrust: 20,
+        waterReserve: 10,
+      },
+
+      decisions: [
+        {
+          id: "decision-1",
+          phase: "Early Crisis",
+          prompt:
+            "Water levels have dropped to critical levels. What is your first move?",
+          options: [
+            {
+              id: "option-1",
+              label: "Introduce immediate water rationing",
+              impact: {
+                budget: +10,
+                publicTrust: -15,
+                sustainability: +10,
+                waterReserve: +5,
+                populationSatisfaction: -10,
+              },
+              feedback: "Rationing slows water loss but frustrates citizens.",
+            },
+            {
+              id: "option-2",
+              label: "Repair leaking pipelines",
+              impact: {
+                budget: -30,
+                publicTrust: +10,
+                sustainability: +20,
+                waterReserve: +10,
+              },
+              feedback:
+                "Infrastructure repair improves efficiency but is costly.",
+            },
+          ],
         },
 
-        modes: ["GAME", "CODE"],
-
-        // =========================
-        // 🎮 GAME MODE
-        // =========================
-        gameplay: {
-            initialState: {
-                budget: 100,
-                publicTrust: 70,
-                sustainability: 50,
-                waterReserve: 40, // %
-                populationSatisfaction: 65,
+        {
+          id: "decision-2",
+          phase: "Public Response",
+          prompt:
+            "Public protests arise due to restrictions. How do you respond?",
+          options: [
+            {
+              id: "option-3",
+              label: "Launch a public education campaign",
+              impact: {
+                budget: -10,
+                publicTrust: +20,
+                populationSatisfaction: +10,
+              },
+              feedback: "Transparency builds trust and calms the population.",
             },
-
-            metricsExplanation: {
-                budget: "Funds available for city projects",
-                publicTrust: "How much citizens trust leadership",
-                sustainability: "Long-term water system health",
-                waterReserve: "Remaining usable water supply",
-                populationSatisfaction: "Daily quality of life",
+            {
+              id: "option-4",
+              label: "Increase enforcement and penalties",
+              impact: {
+                publicTrust: -25,
+                sustainability: +5,
+                populationSatisfaction: -20,
+              },
+              feedback:
+                "Strict enforcement protects resources but damages morale.",
             },
-
-            winConditions: {
-                sustainability: 75,
-                publicTrust: 60,
-                waterReserve: 50,
-            },
-
-            failConditions: {
-                budget: 0,
-                publicTrust: 20,
-                waterReserve: 10,
-            },
-
-            decisions: [
-                {
-                    id: "decision-1",
-                    phase: "Early Crisis",
-                    prompt:
-                        "Water levels have dropped to critical levels. What is your first move?",
-                    options: [
-                        {
-                            id: "option-1",
-                            label: "Introduce immediate water rationing",
-                            impact: {
-                                budget: +10,
-                                publicTrust: -15,
-                                sustainability: +10,
-                                waterReserve: +5,
-                                populationSatisfaction: -10,
-                            },
-                            feedback:
-                                "Rationing slows water loss but frustrates citizens.",
-                        },
-                        {
-                            id: "option-2",
-                            label: "Repair leaking pipelines",
-                            impact: {
-                                budget: -30,
-                                publicTrust: +10,
-                                sustainability: +20,
-                                waterReserve: +10,
-                            },
-                            feedback:
-                                "Infrastructure repair improves efficiency but is costly.",
-                        },
-                    ],
-                },
-
-                {
-                    id: "decision-2",
-                    phase: "Public Response",
-                    prompt:
-                        "Public protests arise due to restrictions. How do you respond?",
-                    options: [
-                        {
-                            id: "option-3",
-                            label: "Launch a public education campaign",
-                            impact: {
-                                budget: -10,
-                                publicTrust: +20,
-                                populationSatisfaction: +10,
-                            },
-                            feedback:
-                                "Transparency builds trust and calms the population.",
-                        },
-                        {
-                            id: "option-4",
-                            label: "Increase enforcement and penalties",
-                            impact: {
-                                publicTrust: -25,
-                                sustainability: +5,
-                                populationSatisfaction: -20,
-                            },
-                            feedback:
-                                "Strict enforcement protects resources but damages morale.",
-                        },
-                    ],
-                },
-            ],
+          ],
         },
+      ],
+    },
 
-        // =========================
-        // 💻 CODING MODE (JavaScript)
-        // =========================
-        codingMode: {
-            targetAudience: "Beginner",
-            language: "JavaScript",
+    // =========================
+    // 💻 CODING MODE (JavaScript)
+    // =========================
+    codingMode: {
+      targetAudience: "Beginner",
+      language: "JavaScript",
 
-            narrative:
-                "Instead of making decisions directly, you will write simple JavaScript code to control the city’s water system.",
+      narrative:
+        "Instead of making decisions directly, you will write simple JavaScript code to control the city’s water system.",
 
-            conceptsTaught: [
-                "Variables",
-                "Objects",
-                "Functions",
-                "Conditional Logic",
-            ],
+      conceptsTaught: [
+        "Variables",
+        "Objects",
+        "Functions",
+        "Conditional Logic",
+      ],
 
-            initialCodeState: `
+      initialCodeState: `
       let city = {
         budget: 100,
         publicTrust: 70,
@@ -188,56 +186,52 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
       };
       `,
 
-            tasks: [
-                {
-                    id: "code-task-1",
-                    title: "Control Water Rationing",
-                    lesson:
-                        "Variables store data that can change over time.",
+      tasks: [
+        {
+          id: "code-task-1",
+          title: "Control Water Rationing",
+          lesson: "Variables store data that can change over time.",
 
-                    instruction:
-                        "Write a function that applies water rationing and updates the city's stats.",
+          instruction:
+            "Write a function that applies water rationing and updates the city's stats.",
 
-                    starterCode: `
+          starterCode: `
       function applyRationing(city) {
         // Your code here
       }
       `,
 
-                    expectedLogic:
-                        "If rationing is applied, increase sustainability and waterReserve, but decrease publicTrust.",
+          expectedLogic:
+            "If rationing is applied, increase sustainability and waterReserve, but decrease publicTrust.",
 
-                    solutionHint:
-                        "Use city.propertyName += value",
+          solutionHint: "Use city.propertyName += value",
 
-                    sampleSolution: `
+          sampleSolution: `
       function applyRationing(city) {
         city.sustainability += 10;
         city.waterReserve += 5;
         city.publicTrust -= 15;
       }
       `,
-                },
+        },
 
-                {
-                    id: "code-task-2",
-                    title: "Check Win or Fail Conditions",
-                    lesson:
-                        "Conditional statements allow programs to make decisions.",
+        {
+          id: "code-task-2",
+          title: "Check Win or Fail Conditions",
+          lesson: "Conditional statements allow programs to make decisions.",
 
-                    instruction:
-                        "Write a function that checks if the city has won or failed.",
+          instruction:
+            "Write a function that checks if the city has won or failed.",
 
-                    starterCode: `
+          starterCode: `
       function checkCityStatus(city) {
         // return "WIN", "FAIL", or "CONTINUE"
       }
       `,
 
-                    expectedLogic:
-                        "Use if/else conditions to compare values.",
+          expectedLogic: "Use if/else conditions to compare values.",
 
-                    sampleSolution: `
+          sampleSolution: `
       function checkCityStatus(city) {
         if (city.waterReserve <= 10 || city.publicTrust <= 20) {
           return "FAIL";
@@ -250,264 +244,317 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
         return "CONTINUE";
       }
       `,
-                },
-            ],
-
-            completionReward: {
-                unlockedSkill: "JavaScript Basics",
-                badge: "First Code Simulation",
-            },
         },
+      ],
 
-        // =========================
-        // 🏁 COMPLETION
-        // =========================
-        completion: {
-            reflectionPrompt:
-                "Which decision or line of code had the biggest impact on the city’s future?",
+      completionReward: {
+        unlockedSkill: "JavaScript Basics",
+        badge: "First Code Simulation",
+      },
+    },
 
-            rewards: {
-                xp: 500,
-                badges: ["Crisis Thinker", "Logic Builder"],
-            },
-        },
-    };
+    // =========================
+    // 🏁 COMPLETION
+    // =========================
+    completion: {
+      reflectionPrompt:
+        "Which decision or line of code had the biggest impact on the city’s future?",
 
-    useEffect(() => {
-        if (allCourses.length === 0) {
-            const fetchCourses = async () => {
-                await authService.pullCoursesFromFirebase();
-            };
-            fetchCourses();
-        }
-    }, [])
+      rewards: {
+        xp: 500,
+        badges: ["Crisis Thinker", "Logic Builder"],
+      },
+    },
+  };
 
-    const openMenu = () => {
-        setIsMenuOpen(true);
-        Animated.timing(menuAnim, {
-            toValue: 0,
-            duration: 250,
-            useNativeDriver: true,
-        }).start();
-    };
+  useEffect(() => {
+    if (allCourses.length === 0) {
+      const fetchCourses = async () => {
+        await authService.pullCoursesFromFirebase();
+      };
+      fetchCourses();
+    }
+  }, []);
 
-    const closeMenu = async () => {
-        Animated.timing(menuAnim, {
-            toValue: -260,
-            duration: 250,
-            useNativeDriver: true,
-        }).start(() => setIsMenuOpen(false));
+  const openMenu = () => {
+    setIsMenuOpen(true);
+    Animated.timing(menuAnim, {
+      toValue: 0,
+      duration: 250,
+      useNativeDriver: true,
+    }).start();
+  };
 
-        await authService.handleUserSignout()
-    };
+  const closeMenu = async () => {
+    Animated.timing(menuAnim, {
+      toValue: -260,
+      duration: 250,
+      useNativeDriver: true,
+    }).start(() => setIsMenuOpen(false));
 
+    await authService.handleUserSignout();
+  };
 
-    useEffect(() => {
-        Animated.loop(
-            Animated.sequence([
-                Animated.timing(pulseAnim, {
-                    toValue: 1.05,
-                    duration: 600,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(pulseAnim, {
-                    toValue: 1,
-                    duration: 600,
-                    useNativeDriver: true,
-                }),
-            ])
-        ).start();
-    }, []);
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, {
+          toValue: 1.05,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulseAnim, {
+          toValue: 1,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+      ]),
+    ).start();
+  }, []);
 
-    const reflectionPrompt =
-        "Boost your knowledge to new stage by using a 10min test quize.";
+  const reflectionPrompt =
+    "Boost your knowledge to new stage by using a 10min test quize.";
 
-    const CourseCard = ({ item }: { item: any }) => {
-        return (
-            <TouchableOpacity
-                style={[styles.courseCard, { backgroundColor: item.color }]}
-                onPress={() =>
-                    navigation.navigate("CourseDescription", { course: item })
-                }
-            >
-                <View style={styles.cardHeader}>
-                    <Text style={styles.courseTitle}>{item.title}</Text>
-                    <Text style={styles.courseLevel}>{item.level}</Text>
-                </View>
-
-                <Text style={styles.courseDescription}>{item.description}</Text>
-
-                <View style={styles.cardMeta}>
-                    <Text style={styles.courseMeta}>⏱ {item.estimatedTime}</Text>
-                    <Text style={styles.courseMeta}>📚 {item.modules.length} Modules</Text>
-                </View>
-
-                {item.outcomes && item.outcomes.length > 0 && (
-                    <View style={styles.outcomes}>
-                        {item.outcomes.slice(0, 2).map((outcome: string, index: number) => (
-                            <Text key={index} style={styles.outcomeText}>• {outcome}</Text>
-                        ))}
-                    </View>
-                )}
-
-                <View style={styles.courseFooter}>
-                    <Text style={styles.courseAction}>Start Learning →</Text>
-                </View>
-            </TouchableOpacity>
-        );
-    };
-
-
+  const CourseCard = ({ item }: { item: any }) => {
     return (
-        <>
-            {/* Overlay */}
-            {isMenuOpen && (
-                <TouchableOpacity
-                    activeOpacity={1}
-                    style={styles.overlay}
-                    onPress={closeMenu}
-                />
-            )}
+      <TouchableOpacity
+        style={[styles.courseCard, { backgroundColor: item.color }]}
+        onPress={() =>
+          navigation.navigate("CourseDescription", { course: item })
+        }
+      >
+        <View style={styles.cardHeader}>
+          <Text style={styles.courseTitle}>{item.title}</Text>
+          <Text style={styles.courseLevel}>{item.level}</Text>
+        </View>
 
-            {/* Side Menu */}
-            <Animated.View
-                style={[
-                    styles.sideMenu,
-                    { transform: [{ translateX: menuAnim }] }
-                ]}
-            >
-                {/* TOP CONTENT */}
-                <View style={styles.menuTop}>
-                    {/* PROFILE SECTION */}
-                    <TouchableOpacity style={styles.profileSection} onPress={() => { navigation.navigate("ProfileScreen") }}>
-                        <View style={styles.profileAvatar}>
-                            <Text style={styles.profileInitial}>{user.initials ? user.initials : `U`}</Text>
-                        </View>
+        <Text style={styles.courseDescription}>{item.description}</Text>
 
-                        <Text style={styles.profileName}>{user.initials ? user.initials : `User`}</Text>
-                    </TouchableOpacity>
+        <View style={styles.cardMeta}>
+          <Text style={styles.courseMeta}>⏱ {item.estimatedTime}</Text>
+          <Text style={styles.courseMeta}>
+            📚 {item.modules.length} Modules
+          </Text>
+        </View>
 
-                    <TouchableOpacity onPress={() => { navigation.navigate("CoursesCentralPage") }} style={styles.menuItem}>
-                        <Ionicons name="book-outline" size={20} />
-                        <Text style={styles.menuText}>Courses</Text>
-                    </TouchableOpacity>
+        {item.outcomes && item.outcomes.length > 0 && (
+          <View style={styles.outcomes}>
+            {item.outcomes.slice(0, 2).map((outcome: string, index: number) => (
+              <Text key={index} style={styles.outcomeText}>
+                • {outcome}
+              </Text>
+            ))}
+          </View>
+        )}
 
-                    <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate("ChallengeCentralPage") }}>
-                        <Ionicons name="flash-outline" size={20} />
-                        <Text style={styles.menuText}>Challenges</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
-                        <Ionicons name="create-outline" size={20} />
-                        <Text style={styles.menuText}>Reflections</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate("CityMapPage") }}>
-                        <Ionicons name="bulb-outline" size={20} />
-                        <Text style={styles.menuText}>City Map</Text>
-                    </TouchableOpacity>
+        <View style={styles.courseFooter}>
+          <Text style={styles.courseAction}>Start Learning →</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
-                </View>
+  return (
+    <>
+      {/* Overlay */}
+      {isMenuOpen && (
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.overlay}
+          onPress={closeMenu}
+        />
+      )}
 
-                {/* BOTTOM LOGOUT */}
-                <TouchableOpacity style={styles.logoutItem} onPress={closeMenu}>
-                    <Ionicons name="log-out-outline" size={20} color="#EF4444" />
-                    <Text style={[styles.menuText, { color: "#EF4444" }]}>Logout</Text>
-                </TouchableOpacity>
-            </Animated.View>
-
-            {/* HEADER */}
-            <View style={styles.header}>
-                <TouchableOpacity onPress={openMenu}>
-                    <Ionicons name="menu" size={26} color="#0F172A" />
-                </TouchableOpacity>
-
-                <Text style={styles.appTitle}>Knowledge City</Text>
-
-                <TouchableOpacity style={styles.avatar}>
-                    <Ionicons name="notifications-outline" size={26} color="#0F172A" />
-                </TouchableOpacity>
+      {/* Side Menu */}
+      <Animated.View
+        style={[styles.sideMenu, { transform: [{ translateX: menuAnim }] }]}
+      >
+        {/* TOP CONTENT */}
+        <View style={styles.menuTop}>
+          {/* PROFILE SECTION */}
+          <TouchableOpacity
+            style={styles.profileSection}
+            onPress={() => {
+              navigation.navigate("ProfileScreen");
+            }}
+          >
+            <View style={styles.profileAvatar}>
+              <Text style={styles.profileInitial}>
+                {user.initials ? user.initials : `U`}
+              </Text>
             </View>
 
-            <ScrollView
-                style={styles.container}
-                contentContainerStyle={{ paddingBottom: 90 }}
-                showsVerticalScrollIndicator={false}
-            >
+            <Text style={styles.profileName}>
+              {user.initials ? user.initials : `User`}
+            </Text>
+          </TouchableOpacity>
 
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("CoursesCentralPage");
+            }}
+            style={styles.menuItem}
+          >
+            <Ionicons name="book-outline" size={20} />
+            <Text style={styles.menuText}>Courses</Text>
+          </TouchableOpacity>
 
-                {/* HERO CARD */}
-                <View style={styles.heroCard}>
-                    <Text style={styles.heroLabel}>Hello there</Text>
-                    <Text style={styles.crisisTitle}>{user.firstName ? user.firstName + " " + user.lastName : `User`}</Text>
-                    <Text style={styles.crisisMessage}>
-                        {user.isLoggedIn === true ? "Are you ready to strengthen your skills today?" : "Login to access more with Knowledge City"}
-                    </Text>
-                </View>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+              navigation.navigate("ChallengeCentralPage");
+            }}
+          >
+            <Ionicons name="flash-outline" size={20} />
+            <Text style={styles.menuText}>Challenges</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+              navigation.navigate("ReflectionsCentralPage");
+            }}
+          >
+            <Ionicons name="create-outline" size={20} />
+            <Text style={styles.menuText}>Reflections</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+              navigation.navigate("CityMapPage");
+            }}
+          >
+            <Ionicons name="bulb-outline" size={20} />
+            <Text style={styles.menuText}>City Map</Text>
+          </TouchableOpacity>
+        </View>
 
-                {/* WELCOME */}
-                <View style={styles.welcome}>
-                    <Text style={styles.welcomeSub}>Empower your Learning Journey!</Text>
-                    <Text style={styles.welcomeText}>
-                        Whether you're a student, educator, or professional, our platform is designed to deliver an engaging and seamless learning experience.
-                    </Text>
-                </View>
+        {/* BOTTOM LOGOUT */}
+        <TouchableOpacity style={styles.logoutItem} onPress={closeMenu}>
+          <Ionicons name="log-out-outline" size={20} color="#EF4444" />
+          <Text style={[styles.menuText, { color: "#EF4444" }]}>Logout</Text>
+        </TouchableOpacity>
+      </Animated.View>
 
-                {/* COURSES */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Top Courses</Text>
-                    <FlatList
-                        data={allCourses}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({ item }) => <CourseCard item={item} />}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        contentContainerStyle={{ paddingRight: 16 }}
-                    />
-                </View>
+      {/* HEADER */}
+      <View style={styles.header}>
+        <TouchableOpacity onPress={openMenu}>
+          <Ionicons name="menu" size={26} color="#0F172A" />
+        </TouchableOpacity>
 
-                {/* QUICK ACTIONS */}
-                <View style={styles.quickActions}>
-                    <TouchableOpacity onPress={() => { navigation.navigate("CoursesCentralPage") }} style={styles.quickCard}>
-                        <Ionicons name="book-outline" size={20} color="#0F172A" />
-                        <Text style={styles.quickText}>Courses</Text>
-                    </TouchableOpacity>
+        <Text style={styles.appTitle}>Knowledge City</Text>
 
-                    <TouchableOpacity onPress={() => { navigation.navigate("ChallengeCentralPage") }} style={styles.quickCard} >
-                        <Ionicons name="flash-outline" size={20} color="#0F172A" />
-                        <Text style={styles.quickText}>Challenge</Text>
-                    </TouchableOpacity>
+        <TouchableOpacity style={styles.avatar}>
+          <Ionicons name="notifications-outline" size={26} color="#0F172A" />
+        </TouchableOpacity>
+      </View>
 
-                    <TouchableOpacity style={styles.quickCard} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
-                        <Ionicons name="journal-outline" size={20} color="#0F172A" />
-                        <Text style={styles.quickText}>Reflections</Text>
-                    </TouchableOpacity>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 90 }}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* HERO CARD */}
+        <View style={styles.heroCard}>
+          <Text style={styles.heroLabel}>Hello there</Text>
+          <Text style={styles.crisisTitle}>
+            {user.firstName ? user.firstName + " " + user.lastName : `User`}
+          </Text>
+          <Text style={styles.crisisMessage}>
+            {user.isLoggedIn === true
+              ? "Are you ready to strengthen your skills today?"
+              : "Login to access more with Knowledge City"}
+          </Text>
+        </View>
 
-                    <TouchableOpacity style={styles.quickCard} onPress={() => { navigation.navigate("CityMapPage") }}>
-                        <Ionicons name="map-outline" size={20} color="#0F172A" />
-                        <Text style={styles.quickText}>City Map</Text>
-                    </TouchableOpacity>
-                </View>
+        {/* WELCOME */}
+        <View style={styles.welcome}>
+          <Text style={styles.welcomeSub}>Empower your Learning Journey!</Text>
+          <Text style={styles.welcomeText}>
+            Whether you're a student, educator, or professional, our platform is
+            designed to deliver an engaging and seamless learning experience.
+          </Text>
+        </View>
 
-                {/* ACTIVE CHALLENGE */}
-                <View style={styles.challengeCard}>
-                    <Text style={styles.sectionTitle}>Active Challenge</Text>
-                    <Text style={styles.courseTitle}>{activeChallenge.title}</Text>
-                    <Text style={styles.crisisMessage}>{activeChallenge.shortDescription}</Text>
-                    <Text style={[styles.courseMeta, { marginTop: 6 }]}>
-                        Urgency: {activeChallenge.urgency}
-                    </Text>
-                    <TouchableOpacity style={styles.primaryBtn}
-                        onPress={() =>
-                            navigation.navigate("ChallengeDetailScreen", {
-                                challenge: activeChallenge,
-                            })
-                        }
-                    >
-                        <Text style={styles.primaryBtnText}>Enter Situation Room →</Text>
-                    </TouchableOpacity>
-                </View>
+        {/* COURSES */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Top Courses</Text>
+          <FlatList
+            data={allCourses}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <CourseCard item={item} />}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingRight: 16 }}
+          />
+        </View>
 
-                {/* RECOMMENDED NEXT COURSE */}
-                {/* <View style={styles.section}>
+        {/* QUICK ACTIONS */}
+        <View style={styles.quickActions}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("CoursesCentralPage");
+            }}
+            style={styles.quickCard}
+          >
+            <Ionicons name="book-outline" size={20} color="#0F172A" />
+            <Text style={styles.quickText}>Courses</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("ChallengeCentralPage");
+            }}
+            style={styles.quickCard}
+          >
+            <Ionicons name="flash-outline" size={20} color="#0F172A" />
+            <Text style={styles.quickText}>Challenge</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.quickCard}
+            onPress={() => {
+              navigation.navigate("ReflectionsCentralPage");
+            }}
+          >
+            <Ionicons name="journal-outline" size={20} color="#0F172A" />
+            <Text style={styles.quickText}>Reflections</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.quickCard}
+            onPress={() => {
+              navigation.navigate("CityMapPage");
+            }}
+          >
+            <Ionicons name="map-outline" size={20} color="#0F172A" />
+            <Text style={styles.quickText}>City Map</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* ACTIVE CHALLENGE */}
+        <View style={styles.challengeCard}>
+          <Text style={styles.sectionTitle}>Active Challenge</Text>
+          <Text style={styles.courseTitle}>{activeChallenge.title}</Text>
+          <Text style={styles.crisisMessage}>
+            {activeChallenge.shortDescription}
+          </Text>
+          <Text style={[styles.courseMeta, { marginTop: 6 }]}>
+            Urgency: {activeChallenge.urgency}
+          </Text>
+          <TouchableOpacity
+            style={styles.primaryBtn}
+            onPress={() =>
+              navigation.navigate("ChallengeDetailScreen", {
+                challenge: activeChallenge,
+              })
+            }
+          >
+            <Text style={styles.primaryBtnText}>Enter Situation Room →</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* RECOMMENDED NEXT COURSE */}
+        {/* <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Recommended Course</Text>
 
                     <Animated.View style={[styles.recommendedCard, { transform: [{ scale: pulseAnim }] }]}>
@@ -525,422 +572,435 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
                     </Animated.View>
                 </View> */}
 
-                {/* REFLECTION */}
-                <View style={styles.reflectionCard}>
-                    <Text style={styles.reflectionTitle}>Reflections</Text>
-                    <Text style={styles.reflectionText}>{reflectionPrompt}</Text>
-                    <TouchableOpacity style={styles.primaryBtn} onPress={() => { navigation.navigate("ReflectionsCentralPage") }}>
-                        <Text style={styles.primaryBtnText}>Test your skills</Text>
-                    </TouchableOpacity>
-                </View>
+        {/* REFLECTION */}
+        <View style={styles.reflectionCard}>
+          <Text style={styles.reflectionTitle}>Reflections</Text>
+          <Text style={styles.reflectionText}>{reflectionPrompt}</Text>
+          <TouchableOpacity
+            style={styles.primaryBtn}
+            onPress={() => {
+              navigation.navigate("ReflectionsCentralPage");
+            }}
+          >
+            <Text style={styles.primaryBtnText}>Test your skills</Text>
+          </TouchableOpacity>
+        </View>
 
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Achievements & Streaks</Text>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        <View style={styles.badgeCard}>
-                            <Ionicons name="checkmark-circle-outline" size={24} color="#10B981" />
-                            <Text style={styles.badgeText}>Modules Completed: 12</Text>
-                        </View>
-                        <View style={styles.badgeCard}>
-                            <Ionicons name="flame-outline" size={24} color="#F59E0B" />
-                            <Text style={styles.badgeText}>7-Day Streak</Text>
-                        </View>
-                        <View style={styles.badgeCard}>
-                            <Ionicons name="time-outline" size={24} color="#3B82F6" />
-                            <Text style={styles.badgeText}>Total Hours: 24</Text>
-                        </View>
-                    </ScrollView>
-                </View>
-            </ScrollView>
-        </>
-    );
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Achievements & Streaks</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={styles.badgeCard}>
+              <Ionicons
+                name="checkmark-circle-outline"
+                size={24}
+                color="#10B981"
+              />
+              <Text style={styles.badgeText}>Modules Completed: 0</Text>
+            </View>
+            <View style={styles.badgeCard}>
+              <Ionicons name="flame-outline" size={24} color="#F59E0B" />
+              <Text style={styles.badgeText}>7-Day Streak</Text>
+            </View>
+            <View style={styles.badgeCard}>
+              <Ionicons name="time-outline" size={24} color="#3B82F6" />
+              <Text style={styles.badgeText}>Total Hours: 0</Text>
+            </View>
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </>
+  );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#FFFFFF",
-        paddingHorizontal: 16,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    paddingHorizontal: 16,
+  },
 
-    /* Header */
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingHorizontal: 16,
-        // marginBottom: 24,
-        paddingTop: 60,
-        paddingBottom: 20,
-        backgroundColor: "#FFFFFF",
-    },
-    appTitle: {
-        color: "#0F172A",
-        fontSize: 18,
-        fontWeight: "900",
-    },
-    avatar: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
-        backgroundColor: "#E0E7FF",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    avatarText: {
-        fontWeight: "900",
-        color: "#1E293B",
-    },
+  /* Header */
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    // marginBottom: 24,
+    paddingTop: 60,
+    paddingBottom: 20,
+    backgroundColor: "#FFFFFF",
+  },
+  appTitle: {
+    color: "#0F172A",
+    fontSize: 18,
+    fontWeight: "900",
+  },
+  avatar: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: "#E0E7FF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  avatarText: {
+    fontWeight: "900",
+    color: "#1E293B",
+  },
 
-    /* Welcome */
-    welcome: {
-        marginBottom: 20,
-    },
-    welcomeText: {
-        color: "#64748B",
-        fontSize: 14,
-    },
-    welcomeSub: {
-        color: "#0F172A",
-        fontSize: 22,
-        fontWeight: "900",
-        marginTop: 4,
-    },
+  /* Welcome */
+  welcome: {
+    marginBottom: 20,
+  },
+  welcomeText: {
+    color: "#64748B",
+    fontSize: 14,
+  },
+  welcomeSub: {
+    color: "#0F172A",
+    fontSize: 22,
+    fontWeight: "900",
+    marginTop: 4,
+  },
 
-    /* Hero Card */
-    heroCard: {
-        backgroundColor: "#EEF2FF",
-        padding: 20,
-        borderRadius: 16,
-        marginBottom: 18,
-    },
-    heroLabel: {
-        fontSize: 13,
-        fontWeight: "800",
-        textTransform: "uppercase",
-        color: "#475569",
-    },
-    crisisTitle: {
-        fontSize: 22,
-        fontWeight: "900",
-        color: "#0F172A",
-        marginTop: 8,
-    },
-    crisisMessage: {
-        fontSize: 16,
-        marginTop: 6,
-        color: "#1E293B",
-    },
+  /* Hero Card */
+  heroCard: {
+    backgroundColor: "#EEF2FF",
+    padding: 20,
+    borderRadius: 16,
+    marginBottom: 18,
+  },
+  heroLabel: {
+    fontSize: 13,
+    fontWeight: "800",
+    textTransform: "uppercase",
+    color: "#475569",
+  },
+  crisisTitle: {
+    fontSize: 22,
+    fontWeight: "900",
+    color: "#0F172A",
+    marginTop: 8,
+  },
+  crisisMessage: {
+    fontSize: 16,
+    marginTop: 6,
+    color: "#1E293B",
+  },
 
-    alertDot: {
-        width: 10,
-        height: 10,
-        borderRadius: 5,
-        backgroundColor: "#EF4444",
-    },
+  alertDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "#EF4444",
+  },
 
-    /* Badge Cards (Achievements/Streaks) */
-    badgeCard: {
-        backgroundColor: "#F8FAFC",
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 12,
-        alignItems: "center",
-        justifyContent: "center",
-        marginRight: 12,
-        borderWidth: 1,
-        borderColor: "#E2E8F0",
-    },
-    badgeText: {
-        marginTop: 6,
-        fontSize: 12,
-        fontWeight: "700",
-        color: "#0F172A",
-        textAlign: "center",
-    },
-    primaryBtn: {
-        marginTop: 16,
-        backgroundColor: "#0F172A",
-        paddingVertical: 12,
-        borderRadius: 10,
-        alignItems: "center",
-    },
-    primaryBtnText: {
-        color: "#FFFFFF",
-        fontWeight: "800",
-    },
+  /* Badge Cards (Achievements/Streaks) */
+  badgeCard: {
+    backgroundColor: "#F8FAFC",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: "#E2E8F0",
+  },
+  badgeText: {
+    marginTop: 6,
+    fontSize: 12,
+    fontWeight: "700",
+    color: "#0F172A",
+    textAlign: "center",
+  },
+  primaryBtn: {
+    marginTop: 16,
+    backgroundColor: "#0F172A",
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  primaryBtnText: {
+    color: "#FFFFFF",
+    fontWeight: "800",
+  },
 
-    /* Quick Actions */
-    quickActions: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginBottom: 24,
-    },
-    quickCard: {
-        backgroundColor: "#F8FAFC",
-        flex: 1,
-        marginHorizontal: 4,
-        borderRadius: 12,
-        paddingVertical: 14,
-        alignItems: "center",
-        borderWidth: 1,
-        borderColor: "#E2E8F0",
-    },
-    quickText: {
-        marginTop: 6,
-        fontWeight: "700",
-        color: "#0F172A",
-        fontSize: 11
-    },
+  /* Quick Actions */
+  quickActions: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 24,
+  },
+  quickCard: {
+    backgroundColor: "#F8FAFC",
+    flex: 1,
+    marginHorizontal: 4,
+    borderRadius: 12,
+    paddingVertical: 14,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E2E8F0",
+  },
+  quickText: {
+    marginTop: 6,
+    fontWeight: "700",
+    color: "#0F172A",
+    fontSize: 11,
+  },
 
-    /* Sections */
-    section: {
-        marginBottom: 20,
-    },
-    sectionTitle: {
-        color: "#0F172A",
-        fontSize: 18,
-        fontWeight: "900",
-        marginBottom: 10,
-    },
+  /* Sections */
+  section: {
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    color: "#0F172A",
+    fontSize: 18,
+    fontWeight: "900",
+    marginBottom: 10,
+  },
 
-    signalCard: {
-        backgroundColor: "#F8FAFC",
-        padding: 14,
-        borderRadius: 12,
-        marginBottom: 10,
-        borderWidth: 1,
-        borderColor: "#E2E8F0",
-    },
-    signalLabel: {
-        fontWeight: "700",
-        color: "#0F172A",
-    },
-    signalValue: {
-        color: "#475569",
-        marginTop: 4,
-    },
+  signalCard: {
+    backgroundColor: "#F8FAFC",
+    padding: 14,
+    borderRadius: 12,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#E2E8F0",
+  },
+  signalLabel: {
+    fontWeight: "700",
+    color: "#0F172A",
+  },
+  signalValue: {
+    color: "#475569",
+    marginTop: 4,
+  },
 
-    /* Reflection */
-    reflectionCard: {
-        backgroundColor: "#0F172A",
-        padding: 16,
-        borderRadius: 14,
-        marginBottom: 20
-    },
-    reflectionTitle: {
-        color: "#E0E7FF",
-        fontWeight: "800",
-    },
-    reflectionText: {
-        color: "#F8FAFC",
-        marginTop: 6,
-        fontSize: 14,
-    },
-    courseCard: {
-        width: 240,
-        padding: 16,
-        borderRadius: 16,
-        marginRight: 12,
-    },
+  /* Reflection */
+  reflectionCard: {
+    backgroundColor: "#0F172A",
+    padding: 16,
+    borderRadius: 14,
+    marginBottom: 20,
+  },
+  reflectionTitle: {
+    color: "#E0E7FF",
+    fontWeight: "800",
+  },
+  reflectionText: {
+    color: "#F8FAFC",
+    marginTop: 6,
+    fontSize: 14,
+  },
+  courseCard: {
+    width: 240,
+    padding: 16,
+    borderRadius: 16,
+    marginRight: 12,
+  },
 
-    cardHeader: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
+  cardHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
 
-    courseTitle: {
-        fontSize: 20,
-        fontWeight: "900",
-        color: "#0F172A",
-    },
+  courseTitle: {
+    fontSize: 20,
+    fontWeight: "900",
+    color: "#0F172A",
+  },
 
-    courseLevel: {
-        fontSize: 12,
-        fontWeight: "700",
-        color: "#475569",
-    },
+  courseLevel: {
+    fontSize: 12,
+    fontWeight: "700",
+    color: "#475569",
+  },
 
-    courseDescription: {
-        fontSize: 14,
-        color: "#334155",
-        marginTop: 6,
-    },
+  courseDescription: {
+    fontSize: 14,
+    color: "#334155",
+    marginTop: 6,
+  },
 
-    cardMeta: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginTop: 8,
-    },
+  cardMeta: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 8,
+  },
 
-    courseMeta: {
-        fontSize: 12,
-        color: "#475569",
-    },
+  courseMeta: {
+    fontSize: 12,
+    color: "#475569",
+  },
 
-    outcomes: {
-        marginTop: 8,
-    },
+  outcomes: {
+    marginTop: 8,
+  },
 
-    outcomeText: {
-        fontSize: 12,
-        color: "#0F172A",
-    },
+  outcomeText: {
+    fontSize: 12,
+    color: "#0F172A",
+  },
 
-    courseFooter: {
-        marginTop: 12,
-    },
+  courseFooter: {
+    marginTop: 12,
+  },
 
-    courseAction: {
-        fontWeight: "800",
-        color: "#0F172A",
-    },
+  courseAction: {
+    fontWeight: "800",
+    color: "#0F172A",
+  },
 
-    /* Active Challenge Card */
-    challengeCard: {
-        backgroundColor: "#EFF6FF", // very light blue for emphasis
-        padding: 16,
-        borderRadius: 16,
-        marginBottom: 20,
-        borderWidth: 1,
-        borderColor: "#DBEAFE",
-        shadowColor: "#000",
-        shadowOpacity: 0.05,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
-        elevation: 2,
-    },
-    /* Recommended Card with shadow & animation */
-    recommendedCard: {
-        backgroundColor: "#EFF6FF",
-        padding: 16,
-        borderRadius: 16,
-        borderWidth: 1,
-        borderColor: "#DBEAFE",
-        shadowColor: "#000",
-        shadowOpacity: 0.08,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6,
-        elevation: 3,
-    },
-    recommendedTitle: { fontSize: 18, fontWeight: "900", color: "#0F172A" },
-    recommendedLevel: { fontSize: 12, fontWeight: "700", color: "#475569", marginTop: 2 },
-    recommendedTime: { fontSize: 12, color: "#475569", marginTop: 2 },
-    recommendedBtn: {
-        marginTop: 12,
-        backgroundColor: "#6366F1",
-        paddingVertical: 10,
-        borderRadius: 10,
-        alignItems: "center",
-    },
-    recommendedBtnText: { color: "#FFFFFF", fontWeight: "700" },
+  /* Active Challenge Card */
+  challengeCard: {
+    backgroundColor: "#EFF6FF", // very light blue for emphasis
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: "#DBEAFE",
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  /* Recommended Card with shadow & animation */
+  recommendedCard: {
+    backgroundColor: "#EFF6FF",
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#DBEAFE",
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  recommendedTitle: { fontSize: 18, fontWeight: "900", color: "#0F172A" },
+  recommendedLevel: {
+    fontSize: 12,
+    fontWeight: "700",
+    color: "#475569",
+    marginTop: 2,
+  },
+  recommendedTime: { fontSize: 12, color: "#475569", marginTop: 2 },
+  recommendedBtn: {
+    marginTop: 12,
+    backgroundColor: "#6366F1",
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  recommendedBtnText: { color: "#FFFFFF", fontWeight: "700" },
 
-    /* Progress Card */
-    progressCard: {
-        backgroundColor: "#F8FAFC",
-        padding: 14,
-        borderRadius: 14,
-        marginBottom: 12,
-        borderWidth: 1,
-        borderColor: "#E2E8F0",
-        shadowColor: "#000",
-        shadowOpacity: 0.05,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
-        elevation: 2,
-    },
-    progressBarBackground: {
-        height: 8,
-        backgroundColor: "#E5E7EB",
-        borderRadius: 4,
-        marginTop: 8,
-        overflow: "hidden",
-    },
-    progressBarFill: {
-        height: 8,
-        backgroundColor: "#6366F1",
-        borderRadius: 4,
-    },
-    overlay: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(0,0,0,0.3)",
-        zIndex: 10,
-    },
+  /* Progress Card */
+  progressCard: {
+    backgroundColor: "#F8FAFC",
+    padding: 14,
+    borderRadius: 14,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#E2E8F0",
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  progressBarBackground: {
+    height: 8,
+    backgroundColor: "#E5E7EB",
+    borderRadius: 4,
+    marginTop: 8,
+    overflow: "hidden",
+  },
+  progressBarFill: {
+    height: 8,
+    backgroundColor: "#6366F1",
+    borderRadius: 4,
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0,0,0,0.3)",
+    zIndex: 10,
+  },
 
-    menuItem: {
-        flexDirection: "row",
-        alignItems: "center",
-        paddingVertical: 14,
-        gap: 12,
-        backgroundColor: "#EEF2FF",
-        marginBottom: 25,
-        padding: 10,
-        fontWeight: "900"
-    },
+  menuItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 14,
+    gap: 12,
+    backgroundColor: "#EEF2FF",
+    marginBottom: 25,
+    padding: 10,
+    fontWeight: "900",
+  },
 
-    menuText: {
-        fontSize: 16,
-        fontWeight: "700",
-        color: "#0F172A",
-    },
-    profileSection: {
-        alignItems: "center",
-        marginBottom: 24,
-        marginTop: 20,
-    },
+  menuText: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#0F172A",
+  },
+  profileSection: {
+    alignItems: "center",
+    marginBottom: 24,
+    marginTop: 20,
+  },
 
-    profileAvatar: {
-        width: 72,
-        height: 72,
-        borderRadius: 36,
-        backgroundColor: "#EEF2FF",
-        alignItems: "center",
-        justifyContent: "center",
-    },
+  profileAvatar: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: "#EEF2FF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    profileInitial: {
-        color: "#000000",
-        fontSize: 28,
-        fontWeight: "900",
-    },
+  profileInitial: {
+    color: "#000000",
+    fontSize: 28,
+    fontWeight: "900",
+  },
 
-    profileName: {
-        marginTop: 8,
-        fontSize: 16,
-        fontWeight: "800",
-        color: "#0F172A",
-    },
-    sideMenu: {
-        position: "absolute",
-        left: 0,
-        top: 0,
-        bottom: 0,
-        width: 260,
-        backgroundColor: "#FFFFFF",
-        paddingHorizontal: 16,
-        paddingTop: 40,
-        paddingBottom: 30,
-        zIndex: 100,
-        elevation: 10,
-    },
+  profileName: {
+    marginTop: 8,
+    fontSize: 16,
+    fontWeight: "800",
+    color: "#0F172A",
+  },
+  sideMenu: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 260,
+    backgroundColor: "#FFFFFF",
+    paddingHorizontal: 16,
+    paddingTop: 40,
+    paddingBottom: 30,
+    zIndex: 100,
+    elevation: 10,
+  },
 
-    menuTop: {
-        flex: 1, // pushes logout to the bottom
-    },
+  menuTop: {
+    flex: 1, // pushes logout to the bottom
+  },
 
-    logoutItem: {
-        flexDirection: "row",
-        alignItems: "center",
-        paddingVertical: 14,
-        borderTopWidth: 1,
-        borderTopColor: "#E5E7EB",
-    },
-
+  logoutItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 14,
+    borderTopWidth: 1,
+    borderTopColor: "#E5E7EB",
+  },
 });
