@@ -18,6 +18,7 @@ import ChallengeCodingMode from "../ChallengeCodingMode";
 import LoginScreen from "../LoginScreen";
 import SignupScreen from "../SignupScreen";
 import ForgotPasswordScreen from "../ForgotPasswordScreen";
+import TestScreen from "../Testscreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -71,6 +72,7 @@ const Index: React.FC = () => {
           name="ForgotPasswordScreen"
           component={ForgotPasswordScreen}
         />
+        <Stack.Screen name="TestScreen" component={TestScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
