@@ -58,9 +58,6 @@ const ModuleOverviewScreen: React.FC<Props> = ({ route, navigation }) => {
       <View style={styles.bottomCTA}>
         <TouchableOpacity
           style={[styles.primaryButton, { backgroundColor: "#2563EB" }]}
-          // onPress={() =>
-          //   navigation.navigate("LessonPlayerScreen", { module, course })
-          // }
           onPress={() => setShowModeModal(true)}
         >
           <Text style={styles.primaryButtonText}>Start Module</Text>
@@ -86,9 +83,9 @@ const ModuleOverviewScreen: React.FC<Props> = ({ route, navigation }) => {
             activeOpacity={0.7}
             onPress={() => startMode("TEXT")}
           >
-            <Text style={styles.modeBtnTitle}> Text Mode</Text>
+            <Text style={styles.modeBtnTitle}>📖 Text Mode</Text>
             <Text style={styles.modeBtnDesc}>
-              Make strategic decisions and manage resources
+              Read through lessons at your own pace
             </Text>
           </TouchableOpacity>
 
@@ -97,9 +94,9 @@ const ModuleOverviewScreen: React.FC<Props> = ({ route, navigation }) => {
             activeOpacity={0.7}
             onPress={() => startMode("VIDEO")}
           >
-            <Text style={styles.modeBtnTitle}> Video Mode</Text>
+            <Text style={styles.modeBtnTitle}> 🎬 Video Mode</Text>
             <Text style={styles.modeBtnDesc}>
-              Solve the challenge using JavaScript logic
+              Watch and learn through guided video lessons
             </Text>
           </TouchableOpacity>
         </View>
