@@ -3,11 +3,15 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "../HomeScreen";
+
+// Courses
 import CourseDescription from "../CourseDescriptionScreen";
-import CoursePlayerScreen from "../CoursePlayerScreen";
-import ModuleOverviewScreen from "../ModuleOverviewScreen";
-import LessonPlayerScreen from "../LessonPlayerScreen";
+import CoursePlayerScreen from "../courses/CoursePlayerScreen";
+import ModuleOverviewScreen from "../courses/ModuleOverviewScreen";
+import LessonPlayerScreen from "../courses/LessonPlayerScreen";
 import CoursesCentralPage from "../CoursesCentralPage";
+import LessonVideoMode from "../courses/LessonVideoMode";
+
 import ChallengeCentralPage from "../ChallengeCentralPage";
 import ReflectionsCentralPage from "../ReflectionsCentralPage";
 import CityMapPage from "../CityMapPage";
@@ -43,6 +47,8 @@ const Index: React.FC = () => {
           name="LessonPlayerScreen"
           component={LessonPlayerScreen}
         />
+
+        <Stack.Screen name="LessonVideoMode" component={LessonVideoMode} />
         <Stack.Screen
           name="CoursesCentralPage"
           component={CoursesCentralPage}
