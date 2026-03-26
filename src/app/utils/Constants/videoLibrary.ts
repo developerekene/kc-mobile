@@ -8,8 +8,10 @@ export const VIDEO_LIBRARY: VideoLibrary = {
   html: {
     "getting-started": [
       "ok-plXXHlWw", // What is HTML?
-      "UB1O30fR-EE", // How the web works
-      "PlxWf493en4", // Your first webpage
+      "hJHvdBlSxug", // How the web works
+      "ZEZOrZLLoW0", // HTML Document structure
+      "UTuW-7D7Z9M", // HTML Editors & Development Tools
+      "-USAeFpVf_A", // Creating Your First HTML Page
     ],
     "core-elements": [
       "MDLn5-zSQQI", // HTML headings, paragraphs, text
