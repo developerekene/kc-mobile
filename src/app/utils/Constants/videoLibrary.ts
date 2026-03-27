@@ -48,112 +48,79 @@ export const VIDEO_LIBRARY: VideoLibrary = {
     "visual-styling": [
       "1Rs2ND1ryYc", // Color Theory & Usage
       "rg7Fvvl3taU", // Backgrounds & Gradients
-      "phWxA89Dy94", // Box model explained
-      "phWxA89Dy94", // Box model explained
-      "phWxA89Dy94", // Box model explained
-      "phWxA89Dy94", // Box model explained
+      "phWxA89Dy94", // Border & Shadows
+      "phWxA89Dy94", // Margins & Padding
+      "phWxA89Dy94", // Text Styling
+      "phWxA89Dy94", // Fonts & Readability
     ],
     "layout-systems": [
-      "JJSoEo8JSnc", // Flexbox crash course
-      "EiNiSFIPIQE", // CSS Grid layout
-      "srvUrASNj0s", // Flexbox vs Grid
+      "JJSoEo8JSnc", // CSS Box Model
+      "EiNiSFIPIQE", // Dispay Property
+      "srvUrASNj0s", // Positioning Elements
+      "srvUrASNj0s", // Flexbox Layout System
+      "srvUrASNj0s", // CSS Grid Layout
     ],
     "responsive-design": [
       "srvUrASNj0s", // Media queries
-      "ZYV6dYtz4HA", // Mobile-first design
-      "bn-DQCifeQQ", // Responsive layout techniques
+      "ZYV6dYtz4HA", // Responsive Units (%, rem, vh,vw)
+      "bn-DQCifeQQ", // Mobile First Design Principles
     ],
   },
 
   javascript: {
-    "js-fundamentals": [
-      "Bry8J78Awq0", // JavaScript intro
-      "hdI2bqOjy3c", // Variables & data types
-      "9Ld-aOyq-GM", // Functions & scope
+    "Programing-Basics": [
+      "Bry8J78Awq0", // What is Javascript
+      "hdI2bqOjy3c", // Variables & Constants
+      "9Ld-aOyq-GM", // Javascript Data Types
+      "9Ld-aOyq-GM", // operators & Expressions
+      "9Ld-aOyq-GM", // Comments & Code Readability
     ],
     "control-flow": [
-      "IsG4Xd6LlsM", // If statements & conditionals
-      "s9wW2PpJsmQ", // Loops in JavaScript
-      "cuEtnrL9-H0", // Switch statements
+      "IsG4Xd6LlsM", // Conditional statements (if/else)
+      "s9wW2PpJsmQ", // Loops (for, while, do-while)
+      "cuEtnrL9-H0", // Logical Operators
     ],
-    "dom-manipulation": [
-      "0ik6X4DJKCc", // DOM intro
-      "y17RuWkWdn8", // Selecting & modifying elements
-      "wK2cBMcDTss", // Events & listeners
+    "Functions-&-Data": [
+      "0ik6X4DJKCc", // Functions & Reusability
+      "y17RuWkWdn8", // Parameters & return values
+      "wK2cBMcDTss", // Arrays & Collections
+      "wK2cBMcDTss", // Objects & data modeling
     ],
-    "async-javascript": [
-      "PoRJizbergM", // Callbacks explained
-      "DHvZLI7Db8E", // Promises
-      "V_Kr9OSfDeU", // Async/Await
+    "Interactivity-dom": [
+      "PoRJizbergM", // Events & event listeners
+      "DHvZLI7Db8E", // DOM Selection Methods
+      "V_Kr9OSfDeU", // Dom manipulation
+      "V_Kr9OSfDeU", // Basic Error Handling
+      "V_Kr9OSfDeU", // Introduction to ES6 features (let/const, arrow functions, template literals
     ],
   },
 
   "critical-thinking": {
-    "foundations-of-thinking": [
+    "foundations-of-criticalthinking": [
       "Bry8J78Awq0", // What is critical thinking?
-      "dItUGF8GdTw", // Logical reasoning basics
-      "6OLPL5p0fMg", // Identifying assumptions
+      "dItUGF8GdTw", // Thinking vs. reacting
+      "6OLPL5p0fMg", // Questions that drive thinking
+      "6OLPL5p0fMg", // Clarity, accuracy, and relevance
+      "6OLPL5p0fMg", // Intellectual Curiosity
     ],
-    "logical-fallacies": [
-      "iFTRuRFH9oI", // Common logical fallacies
-      "tB6-lbsMEtI", // Ad hominem & strawman
-      "7ENuEy6UJWI", // Confirmation bias
+    "logical-&-reasoning": [
+      "iFTRuRFH9oI", // Arguments & Conclusions
+      "tB6-lbsMEtI", // Deductive vs Inductive reasoning
+      "7ENuEy6UJWI", // Cause vs Correlation
+      "7ENuEy6UJWI", // Recognizing weak arguments
     ],
-    "problem-solving": [
-      "vKB0RCyICKE", // Problem-solving frameworks
-      "o7T3wDcFpGI", // Design thinking intro
-      "L1kbrlZRDvU", // Root cause analysis
+    "biases-&-logical-fallacies": [
+      "vKB0RCyICKE", // Cognitive Biases
+      "o7T3wDcFpGI", // Emotional Reasoning
+      "L1kbrlZRDvU", // Common Logical Fallacies
+      "L1kbrlZRDvU", // Social Influence & groupthink
     ],
-    argumentation: [
-      "NKEhdsnKKHs", // Building strong arguments
-      "RB7odSPMSXA", // Debate techniques
-      "Unzc731iCUY", // Evaluating evidence
-    ],
-  },
-
-  python: {
-    "python-basics": [
-      "rfscVS0vtbw", // Python intro
-      "_uQrJ0TkZlc", // Variables & types
-      "9Os0o3wzS_I", // Functions in Python
-    ],
-    "data-structures": [
-      "W8KRzm-HUcc", // Lists & tuples
-      "daefaLgNkw0", // Dictionaries
-      "r3R3h5ly-kk", // Sets explained
-    ],
-    "oop-python": [
-      "ZDa-Z5JzLYM", // Classes & objects
-      "Ej_02ICOIgs", // Inheritance
-      "pTB0EiLXUC8", // Encapsulation & polymorphism
-    ],
-    "file-handling": [
-      "Uh2ebFW8OYM", // Reading & writing files
-      "N4mEqu7yFqM", // CSV files with Python
-      "9KJ-XeQ6ZlI", // JSON in Python
-    ],
-  },
-
-  "web-development": {
-    "internet-basics": [
-      "x3c1ih2NJEg", // How the internet works
-      "AYdF7b3nMto", // DNS explained
-      "iDbyYGrswtg", // HTTP & HTTPS
-    ],
-    "version-control": [
-      "RGOj5yH7evk", // Git crash course
-      "USjZcfj8yxE", // GitHub basics
-      "HkdAHXoRtos", // Branching & merging
-    ],
-    "apis-and-json": [
-      "GZvSYJDk-us", // What is an API?
-      "7YcW25PHnAA", // REST APIs explained
-      "iiADhChRriM", // Working with JSON
-    ],
-    deployment: [
-      "l134cBALZGk", // Web hosting explained
-      "zQyrhjEAqLs", // Deploying with Vercel
-      "uEVmD6n8Il0", // Environment variables & config
+    " problem-solving-&-decision-making": [
+      "NKEhdsnKKHs", // Defining the real problem
+      "RB7odSPMSXA", // Evaluating evidence
+      "Unzc731iCUY", // weighing options & trade offs
+      "Unzc731iCUY", // decision making framework
+      "Unzc731iCUY", // Reflecting & learning from outcomes
     ],
   },
 };
