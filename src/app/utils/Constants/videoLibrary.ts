@@ -14,14 +14,19 @@ export const VIDEO_LIBRARY: VideoLibrary = {
       "-USAeFpVf_A", // Creating Your First HTML Page
     ],
     "core-elements": [
-      "MDLn5-zSQQI", // HTML headings, paragraphs, text
-      "bWPMSSsVdPk", // Links and images
-      "uin9O0tSB9c", // Lists and tables
+      "YPzFPoqwTmI", // HTML elements Explained
+      "DuIr0whfFRA", // HTML Attributes & Best Practices
+      "UfaDJ8QyBSM", // Headings & Content Hierarchy
+      "Crh63Zed0YA", // Paragraphs & Text Flow
+      "cTPzNDwxugQ", // Text Formatting & Emphasis
+      "wI40AxTfbho", // Quotations & Citations
     ],
     "styling-and-media": [
-      "yfoY53QXEnI", // HTML & CSS intro
-      "mU6anWqZJcc", // HTML media elements
-      "Rk4ygBp3EeM", // Audio, video, iframes
+      "MaLSXxwlYno", // Inline styles and when to avoid them
+      "DviCC1ofgq8", // HTML Colors & Visual Meaning
+      "DiSvq5SgLMI", // Links & Navigation
+      "IdgeA0KanBI", // Image & Media Embedding
+      "8ELxvmNm5WA", // Image Accessibilty (alt text & SEO)
     ],
     "lists-tables-forms": [
       "E5MEzC0prd4", // HTML tables deep dive
@@ -55,7 +60,7 @@ export const VIDEO_LIBRARY: VideoLibrary = {
 
   javascript: {
     "js-fundamentals": [
-      "W6NZfCO5SIk", // JavaScript intro
+      "Bry8J78Awq0", // JavaScript intro
       "hdI2bqOjy3c", // Variables & data types
       "9Ld-aOyq-GM", // Functions & scope
     ],
@@ -78,7 +83,7 @@ export const VIDEO_LIBRARY: VideoLibrary = {
 
   "critical-thinking": {
     "foundations-of-thinking": [
-      "HnJ1bqXUnIM", // What is critical thinking?
+      "Bry8J78Awq0", // What is critical thinking?
       "dItUGF8GdTw", // Logical reasoning basics
       "6OLPL5p0fMg", // Identifying assumptions
     ],
