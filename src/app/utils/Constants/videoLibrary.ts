@@ -96,8 +96,8 @@ export const VIDEO_LIBRARY: VideoLibrary = {
   },
 
   "critical-thinking": {
-    "foundations-of-criticalthinking": [
-      "Bry8J78Awq0", // What is critical thinking?
+    "foundations-of-critical-thinking": [
+      "-eEBuqwY-nE", // What is critical thinking?
       "dItUGF8GdTw", // Thinking vs. reacting
       "6OLPL5p0fMg", // Questions that drive thinking
       "6OLPL5p0fMg", // Clarity, accuracy, and relevance
