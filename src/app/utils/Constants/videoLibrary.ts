@@ -21,29 +21,36 @@ export const VIDEO_LIBRARY: VideoLibrary = {
       "cTPzNDwxugQ", // Text Formatting & Emphasis
       "wI40AxTfbho", // Quotations & Citations
     ],
-    "styling-and-media": [
+    "styling-&-media": [
       "MaLSXxwlYno", // Inline styles and when to avoid them
       "DviCC1ofgq8", // HTML Colors & Visual Meaning
       "DiSvq5SgLMI", // Links & Navigation
       "IdgeA0KanBI", // Image & Media Embedding
       "8ELxvmNm5WA", // Image Accessibilty (alt text & SEO)
     ],
-    "lists-tables-forms": [
-      "E5MEzC0prd4", // HTML tables deep dive
-      "fNcJuPIZ2kg", // HTML forms
-      "YwbIeMCM0PI", // Form validation basics
+    "lists,-tables-&-forms": [
+      "qiT-ol-VRW0", // Ordered & Unordered Lists
+      "6uA_Nc4UDS4", // Tables for structured data
+      "O14Wb3N4wDQ", // Forms & User input
+      "hbPly-L02n8", // HTML input Types
+      "Mt-e0DpxGXE", // Form labels, validation & Accessibility
     ],
   },
 
   css: {
     "css-fundamentals": [
-      "yfoY53QXEnI", // CSS basics
-      "1PnVor36_40", // CSS selectors
-      "l1mER1bV0N0", // CSS specificity & cascade
+      "yfoY53QXEnI", // What is CSS
+      "1PnVor36_40", // CSS Syntax & Rules
+      "l1mER1bV0N0", // Selectors & Targeting Elements
+      "l1mER1bV0N0", // Specificity & Cascade
+      "l1mER1bV0N0", // CSS Comments & Organization
     ],
     "visual-styling": [
-      "1Rs2ND1ryYc", // Colors & backgrounds
-      "rg7Fvvl3taU", // Typography in CSS
+      "1Rs2ND1ryYc", // Color Theory & Usage
+      "rg7Fvvl3taU", // Backgrounds & Gradients
+      "phWxA89Dy94", // Box model explained
+      "phWxA89Dy94", // Box model explained
+      "phWxA89Dy94", // Box model explained
       "phWxA89Dy94", // Box model explained
     ],
     "layout-systems": [
@@ -151,22 +158,22 @@ export const VIDEO_LIBRARY: VideoLibrary = {
   },
 };
 
-// ── Helper to get a video ID safely ──────────────────────────────
+// Helper to get a video ID safely
 export const getVideoId = (
   courseKey: string,
   moduleKey: string,
   topicIndex: number,
 ): string => {
   const course = VIDEO_LIBRARY[courseKey];
-  if (!course) return "dQw4w9WgXcQ"; // fallback
+  if (!course) return "gmuTjeQUbTM"; // fallback
 
   const moduleVideos = course[moduleKey];
-  if (!moduleVideos) return "dQw4w9WgXcQ"; // fallback
+  if (!moduleVideos) return "gmuTjeQUbTM"; // fallback
 
   return moduleVideos[topicIndex] ?? moduleVideos[0];
 };
 
-// ── Build iframe HTML for WebView ─────────────────────────────────
+// ── Build iframe HTML for WebView
 export const buildIframeHtml = (videoId: string): string => `
   <!DOCTYPE html>
   <html>

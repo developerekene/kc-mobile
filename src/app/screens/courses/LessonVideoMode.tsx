@@ -59,6 +59,11 @@ const LessonVideoMode: React.FC<Props> = ({ route, navigation }) => {
   const moduleKey = module.title.toLowerCase().replace(/\s+/g, "-");
   const videoId = getVideoId(courseKey, moduleKey, selectedIndex);
 
+  // ADD THIS
+  console.log("courseKey:", courseKey);
+  console.log("moduleKey:", moduleKey);
+  console.log("videoId:", videoId);
+
   return (
     <View style={styles.container}>
       {/* HEADER */}
