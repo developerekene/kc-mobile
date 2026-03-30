@@ -23,6 +23,7 @@ import LoginScreen from "../LoginScreen";
 import SignupScreen from "../SignupScreen";
 import ForgotPasswordScreen from "../ForgotPasswordScreen";
 import TestScreen from "../Testscreen";
+import CreateCoursePage from "../CreateCoursePage";
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,7 @@ const Index: React.FC = () => {
           component={ForgotPasswordScreen}
         />
         <Stack.Screen name="TestScreen" component={TestScreen} />
+        <Stack.Screen name="CreateCoursePage" component={CreateCoursePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

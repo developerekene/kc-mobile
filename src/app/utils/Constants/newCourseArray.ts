@@ -1,184 +1,237 @@
 const newCourseArray = [
   {
     color: "#E0E7FF",
-    description: "Structure the web using semantic, accessible markup.",
-    estimatedTime: "6–8 hours",
-    id: "html",
-    intro:
-      "HTML is the backbone of every website. In this course, you'll learn how web pages are structured, how browsers interpret markup, and how to create clean, accessible documents that form a solid foundation for any web project.",
+    description: "Build and style modern websites using structured HTML and powerful CSS.",
+    estimatedTime: "18–24 hours",
+    id: "html-css",
+    intro: "HTML and CSS are the core building blocks of the web. HTML provides structure while CSS controls layout and design. In this course, you’ll learn how to create well-structured, accessible web pages and style them into responsive, visually appealing websites that work across devices.",
     level: "Beginner",
-    title: "HTML",
-    outcomes: [
-      "Understand how web pages are structured and rendered",
-      "Write clean, semantic, and accessible HTML",
-      "Build well-organized documents that scale easily",
-      "Develop confidence reading and understanding existing HTML",
-    ],
+    title: "HTML & CSS",
     modules: [
       {
-        id: "html-module-1",
+        id: "html-css-module-1",
         title: "Getting Started",
-        summary:
-          "Learn what HTML is, how the web works behind the scenes, and how to create your very first webpage from scratch.",
-        challengePrompt:
-          "A simple webpage displays differently across browsers. How would you identify whether the issue lies in structure, standards, or browser behavior?",
+        summary: "Develop a solid foundation in how the web works and learn to build structured, standards-compliant webpages using HTML. This module introduces core web concepts, essential HTML syntax, and practical skills needed to create and debug your first webpage.",
         topics: [
-          { id: "html-module-1-topic-1", title: "What is HTML?" },
-          { id: "html-module-1-topic-2", title: "How the Web Works" },
-          { id: "html-module-1-topic-3", title: "Your First HTML Page" },
-          { id: "html-module-1-topic-4", title: "HTML Document Structure" },
-          { id: "html-module-1-topic-5", title: "Browser Rendering Basics" },
+          {
+            title: "How the Web Works",
+            description: "Understand the full lifecycle of how web pages are delivered, including the roles of browsers, servers, DNS, and HTTP/HTTPS protocols.",
+            keyPoints: [
+              "Client-server architecture and request-response cycle",
+              "Role of browsers in parsing and rendering HTML/CSS",
+              "DNS resolution and how domain names map to IP addresses",
+              "Difference between static and dynamic content",
+              "Introduction to network requests and response status codes"
+            ],
+            content: `
+          ### The Big Picture
+          The web operates on a **client-server model**. When you visit a website, your browser (the client) communicates with a server to request and retrieve content.
+          
+          ### Step-by-Step: What Happens When You Visit a Website
+          1. You enter a URL into your browser (e.g., https://example.com)
+          2. The browser performs a **DNS lookup** to find the server’s IP address
+          3. A request is sent using **HTTP or HTTPS**
+          4. The server processes the request and sends back a response (HTML, CSS, JavaScript)
+          5. The browser parses the response and renders the page visually
+          
+          ### Key Components Explained
+          
+          **Browser (Client):**
+          - Sends requests to servers
+          - Parses HTML into a DOM (Document Object Model)
+          - Applies CSS and executes JavaScript
+          - Renders the final page you see
+          
+          **Server:**
+          - Stores website files or runs applications
+          - Handles incoming requests
+          - Sends responses back to the browser
+          
+          **HTTP / HTTPS:**
+          - Protocols used for communication
+          - HTTPS is secure (encrypted using SSL/TLS)
+          - Common methods: GET, POST
+          
+          **DNS (Domain Name System):**
+          - Translates human-readable domain names into IP addresses
+          - Example: example.com → 93.184.216.34
+          
+          ### Static vs Dynamic Content
+          - **Static:** Pre-built files sent as-is (HTML pages)
+          - **Dynamic:** Content generated on demand (e.g., user dashboards, search results)
+          
+          ### Response Status Codes
+          - 200 → Success
+          - 404 → Not Found
+          - 500 → Server Error
+          
+          ### How Browsers Render Pages
+          - HTML is parsed into the DOM
+          - CSS is parsed into the CSSOM
+          - These are combined to form the render tree
+          - The browser paints pixels to the screen
+          
+          ### Why This Matters (Professional Insight)
+          Understanding this flow helps you:
+          - Debug slow or broken websites
+          - Optimize performance
+          - Understand frontend/backend interactions
+          - Work effectively with APIs and modern frameworks
+          `,
+            practical: "Open browser DevTools → Network tab → reload a webpage and analyze request timings, file types, and status codes. Identify which resources load first and which take the longest."
+          },
+          {
+            title: "Introduction to HTML",
+            description: "Learn the fundamentals of HTML and how it is used to structure content on the web.",
+            keyPoints: [
+              "What HTML is and how it differs from programming languages",
+              "Understanding elements, tags, and attributes",
+              "Proper nesting and document hierarchy",
+              "Inline vs block-level elements",
+              "Introduction to semantic HTML and why it matters"
+            ],
+            practical: "Create simple HTML snippets using common elements like headings, paragraphs, and links."
+          },
+          {
+            title: "Basic Document Structure",
+            description: "Explore the standard HTML document structure and understand how browsers interpret it.",
+            keyPoints: [
+              "Purpose of <!DOCTYPE html> and standards mode",
+              "Structure and role of <html>, <head>, and <body>",
+              "Importance of metadata (charset, viewport, title)",
+              "How browsers parse and construct the DOM",
+              "Common mistakes that lead to rendering issues"
+            ],
+            practical: "Build a clean HTML boilerplate from scratch and validate it using an online validator."
+          },
+          {
+            title: "Text Elements",
+            description: "Use HTML text elements to create well-structured, readable, and accessible content.",
+            keyPoints: [
+              "Using headings (h1–h6) correctly for hierarchy",
+              "Working with paragraphs and text formatting tags",
+              "Creating ordered and unordered lists",
+              "Differences between <strong>, <em>, and purely visual tags",
+              "Accessibility considerations for text structure"
+            ],
+            practical: "Convert a plain text document into a properly structured HTML page using semantic text elements."
+          },
+          {
+            title: "Your First Webpage",
+            description: "Apply your knowledge to build, run, and debug your first complete HTML webpage.",
+            keyPoints: [
+              "Setting up a basic project with an index.html file",
+              "Writing and organizing HTML content",
+              "Opening and testing pages in different browsers",
+              "Using DevTools to inspect and debug elements",
+              "Validating HTML and identifying structural issues"
+            ],
+            practical: "Build a personal webpage that includes a title, introduction, and a list of interests, then test it across multiple browsers."
+          }
         ],
+        challengePrompt: "A simple webpage displays differently across browsers. How would you identify whether the issue lies in structure, standards, or browser behavior?",
+        challengeGuidance: [
+          "Validate the HTML structure using a standard validator",
+          "Check for correct DOCTYPE declaration and encoding",
+          "Compare rendering across multiple browsers",
+          "Use DevTools to inspect DOM and layout differences",
+          "Identify any browser-specific styling or default behavior differences"
+        ]
       },
       {
-        id: "html-module-2",
+        id: "html-css-module-2",
         title: "Core Elements",
-        summary:
-          "Explore the fundamental building blocks that give structure and meaning to web content.",
-        challengePrompt:
-          "A webpage feels cluttered and confusing. Which semantic elements could improve clarity and readability?",
+        summary: "Explore the essential HTML elements that give structure and meaning to content.",
         topics: [
-          { id: "html-module-2-topic-1", title: "Headings and Paragraphs" },
-          { id: "html-module-2-topic-2", title: "Semantic HTML Elements" },
-          { id: "html-module-2-topic-3", title: "Inline vs Block Elements" },
-          { id: "html-module-2-topic-4", title: "Anchors and Navigation" },
           {
-            id: "html-module-2-topic-5",
-            title: "Sectioning with Header, Main, and Footer",
+            title: "Semantic HTML",
+            description: "Learn the importance of meaningful tags for accessibility and SEO."
           },
+          {
+            title: "Page Layout Elements",
+            description: "Use header, nav, main, section, and footer to structure pages."
+          },
+          {
+            title: "Lists and Links",
+            description: "Create ordered, unordered lists and navigation links."
+          },
+          {
+            title: "Images and Media",
+            description: "Add images and understand the importance of alt text."
+          },
+          {
+            title: "Accessibility Basics",
+            description: "Ensure your HTML is usable by all users, including those with disabilities."
+          }
         ],
+        challengePrompt: "A webpage feels cluttered and confusing. Which semantic elements could improve clarity and readability?"
       },
       {
-        id: "html-module-3",
-        title: "Styling & Media",
-        summary:
-          "Learn how HTML supports visual presentation through media, links, and basic styling.",
-        challengePrompt:
-          "Users say a page looks visually dull. Before adding CSS, what HTML-level improvements could enhance structure and clarity?",
+        id: "html-css-module-3",
+        title: "Styling with CSS",
+        summary: "Learn how to apply styles to HTML elements using CSS.",
         topics: [
-          { id: "html-module-3-topic-1", title: "Embedding Images" },
-          { id: "html-module-3-topic-2", title: "Audio and Video Elements" },
           {
-            id: "html-module-3-topic-3",
-            title: "Inline Styles and the Style Attribute",
+            title: "Introduction to CSS",
+            description: "Understand how CSS works and how it connects to HTML."
           },
           {
-            id: "html-module-3-topic-4",
-            title: "Linking External Stylesheets",
+            title: "Selectors",
+            description: "Target elements using class, id, and element selectors."
           },
-          { id: "html-module-3-topic-5", title: "Figures and Captions" },
+          {
+            title: "Colors and Typography",
+            description: "Style text using fonts, colors, and spacing."
+          },
+          {
+            title: "Box Model",
+            description: "Understand margin, padding, borders, and how elements take up space."
+          },
+          {
+            title: "Applying Styles",
+            description: "Learn inline, internal, and external CSS methods."
+          }
         ],
+        challengePrompt: "Users say a page looks visually dull. Before adding complex styles, what CSS basics would you apply to improve clarity and design?"
       },
       {
-        id: "html-module-4",
-        title: "Lists, Tables & Forms",
-        summary:
-          "Handle structured data and collect user input in a clear, accessible way.",
-        challengePrompt:
-          "You need to collect user data accurately and safely. How do you design a form that's both usable and accessible?",
+        id: "html-css-module-4",
+        title: "Layout & Responsiveness",
+        summary: "Build flexible and responsive layouts using modern CSS techniques.",
         topics: [
-          { id: "html-module-4-topic-1", title: "Ordered and Unordered Lists" },
-          { id: "html-module-4-topic-2", title: "Building Tables" },
-          { id: "html-module-4-topic-3", title: "Form Elements and Inputs" },
           {
-            id: "html-module-4-topic-4",
-            title: "Labels, Fieldsets, and Accessibility",
+            title: "Display Properties",
+            description: "Understand block, inline, and inline-block elements."
           },
-          { id: "html-module-4-topic-5", title: "Form Validation Attributes" },
+          {
+            title: "Flexbox",
+            description: "Create flexible layouts for aligning and distributing space."
+          },
+          {
+            title: "CSS Grid",
+            description: "Design complex layouts with rows and columns."
+          },
+          {
+            title: "Positioning",
+            description: "Control element placement using relative, absolute, and fixed positioning."
+          },
+          {
+            title: "Media Queries",
+            description: "Make your website responsive across different screen sizes."
+          }
         ],
-      },
+        challengePrompt: "Your layout breaks on mobile devices. How would you use Flexbox, Grid, and media queries to fix responsiveness?"
+      }
     ],
-  },
-  {
-    color: "#DBEAFE",
-    description: "Design beautiful, consistent, and responsive layouts.",
-    estimatedTime: "7–9 hours",
-    id: "css",
-    intro:
-      "CSS controls how websites look and feel. In this course, you'll learn how styles are applied, how layouts are built, and how to design responsive interfaces that work across all screen sizes.",
-    level: "Beginner",
-    title: "CSS",
     outcomes: [
-      "Style web pages with confidence",
-      "Understand spacing, typography, and color systems",
-      "Build flexible layouts using modern CSS tools",
-      "Create responsive designs that adapt to any device",
-    ],
-    modules: [
-      {
-        id: "css-module-1",
-        title: "CSS Fundamentals",
-        summary:
-          "Learn how CSS works, how styles are applied, and how to control them effectively.",
-        challengePrompt:
-          "A style isn't applying as expected. How do you determine whether it's a selector, specificity, or cascade issue?",
-        topics: [
-          { id: "css-module-1-topic-1", title: "What is CSS?" },
-          { id: "css-module-1-topic-2", title: "Selectors and Combinators" },
-          { id: "css-module-1-topic-3", title: "The Cascade and Inheritance" },
-          { id: "css-module-1-topic-4", title: "Specificity Rules" },
-          { id: "css-module-1-topic-5", title: "Linking CSS to HTML" },
-        ],
-      },
-      {
-        id: "css-module-2",
-        title: "Visual Styling",
-        summary:
-          "Control color, spacing, borders, and typography to create visually appealing designs.",
-        challengePrompt:
-          "A page feels inconsistent and messy. Which visual properties would you adjust first to improve balance?",
-        topics: [
-          { id: "css-module-2-topic-1", title: "Colors and Backgrounds" },
-          { id: "css-module-2-topic-2", title: "Typography and Fonts" },
-          { id: "css-module-2-topic-3", title: "The Box Model" },
-          { id: "css-module-2-topic-4", title: "Borders and Shadows" },
-          {
-            id: "css-module-2-topic-5",
-            title: "Spacing with Margin and Padding",
-          },
-        ],
-      },
-      {
-        id: "css-module-3",
-        title: "Layout Systems",
-        summary:
-          "Learn how elements are positioned and aligned on the page using modern layout techniques.",
-        challengePrompt:
-          "A layout works on desktop but breaks on mobile. Which layout system would provide better flexibility?",
-        topics: [
-          { id: "css-module-3-topic-1", title: "Normal Flow and Display" },
-          {
-            id: "css-module-3-topic-2",
-            title: "Positioning: Static, Relative, Absolute, Fixed",
-          },
-          { id: "css-module-3-topic-3", title: "Flexbox Fundamentals" },
-          { id: "css-module-3-topic-4", title: "CSS Grid Basics" },
-          {
-            id: "css-module-3-topic-5",
-            title: "Choosing Between Flex and Grid",
-          },
-        ],
-      },
-      {
-        id: "css-module-4",
-        title: "Responsive Design",
-        summary:
-          "Make layouts adapt seamlessly across different screen sizes and devices.",
-        challengePrompt:
-          "Mobile users report poor usability. Which responsive strategies would you apply first?",
-        topics: [
-          { id: "css-module-4-topic-1", title: "The Viewport Meta Tag" },
-          { id: "css-module-4-topic-2", title: "Media Queries" },
-          {
-            id: "css-module-4-topic-3",
-            title: "Fluid Layouts and Relative Units",
-          },
-          { id: "css-module-4-topic-4", title: "Responsive Images" },
-          { id: "css-module-4-topic-5", title: "Mobile-First Design Strategy" },
-        ],
-      },
-    ],
-  },
-];
+      "Understand how web pages are structured and styled",
+      "Write clean, semantic, and accessible HTML",
+      "Apply CSS to create visually appealing designs",
+      "Build responsive layouts using Flexbox and Grid",
+      "Create modern websites that work across devices",
+      "Debug and improve existing HTML and CSS code"
+    ]
+  }
+]
 
 export default newCourseArray;

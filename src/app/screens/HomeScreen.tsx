@@ -9,7 +9,7 @@ import {
   Animated,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { courses } from "../utils/Constants/data";
+import newCourseArray from "../utils/Constants/newCourseArray";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { authService } from "../redux/configration/auth.service";
@@ -417,7 +417,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
             <Ionicons name="create-outline" size={20} />
             <Text style={styles.menuText}>Reflections</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.menuItem}
             onPress={() => {
               navigation.navigate("CityMapPage");
@@ -425,7 +425,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
           >
             <Ionicons name="bulb-outline" size={20} />
             <Text style={styles.menuText}>City Map</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         {/* BOTTOM LOGOUT */}
@@ -479,7 +479,8 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Top Courses</Text>
           <FlatList
-            data={allCourses}
+            // data={allCourses}
+            data={newCourseArray}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <CourseCard item={item} />}
             horizontal
@@ -520,7 +521,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
             <Text style={styles.quickText}>Reflections</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.quickCard}
             onPress={() => {
               navigation.navigate("CityMapPage");
@@ -528,7 +529,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
           >
             <Ionicons name="map-outline" size={20} color="#0F172A" />
             <Text style={styles.quickText}>City Map</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         {/* ACTIVE CHALLENGE */}
@@ -586,7 +587,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.section}>
+        {/* <View style={styles.section}>
           <Text style={styles.sectionTitle}>Achievements & Streaks</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={styles.badgeCard}>
@@ -606,7 +607,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
               <Text style={styles.badgeText}>Total Hours: 0</Text>
             </View>
           </ScrollView>
-        </View>
+        </View> */}
       </ScrollView>
     </>
   );

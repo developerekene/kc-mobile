@@ -9,6 +9,7 @@ import {
     Pressable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 const ChallengeDetailScreen = ({ route, navigation }: any) => {
     const { challenge } = route.params;
@@ -16,11 +17,16 @@ const ChallengeDetailScreen = ({ route, navigation }: any) => {
 
     const startMode = (mode: "GAME" | "CODE") => {
         setShowModeModal(false);
+        Toast.show({
+            type: 'success',
+            text1: 'This is Inprogress',
+            text2: "This feature is currently under devlelopment",
+        });
 
-        navigation.navigate(
-            mode === "GAME" ? "ChallengeGameMode" : "ChallengeCodingMode",
-            { challenge }
-        );
+        // navigation.navigate(
+        //     mode === "GAME" ? "ChallengeGameMode" : "ChallengeCodingMode",
+        //     { challenge }
+        // );
     };
 
     return (
@@ -85,7 +91,7 @@ const ChallengeDetailScreen = ({ route, navigation }: any) => {
 
                     <TouchableOpacity
                         style={styles.modeBtn}
-                        disabled={true}
+                        disabled={false}
                         onPress={() => startMode("GAME")}
                     >
                         <Text style={styles.modeBtnTitle}>🎮 Game Mode</Text>
@@ -96,7 +102,7 @@ const ChallengeDetailScreen = ({ route, navigation }: any) => {
 
                     <TouchableOpacity
                         style={styles.modeBtn}
-                        disabled={true}
+                        disabled={false}
                         onPress={() => startMode("CODE")}
                     >
                         <Text style={styles.modeBtnTitle}>💻 Coding Mode</Text>

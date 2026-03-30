@@ -48,7 +48,7 @@ const ModuleOverviewScreen: React.FC<Props> = ({ route, navigation }) => {
             <Text style={styles.topicIndex}>{index + 1}</Text>
             <View style={{ flex: 1 }}>
               <Text style={styles.topicText}>{item.title}</Text>
-              {/* <Text style={styles.topicDescription}>{item.description}</Text> */}
+              <Text style={styles.topicDescription}>{item.description}</Text>
             </View>
           </View>
         )}

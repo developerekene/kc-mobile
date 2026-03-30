@@ -10,7 +10,7 @@ export const coursesSlice = createSlice({
     // Add multiple courses at once
     addCourse: (state, action: PayloadAction<Course[]>) => {
       state.push(...action.payload); // spread the array into state
-      //   console.log("From course slice", ...action.payload);
+        // console.log("From course slice", ...action.payload);
     },
     removeCourse: (state, action: PayloadAction<string>) => {
       return state.filter((course) => course.id !== action.payload);

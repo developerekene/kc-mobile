@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
-import { courses } from "../utils/Constants/data";
+import newCourseArray from "../utils/Constants/newCourseArray";
 
 const CoursesCentralPage: React.FC<any> = ({ navigation }) => {
 
@@ -53,7 +53,7 @@ const CoursesCentralPage: React.FC<any> = ({ navigation }) => {
             </TouchableOpacity>
             <Text style={styles.header}>All Courses</Text>
             <FlatList
-                data={courses}
+                data={newCourseArray}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <CourseCard item={item} />}
                 showsVerticalScrollIndicator={false}
@@ -61,11 +61,12 @@ const CoursesCentralPage: React.FC<any> = ({ navigation }) => {
             />
 
             <TouchableOpacity style={styles.createBtn} onPress={() => {
-                Toast.show({
-                    type: "success",
-                    text1: "Coming Soon",
-                    text2: `This feature is coming soon for Mentors alone`,
-                });
+                // Toast.show({
+                //     type: "success",
+                //     text1: "Coming Soon",
+                //     text2: `This feature is coming soon for Mentors alone`,
+                // });
+                navigation.navigate("CreateCoursePage")
             }}>
                 <Text style={styles.createBtnText}>+ Create New Course</Text>
             </TouchableOpacity>
