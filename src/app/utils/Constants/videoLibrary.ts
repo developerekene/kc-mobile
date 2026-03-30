@@ -110,7 +110,7 @@ export const VIDEO_LIBRARY: VideoLibrary = {
       "vwjXF-KFpXU", // Recognizing weak arguments
     ],
     "biases-&-logical-fallacies": [
-      "vKB0RCyICKE", // Cognitive Biases
+      "vKB0RCyICKE", // Cognitive Biasesa
       "o7T3wDcFpGI", // Emotional Reasoning
       "L1kbrlZRDvU", // Common Logical Fallacies
       "L1kbrlZRDvU", // Social Influence & groupthink
