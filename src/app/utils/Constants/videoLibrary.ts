@@ -40,77 +40,77 @@ export const VIDEO_LIBRARY: VideoLibrary = {
   css: {
     "css-fundamentals": [
       "yfoY53QXEnI", // What is CSS
-      "1PnVor36_40", // CSS Syntax & Rules
-      "l1mER1bV0N0", // Selectors & Targeting Elements
-      "l1mER1bV0N0", // Specificity & Cascade
-      "l1mER1bV0N0", // CSS Comments & Organization
+      "uyew1a8ToHQ", // CSS Syntax & Rules
+      "1h5StQJ8hww", // Selectors & Targeting Elements
+      "JYKizzvy1yc", // Specificity & Cascade
+      "-cW1Ud36lcw", // CSS Comments & Organization
     ],
     "visual-styling": [
-      "1Rs2ND1ryYc", // Color Theory & Usage
-      "rg7Fvvl3taU", // Backgrounds & Gradients
-      "phWxA89Dy94", // Border & Shadows
-      "phWxA89Dy94", // Margins & Padding
-      "phWxA89Dy94", // Text Styling
-      "phWxA89Dy94", // Fonts & Readability
+      "4Ypuns-Jq20", // Color Theory & Usage
+      "cWgb42tUYPA", // Backgrounds & Gradients
+      "8SeFSmvx3AA", // Border & Shadows
+      "EhbZGV2dqZ4", // Margins & Padding
+      "Y5TYDo9Qcv4", // Text Styling
+      "GTIblRyol3Q", // Fonts & Readability
     ],
     "layout-systems": [
-      "JJSoEo8JSnc", // CSS Box Model
-      "EiNiSFIPIQE", // Dispay Property
-      "srvUrASNj0s", // Positioning Elements
-      "srvUrASNj0s", // Flexbox Layout System
-      "srvUrASNj0s", // CSS Grid Layout
+      "rIO5326FgPE", // CSS Box Model
+      "9T8uxp5hQ60", // Dispay Property
+      "7ZXsPj43heo", // Positioning Elements
+      "phWxA89Dy94", // Flexbox Layout System
+      "8p0OblRuhd0", // CSS Grid Layout
     ],
     "responsive-design": [
-      "srvUrASNj0s", // Media queries
-      "ZYV6dYtz4HA", // Responsive Units (%, rem, vh,vw)
-      "bn-DQCifeQQ", // Mobile First Design Principles
+      "n9yI6fjkrfE", // Media queries
+      "N5wpD9Ov_To", // Responsive Units (%, rem, vh,vw)
+      "p3k_IrXLNRc", // Mobile First Design Principles
     ],
   },
 
   javascript: {
     "Programing-Basics": [
-      "Bry8J78Awq0", // What is Javascript
-      "hdI2bqOjy3c", // Variables & Constants
-      "9Ld-aOyq-GM", // Javascript Data Types
-      "9Ld-aOyq-GM", // operators & Expressions
-      "9Ld-aOyq-GM", // Comments & Code Readability
+      "upDLs1sn7g4", // What is Javascript
+      "XgSjoHgy3Rk", // Variables & Constants
+      "fD0t_DKREbE", // Javascript Data Types
+      "mesu75PTDC8", // operators & Expressions
+      "hYmMBiw720w", // Comments & Code Readability
     ],
     "control-flow": [
       "IsG4Xd6LlsM", // Conditional statements (if/else)
       "s9wW2PpJsmQ", // Loops (for, while, do-while)
-      "cuEtnrL9-H0", // Logical Operators
+      "-L41L0IZuv4?si", // Logical Operators
     ],
     "Functions-&-Data": [
-      "0ik6X4DJKCc", // Functions & Reusability
-      "y17RuWkWdn8", // Parameters & return values
-      "wK2cBMcDTss", // Arrays & Collections
-      "wK2cBMcDTss", // Objects & data modeling
+      "N8ap4k_1QEQ", // Functions & Reusability
+      "e-_mDyqm2oU", // Parameters & return values
+      "oigfaZ5ApsM", // Arrays & Collections
+      "rLPwCAqyCAE", // Objects & data modeling
     ],
     "Interactivity-dom": [
-      "PoRJizbergM", // Events & event listeners
-      "DHvZLI7Db8E", // DOM Selection Methods
-      "V_Kr9OSfDeU", // Dom manipulation
-      "V_Kr9OSfDeU", // Basic Error Handling
-      "V_Kr9OSfDeU", // Introduction to ES6 features (let/const, arrow functions, template literals
+      "XF1_MlZ5l6M", // Events & event listeners
+      "VW8kNAous88", // DOM Selection Methods
+      "y17RuWkWdn8", // Dom manipulation
+      "cFTFtuEQ-10", // Basic Error Handling
+      "NCwa_xi0Uuc", // Introduction to ES6 features (let/const, arrow functions, template literals
     ],
   },
 
   "critical-thinking": {
     "foundations-of-critical-thinking": [
       "-eEBuqwY-nE", // What is critical thinking?
-      "dItUGF8GdTw", // Thinking vs. reacting
-      "6OLPL5p0fMg", // Questions that drive thinking
-      "6OLPL5p0fMg", // Clarity, accuracy, and relevance
-      "6OLPL5p0fMg", // Intellectual Curiosity
+      "BB9-csCiooU", // Thinking vs. reacting
+      "AmAbX3PxhGs", // Questions that drive thinking
+      "TQcqjN1lZi0", // Clarity, accuracy, and relevance
+      "TY-DzKMRekc", // Intellectual Curiosity
     ],
     "logical-&-reasoning": [
-      "iFTRuRFH9oI", // Arguments & Conclusions
-      "tB6-lbsMEtI", // Deductive vs Inductive reasoning
-      "7ENuEy6UJWI", // Cause vs Correlation
-      "7ENuEy6UJWI", // Recognizing weak arguments
+      "NUetb_Tsz2E", // Arguments & Conclusions
+      "jX3OXwpEpl8", // Deductive vs Inductive reasoning
+      "U-_f8RQIIiw", // Cause vs Correlation
+      "vwjXF-KFpXU", // Recognizing weak arguments
     ],
     "biases-&-logical-fallacies": [
-      "vKB0RCyICKE", // Cognitive Biases
+      "vKB0RCyICKE", // Cognitive Biasesa
       "o7T3wDcFpGI", // Emotional Reasoning
       "L1kbrlZRDvU", // Common Logical Fallacies
       "L1kbrlZRDvU", // Social Influence & groupthink
