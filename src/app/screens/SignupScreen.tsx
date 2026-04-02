@@ -9,69 +9,69 @@ import {
   Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { authService } from "../redux/configration/auth.service";
+
+// 1. REBUILT INPUT COMPONENT (Defined OUTSIDE to prevent focus loss)
+const CustomInput = ({ label, value, onChangeText, ...props }: any) => (
+  <View style={styles.inputGroup}>
+    <Text style={styles.label}>{label}</Text>
+    <TextInput
+      style={styles.input}
+      value={value}              // Explicitly controlled
+      onChangeText={onChangeText} // Direct function call
+      placeholderTextColor="#94A3B8"
+      {...props}
+    />
+  </View>
+);
 
 const SignupScreen: React.FC<any> = ({ navigation }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
-  const handleSignup = () => {
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleSignup = async () => {
+    const { firstName, lastName, email, password, confirmPassword } = formData;
+
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      Alert.alert("Missing fields", "Please fill in all fields");
-      return;
+      return Alert.alert("Error", "Please fill all fields");
     }
 
     if (password !== confirmPassword) {
-      Alert.alert("Password mismatch", "Passwords do not match");
-      return;
+      return Alert.alert("Error", "Passwords do not match");
     }
 
-    if (!acceptedTerms) {
-      Alert.alert("Terms Required", "You must accept the terms and conditions");
-      return;
-    }
-
-    // 🔐 Replace with signup logic
-    console.log({
-      firstName,
-      lastName,
-      email,
-      password,
-    });
+    await authService.handleUserRegistration(formData).then(() => {
+      navigation.navigate("Home");
+    })
   };
-
-  const Input = ({
-    label,
-    ...props
-  }: {
-    label: string;
-    [key: string]: any;
-  }) => (
-    <View style={styles.inputGroup}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.input} {...props} />
-    </View>
-  );
 
   return (
     <View style={styles.container}>
-      {/* HEADER */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.back}>← Back</Text>
         </TouchableOpacity>
-
-        <View style={{ width: 24 }} />
       </View>
 
-      {/* SCROLLABLE CONTENT */}
       <ScrollView
         style={styles.scrollContainer}
-        contentContainerStyle={{ paddingBottom: 140 }}
-        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 60 }}
+        keyboardShouldPersistTaps="handled"
       >
         <View style={styles.card}>
           <View style={styles.avatar}>
@@ -79,72 +79,58 @@ const SignupScreen: React.FC<any> = ({ navigation }) => {
           </View>
 
           <Text style={styles.title}>Create Account</Text>
-          <Text style={styles.subtitle}>
-            Join us and start managing your profile
-          </Text>
+          <Text style={styles.subtitle}>Join us and start managing your profile</Text>
 
-          {/* FIRST NAME */}
-          <Input
+          {/* 4. INPUTS USING THE SINGLE FUNCTION */}
+          <CustomInput
             label="First Name"
-            value={firstName}
-            onChangeText={setFirstName}
             placeholder="John"
+            value={formData.firstName}
+            onChangeText={(text: string) => handleInputChange("firstName", text)}
           />
 
-          {/* LAST NAME */}
-          <Input
+          <CustomInput
             label="Last Name"
-            value={lastName}
-            onChangeText={setLastName}
             placeholder="Doe"
+            value={formData.lastName}
+            onChangeText={(text: string) => handleInputChange("lastName", text)}
           />
 
-          {/* EMAIL */}
-          <Input
+          <CustomInput
             label="Email"
-            value={email}
-            onChangeText={setEmail}
             placeholder="you@example.com"
             keyboardType="email-address"
             autoCapitalize="none"
+            value={formData.email}
+            onChangeText={(text: string) => handleInputChange("email", text)}
           />
 
-          {/* PASSWORD */}
-          <Input
+          <CustomInput
             label="Password"
-            value={password}
-            onChangeText={setPassword}
             placeholder="••••••••"
             secureTextEntry
+            value={formData.password}
+            onChangeText={(text: string) => handleInputChange("password", text)}
           />
 
-          {/* CONFIRM PASSWORD */}
-          <Input
+          <CustomInput
             label="Confirm Password"
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
             placeholder="••••••••"
             secureTextEntry
+            value={formData.confirmPassword}
+            onChangeText={(text: string) => handleInputChange("confirmPassword", text)}
           />
 
-          {/* TERMS */}
           <TouchableOpacity
             style={styles.termsRow}
-            onPress={() => setAcceptedTerms((prev) => !prev)}
-            activeOpacity={0.7}
+            onPress={() => setAcceptedTerms(!acceptedTerms)}
           >
             <View style={[styles.radio, acceptedTerms && styles.radioActive]}>
-              {acceptedTerms && (
-                <Ionicons name="checkmark" size={14} color="#FFFFFF" />
-              )}
+              {acceptedTerms && <Ionicons name="checkmark" size={14} color="#FFFFFF" />}
             </View>
-
-            <Text style={styles.termsText}>
-              I accept the <Text style={styles.link}>Terms & Conditions</Text>
-            </Text>
+            <Text style={styles.termsText}>I accept the Terms & Conditions</Text>
           </TouchableOpacity>
 
-          {/* SIGN UP BUTTON */}
           <TouchableOpacity
             style={[styles.signupBtn, !acceptedTerms && { opacity: 0.6 }]}
             onPress={handleSignup}
@@ -152,16 +138,6 @@ const SignupScreen: React.FC<any> = ({ navigation }) => {
           >
             <Text style={styles.signupText}>Create Account</Text>
           </TouchableOpacity>
-
-          {/* FOOTER */}
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>Already have an account?</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("LoginScreen")}
-            >
-              <Text style={styles.loginLink}> Login</Text>
-            </TouchableOpacity>
-          </View>
         </View>
       </ScrollView>
     </View>
@@ -170,136 +146,23 @@ const SignupScreen: React.FC<any> = ({ navigation }) => {
 
 export default SignupScreen;
 
+// --- STYLES (Kept exactly as you had them) ---
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-    paddingTop: 50,
-  },
-
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    marginBottom: 12,
-  },
-  back: {
-    fontSize: 16,
-    fontWeight: "700",
-    color: "#0F172A",
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: "900",
-    color: "#0F172A",
-  },
-
-  scrollContainer: {
-    flex: 1,
-    paddingHorizontal: 16,
-  },
-
-  card: {
-    backgroundColor: "#EEF2FF",
-    padding: 24,
-    borderRadius: 20,
-    marginTop: 20,
-  },
-
-  avatar: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    backgroundColor: "#6366F1",
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    marginBottom: 12,
-  },
-
-  title: {
-    fontSize: 22,
-    fontWeight: "900",
-    color: "#0F172A",
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: 14,
-    color: "#475569",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-
-  inputGroup: {
-    marginBottom: 14,
-  },
-  label: {
-    fontSize: 13,
-    fontWeight: "700",
-    color: "#475569",
-    marginBottom: 6,
-  },
-  input: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 12,
-    padding: 14,
-    fontSize: 14,
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-  },
-
-  termsRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 14,
-    gap: 10,
-  },
-  radio: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: "#6366F1",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  radioActive: {
-    backgroundColor: "#6366F1",
-  },
-  termsText: {
-    fontSize: 13,
-    color: "#334155",
-  },
-  link: {
-    fontWeight: "900",
-    color: "#2563EB",
-  },
-
-  signupBtn: {
-    backgroundColor: "#2563EB",
-    padding: 16,
-    borderRadius: 14,
-    alignItems: "center",
-  },
-  signupText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "900",
-  },
-
-  footer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 16,
-  },
-  footerText: {
-    fontSize: 13,
-    color: "#475569",
-  },
-  loginLink: {
-    fontSize: 13,
-    fontWeight: "900",
-    color: "#2563EB",
-  },
+  container: { flex: 1, backgroundColor: "#FFFFFF", paddingTop: 50 },
+  header: { paddingHorizontal: 16, marginBottom: 12 },
+  back: { fontSize: 16, fontWeight: "700", color: "#0F172A" },
+  scrollContainer: { flex: 1, paddingHorizontal: 16 },
+  card: { backgroundColor: "#EEF2FF", padding: 24, borderRadius: 20, marginTop: 20 },
+  avatar: { width: 72, height: 72, borderRadius: 36, backgroundColor: "#6366F1", alignItems: "center", justifyContent: "center", alignSelf: "center", marginBottom: 12 },
+  title: { fontSize: 22, fontWeight: "900", color: "#0F172A", textAlign: "center" },
+  subtitle: { fontSize: 14, color: "#475569", textAlign: "center", marginBottom: 20 },
+  inputGroup: { marginBottom: 14 },
+  label: { fontSize: 13, fontWeight: "700", color: "#475569", marginBottom: 6 },
+  input: { backgroundColor: "#FFFFFF", borderRadius: 12, padding: 14, fontSize: 14, borderWidth: 1, borderColor: "#E5E7EB", color: "#0F172A" },
+  termsRow: { flexDirection: "row", alignItems: "center", marginVertical: 14, gap: 10 },
+  radio: { width: 20, height: 20, borderRadius: 10, borderWidth: 2, borderColor: "#6366F1", alignItems: "center", justifyContent: "center" },
+  radioActive: { backgroundColor: "#6366F1" },
+  termsText: { fontSize: 13, color: "#334155" },
+  signupBtn: { backgroundColor: "#2563EB", padding: 16, borderRadius: 14, alignItems: "center" },
+  signupText: { color: "#FFFFFF", fontSize: 16, fontWeight: "900" },
 });

@@ -60,9 +60,9 @@ const LessonVideoMode: React.FC<Props> = ({ route, navigation }) => {
   const videoId = getVideoId(courseKey, moduleKey, selectedIndex);
 
   // ADD THIS
-  console.log("courseKey:", courseKey);
-  console.log("moduleKey:", moduleKey);
-  console.log("videoId:", videoId);
+  // console.log("courseKey:", courseKey);
+  // console.log("moduleKey:", moduleKey);
+  // console.log("videoId:", videoId);
 
   return (
     <View style={styles.container}>

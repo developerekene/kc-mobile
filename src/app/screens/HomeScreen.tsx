@@ -292,7 +292,7 @@ const HomeScreen: React.FC = ({ navigation, route }: any) => {
       useNativeDriver: true,
     }).start(() => setIsMenuOpen(false));
 
-    await authService.handleUserSignout();
+    // await authService.handleUserSignout();
   };
 
   useEffect(() => {

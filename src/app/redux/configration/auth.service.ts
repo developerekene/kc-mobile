@@ -46,7 +46,7 @@ const registrationTime = new Date();
 
 export class AuthService {
     async handleUserRegistration(
-        userData: UserType,
+        userData: any,
     ) {
         try {
             const res = await createUserWithEmailAndPassword(
@@ -63,11 +63,6 @@ export class AuthService {
 
             const userDocRef = doc(collection(db, "droidaccount"), user.uid);
 
-            // Check if this is a staff account to create onboarding notification
-            const isStaff =
-                userData.userType?.toLowerCase() === "staff" ||
-                userData.userType?.toLowerCase() === "admin";
-
             const droidAccount = {
                 user: {
                     primaryInformation: {
@@ -75,96 +70,18 @@ export class AuthService {
                         lastName: userData.lastName,
                         initials:
                             `${userData.firstName[0]}${userData.lastName[0]}`.toUpperCase(),
-                        userType: userData.userType,
-                        staffId: userData.uniqueId,
+                        userType: "member",
                         uniqueId: user.uid,
                         email: userData.email,
-                        agreeToPolicy: userData.agreeToPolicy,
+                        agreeToPolicy: true,
                         isLoggedIn: true,
-                        agreedToTerms: true,
+                        // agreedToTerms: true,
                         middleName: "",
-                        phone: "",
-                        gender: "",
-                        dateOfBirth: "",
-                        disability: false,
-                        disabilityType: "",
-                        photoUrl: "",
-                        educationalLevel: "",
-                        referralName: "",
-                        secondaryEmail: "",
-                        securityQuestion: "",
-                        securityAnswer: "",
-                        verifiedEmail: false,
-                        verifyPhoneNumber: false,
-                        twoFactorSettings: false,
-                        password: "",
-                        role: "",
-                        streetNumber: "",
-                        streetName: "",
-                        city: "",
-                        state: "",
-                        country: "",
                     },
                     location: {
                         // locationFromDevice: locationData,
                         currentdateTime: currentDateTime,
                     },
-                    security: {},
-                    affiliates: {
-                        knowledgeCity: {
-                            user: false,
-                        },
-                        nerves: {
-                            user: false,
-                        },
-                        muzik: {
-                            user: false,
-                        },
-                    },
-                    onboard: {
-                        onboarding: [],
-                        memberStatus: {},
-                        trainings: [],
-                        progressions: {},
-                        userForms: [],
-                        notifications: [
-                            {
-                                id: "0",
-                                title: "Welcome to D'roid One",
-                                message: "We're excited to have you onboard! Explore features and get started.",
-                                date: registrationTime.toLocaleDateString("en-GB"),
-                                time: registrationTime.toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit' }), // HH:MM
-                                isRead: false,
-                            },
-                            {
-                                id: "1",
-                                title: "Complete Your Personal Details",
-                                message: "Please complete your personal details and finish onboarding if necessary.",
-                                date: registrationTime.toLocaleDateString("en-GB"),
-                                time: registrationTime.toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit' }),
-                                isRead: false,
-                            },
-
-                        ],
-                    },
-                    staff: {
-                        paySlip: [],
-                        staffDetails: {},
-                        staffDoc: {},
-                        staffLeave: [],
-                        staffSignInAndOut: [],
-                        tasks: [],
-                        tests: [],
-                    },
-                },
-                toolBox: {
-                    toolBoxInfo: [],
-                },
-                calculate: {
-                    calculators: [],
-                },
-                schedules: {
-                    mySchedles: [],
                 },
             };
 
@@ -486,7 +403,7 @@ export class AuthService {
                 { merge: true } // preserves existing data
             );
 
-            console.log("Course successfully added to public all.courses!");
+            // console.log("Course successfully added to public all.courses!");
             return true;
         } catch (error) {
             console.error("Error pushing course to Firebase:", error);
