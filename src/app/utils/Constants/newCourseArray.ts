@@ -1,27 +1,32 @@
 const newCourseArray = [
   {
     color: "#E0E7FF",
-    description: "Build and style modern websites using structured HTML and powerful CSS.",
+    description:
+      "Build and style modern websites using structured HTML and powerful CSS.",
     estimatedTime: "18–24 hours",
     id: "html-css",
-    intro: "HTML and CSS are the core building blocks of the web. HTML provides structure while CSS controls layout and design. In this course, you’ll learn how to create well-structured, accessible web pages and style them into responsive, visually appealing websites that work across devices.",
+    intro:
+      "HTML and CSS are the core building blocks of the web. HTML provides structure while CSS controls layout and design. In this course, you’ll learn how to create well-structured, accessible web pages and style them into responsive, visually appealing websites that work across devices.",
     level: "Beginner",
     title: "HTML & CSS",
     modules: [
+      // Module 1: Getting Started with HTML
       {
         id: "html-css-module-1",
         title: "Getting Started",
-        summary: "Develop a solid foundation in how the web works and learn to build structured, standards-compliant webpages using HTML. This module introduces core web concepts, essential HTML syntax, and practical skills needed to create and debug your first webpage.",
+        summary:
+          "Develop a solid foundation in how the web works and learn to build structured, standards-compliant webpages using HTML. This module introduces core web concepts, essential HTML syntax, and practical skills needed to create and debug your first webpage.",
         topics: [
           {
             title: "How the Web Works",
-            description: "Understand the full lifecycle of how web pages are delivered, including the roles of browsers, servers, DNS, and HTTP/HTTPS protocols.",
+            description:
+              "Understand the full lifecycle of how web pages are delivered, including the roles of browsers, servers, DNS, and HTTP/HTTPS protocols.",
             keyPoints: [
               "Client-server architecture and request-response cycle",
               "Role of browsers in parsing and rendering HTML/CSS",
               "DNS resolution and how domain names map to IP addresses",
               "Difference between static and dynamic content",
-              "Introduction to network requests and response status codes"
+              "Introduction to network requests and response status codes",
             ],
             content: `
           ### The Big Picture
@@ -78,94 +83,118 @@ const newCourseArray = [
           - Understand frontend/backend interactions
           - Work effectively with APIs and modern frameworks
           `,
-            practical: "Open browser DevTools → Network tab → reload a webpage and analyze request timings, file types, and status codes. Identify which resources load first and which take the longest."
+            practical:
+              "Open browser DevTools → Network tab → reload a webpage and analyze request timings, file types, and status codes. Identify which resources load first and which take the longest.",
           },
+          // Additional topics for Module 1
           {
             title: "Introduction to HTML",
-            description: "Learn the fundamentals of HTML and how it is used to structure content on the web.",
+            description:
+              "Learn the fundamentals of HTML and how it is used to structure content on the web.",
             keyPoints: [
               "What HTML is and how it differs from programming languages",
               "Understanding elements, tags, and attributes",
               "Proper nesting and document hierarchy",
               "Inline vs block-level elements",
-              "Introduction to semantic HTML and why it matters"
+              "Introduction to semantic HTML and why it matters",
             ],
-            practical: "Create simple HTML snippets using common elements like headings, paragraphs, and links."
+            practical:
+              "Create simple HTML snippets using common elements like headings, paragraphs, and links.",
           },
+          // Additional topics for Module 1
           {
             title: "Basic Document Structure",
-            description: "Explore the standard HTML document structure and understand how browsers interpret it.",
+            description:
+              "Explore the standard HTML document structure and understand how browsers interpret it.",
             keyPoints: [
               "Purpose of <!DOCTYPE html> and standards mode",
               "Structure and role of <html>, <head>, and <body>",
               "Importance of metadata (charset, viewport, title)",
               "How browsers parse and construct the DOM",
-              "Common mistakes that lead to rendering issues"
+              "Common mistakes that lead to rendering issues",
             ],
-            practical: "Build a clean HTML boilerplate from scratch and validate it using an online validator."
+            practical:
+              "Build a clean HTML boilerplate from scratch and validate it using an online validator.",
           },
+          // Additional topics for Module 1
           {
             title: "Text Elements",
-            description: "Use HTML text elements to create well-structured, readable, and accessible content.",
+            description:
+              "Use HTML text elements to create well-structured, readable, and accessible content.",
             keyPoints: [
               "Using headings (h1–h6) correctly for hierarchy",
               "Working with paragraphs and text formatting tags",
               "Creating ordered and unordered lists",
               "Differences between <strong>, <em>, and purely visual tags",
-              "Accessibility considerations for text structure"
+              "Accessibility considerations for text structure",
             ],
-            practical: "Convert a plain text document into a properly structured HTML page using semantic text elements."
+            practical:
+              "Convert a plain text document into a properly structured HTML page using semantic text elements.",
           },
+          // Additional topics for Module 1
           {
             title: "Your First Webpage",
-            description: "Apply your knowledge to build, run, and debug your first complete HTML webpage.",
+            description:
+              "Apply your knowledge to build, run, and debug your first complete HTML webpage.",
             keyPoints: [
               "Setting up a basic project with an index.html file",
               "Writing and organizing HTML content",
               "Opening and testing pages in different browsers",
               "Using DevTools to inspect and debug elements",
-              "Validating HTML and identifying structural issues"
+              "Validating HTML and identifying structural issues",
             ],
-            practical: "Build a personal webpage that includes a title, introduction, and a list of interests, then test it across multiple browsers."
-          }
+            practical:
+              "Build a personal webpage that includes a title, introduction, and a list of interests, then test it across multiple browsers.",
+          },
         ],
-        challengePrompt: "A simple webpage displays differently across browsers. How would you identify whether the issue lies in structure, standards, or browser behavior?",
+        challengePrompt:
+          "A simple webpage displays differently across browsers. How would you identify whether the issue lies in structure, standards, or browser behavior?",
         challengeGuidance: [
           "Validate the HTML structure using a standard validator",
           "Check for correct DOCTYPE declaration and encoding",
           "Compare rendering across multiple browsers",
           "Use DevTools to inspect DOM and layout differences",
-          "Identify any browser-specific styling or default behavior differences"
-        ]
+          "Identify any browser-specific styling or default behavior differences",
+        ],
       },
+
+      // Module 2: Core HTML Elements
       {
         id: "html-css-module-2",
         title: "Core Elements",
-        summary: "Explore the essential HTML elements that give structure and meaning to content.",
+        summary:
+          "Explore the essential HTML elements that give structure and meaning to content.",
         topics: [
           {
             title: "Semantic HTML",
-            description: "Learn the importance of meaningful tags for accessibility and SEO."
+            description:
+              "Learn the importance of meaningful tags for accessibility and SEO.",
           },
           {
             title: "Page Layout Elements",
-            description: "Use header, nav, main, section, and footer to structure pages."
+            description:
+              "Use header, nav, main, section, and footer to structure pages.",
           },
           {
             title: "Lists and Links",
-            description: "Create ordered, unordered lists and navigation links."
+            description:
+              "Create ordered, unordered lists and navigation links.",
           },
           {
             title: "Images and Media",
-            description: "Add images and understand the importance of alt text."
+            description:
+              "Add images and understand the importance of alt text.",
           },
           {
             title: "Accessibility Basics",
-            description: "Ensure your HTML is usable by all users, including those with disabilities."
-          }
+            description:
+              "Ensure your HTML is usable by all users, including those with disabilities.",
+          },
         ],
-        challengePrompt: "A webpage feels cluttered and confusing. Which semantic elements could improve clarity and readability?"
+        challengePrompt:
+          "A webpage feels cluttered and confusing. Which semantic elements could improve clarity and readability?",
       },
+      // STYLING WITH CSS MODULES
       {
         id: "html-css-module-3",
         title: "Styling with CSS",
@@ -173,55 +202,65 @@ const newCourseArray = [
         topics: [
           {
             title: "Introduction to CSS",
-            description: "Understand how CSS works and how it connects to HTML."
+            description:
+              "Understand how CSS works and how it connects to HTML.",
           },
           {
             title: "Selectors",
-            description: "Target elements using class, id, and element selectors."
+            description:
+              "Target elements using class, id, and element selectors.",
           },
           {
             title: "Colors and Typography",
-            description: "Style text using fonts, colors, and spacing."
+            description: "Style text using fonts, colors, and spacing.",
           },
           {
             title: "Box Model",
-            description: "Understand margin, padding, borders, and how elements take up space."
+            description:
+              "Understand margin, padding, borders, and how elements take up space.",
           },
           {
             title: "Applying Styles",
-            description: "Learn inline, internal, and external CSS methods."
-          }
+            description: "Learn inline, internal, and external CSS methods.",
+          },
         ],
-        challengePrompt: "Users say a page looks visually dull. Before adding complex styles, what CSS basics would you apply to improve clarity and design?"
+        challengePrompt:
+          "Users say a page looks visually dull. Before adding complex styles, what CSS basics would you apply to improve clarity and design?",
       },
+      // LAYOUT & RESPONSIVENESS MODULE
       {
         id: "html-css-module-4",
         title: "Layout & Responsiveness",
-        summary: "Build flexible and responsive layouts using modern CSS techniques.",
+        summary:
+          "Build flexible and responsive layouts using modern CSS techniques.",
         topics: [
           {
             title: "Display Properties",
-            description: "Understand block, inline, and inline-block elements."
+            description: "Understand block, inline, and inline-block elements.",
           },
           {
             title: "Flexbox",
-            description: "Create flexible layouts for aligning and distributing space."
+            description:
+              "Create flexible layouts for aligning and distributing space.",
           },
           {
             title: "CSS Grid",
-            description: "Design complex layouts with rows and columns."
+            description: "Design complex layouts with rows and columns.",
           },
           {
             title: "Positioning",
-            description: "Control element placement using relative, absolute, and fixed positioning."
+            description:
+              "Control element placement using relative, absolute, and fixed positioning.",
           },
           {
             title: "Media Queries",
-            description: "Make your website responsive across different screen sizes."
-          }
+            description:
+              "Make your website responsive across different screen sizes.",
+          },
         ],
-        challengePrompt: "Your layout breaks on mobile devices. How would you use Flexbox, Grid, and media queries to fix responsiveness?"
-      }
+        challengePrompt:
+          "Your layout breaks on mobile devices. How would you use Flexbox, Grid, and media queries to fix responsiveness?",
+      },
     ],
     outcomes: [
       "Understand how web pages are structured and styled",
@@ -229,9 +268,9 @@ const newCourseArray = [
       "Apply CSS to create visually appealing designs",
       "Build responsive layouts using Flexbox and Grid",
       "Create modern websites that work across devices",
-      "Debug and improve existing HTML and CSS code"
-    ]
-  }
-]
+      "Debug and improve existing HTML and CSS code",
+    ],
+  },
+];
 
 export default newCourseArray;
