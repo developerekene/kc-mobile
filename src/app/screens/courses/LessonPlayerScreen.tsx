@@ -44,7 +44,7 @@ const LessonPlayerScreen: React.FC<Props> = ({ route, navigation }) => {
                 <Text style={styles.lessonText}>{topic.description}</Text>
               </TouchableOpacity>
 
-              {isExpanded && (
+              {/* {isExpanded && ( */}
                 <View style={styles.expandedContent}>
                   {/* Key Points */}
                   {topic.keyPoints && topic.keyPoints.length > 0 && (
@@ -74,7 +74,7 @@ const LessonPlayerScreen: React.FC<Props> = ({ route, navigation }) => {
                     </View>
                   )}
                 </View>
-              )}
+              {/* )} */}
             </View>
           );
         })}
